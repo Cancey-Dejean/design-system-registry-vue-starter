@@ -21,6 +21,20 @@ export default defineNuxtConfig({
     // (registry/items/components/**) instead of keeping a separate app/components/ui copy —
     // single source of truth for both the docs site and what `shadcn-vue add` installs.
     "#registry-ui": fileURLToPath(new URL("./registry/items/components", import.meta.url)),
+    // Shorthand for any file inside registry/items — e.g. @registry/components/button/Button.vue
+    "@registry": fileURLToPath(new URL("./registry/items", import.meta.url)),
+  },
+  typescript: {
+    tsConfig: {
+      // Bring registry source files into the TypeScript project so the IDE resolves
+      // @registry/* imports (and cross-file types) inside registry/items correctly.
+      include: ["../registry/**/*"],
+      compilerOptions: {
+        paths: {
+          "@registry/*": ["../registry/items/*"],
+        },
+      },
+    },
   },
   vue: {
     // @vue/compiler-sfc's defineProps<T>() type resolution needs fs access to follow types
