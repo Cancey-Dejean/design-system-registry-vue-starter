@@ -52,6 +52,7 @@
     "vite-plus": "0.2.5"
   },
   "overrides": {
+    "@nuxt/schema": "4.5.2",
     "vite": "npm:@voidzero-dev/vite-plus-core@0.2.5"
   },
   "devEngines": {

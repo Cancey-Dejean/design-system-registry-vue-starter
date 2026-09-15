@@ -1,7 +1,19 @@
-import { existsSync, readFileSync } from "node:fs";
+import { readFileSync, statSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import tailwindcss from "@tailwindcss/vite";
 import { registryConfig } from "./app/lib/registry/config";
+
+// @vue/compiler-sfc's own resolveExt() checks fileExists(path) on the bare import
+// specifier *before* trying `index.ts`, so a plain existsSync() here would report
+// `true` for a directory (e.g. `import { X } from "."`) and hand that directory
+// straight to readFile, crashing with EISDIR. Must confirm it's a file.
+function isFile(file: string): boolean {
+  try {
+    return statSync(file).isFile();
+  } catch {
+    return false;
+  }
+}
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -11,8 +23,9 @@ export default defineNuxtConfig({
   app: {
     head: {
       htmlAttrs: { lang: "en" },
-      titleTemplate: (title: string) =>
-        title ? `${title} — ${registryConfig.name}` : registryConfig.name,
+      // Static nuxt.config.ts head only accepts a string titleTemplate (it's serialized at
+      // build time). The "no title -> just the site name" fallback needs a function, which
+      // is only supported by the runtime useHead() ReactiveHead type — see app/app.vue.
       meta: [{ name: "description", content: registryConfig.description }],
     },
   },
@@ -36,30 +49,20 @@ export default defineNuxtConfig({
       },
     },
   },
-  vue: {
-    // @vue/compiler-sfc's defineProps<T>() type resolution needs fs access to follow types
-    // imported from other packages (e.g. reka-ui's PrimitiveProps). It only auto-detects a
-    // Node environment; running under bun via vite-plus doesn't trip that check, so it's
-    // passed explicitly here — otherwise every component using such a type fails to compile
-    // with "No fs option provided to compileScript in non-Node environment."
-    script: {
-      fs: {
-        fileExists: (file: string) => existsSync(file),
-        readFile: (file: string) => readFileSync(file, "utf-8"),
-      },
-    },
-  },
   vite: {
     plugins: [tailwindcss()],
-  },
-  hooks: {
-    "vite:extendConfig": (config: { vue?: { script?: { fs?: unknown } } }) => {
-      config.vue ??= {};
-      config.vue.script ??= {};
-      config.vue.script.fs = {
-        fileExists: (file: string) => existsSync(file),
-        readFile: (file: string) => readFileSync(file, "utf-8"),
-      };
+    vue: {
+      // @vue/compiler-sfc's defineProps<T>() type resolution needs fs access to follow types
+      // imported from other packages (e.g. reka-ui's PrimitiveProps). It only auto-detects a
+      // Node environment; running under bun via vite-plus doesn't trip that check, so it's
+      // passed explicitly here — otherwise every component using such a type fails to compile
+      // with "No fs option provided to compileScript in non-Node environment."
+      script: {
+        fs: {
+          fileExists: (file: string) => isFile(file),
+          readFile: (file: string) => readFileSync(file, "utf-8"),
+        },
+      },
     },
   },
   modules: [
