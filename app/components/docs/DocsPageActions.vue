@@ -1,20 +1,20 @@
 <script setup lang="ts">
 import { ChevronDown } from "@lucide/vue";
-import { Button } from "#registry-ui/button";
+import { Button } from "@registry/components/Button/index.ts";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "#registry-ui/dropdown-menu";
-import { cn } from "~/lib/utils";
+} from "@registry/components/Dropdown-menu/index.ts";
 import {
+  type DocsPageActionUrls,
   getDocsPageMarkdown,
   getPromptUrl,
   getV0RegistryItemUrl,
-  type DocsPageActionUrls,
 } from "~/lib/docs-page-actions";
+import { cn } from "~/lib/utils";
 import BrandIcon from "./BrandIcon.vue";
 import CopyButton from "./CopyButton.vue";
 
@@ -31,13 +31,21 @@ interface MenuItem {
 }
 
 const menuItems: readonly MenuItem[] = [
-  { label: "View as Markdown", icon: "markdown", href: ({ markdownPath }) => markdownPath },
+  {
+    label: "View as Markdown",
+    icon: "markdown",
+    href: ({ markdownPath }) => markdownPath,
+  },
   {
     label: "Open in v0",
     icon: "v0",
     href: ({ pageDescription, pageTitle, registryItemJsonUrl }) =>
       registryItemJsonUrl
-        ? getV0RegistryItemUrl({ prompt: pageDescription, registryItemJsonUrl, title: pageTitle })
+        ? getV0RegistryItemUrl({
+            prompt: pageDescription,
+            registryItemJsonUrl,
+            title: pageTitle,
+          })
         : null,
   },
   {

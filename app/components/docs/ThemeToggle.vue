@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Monitor, Moon, Sun } from "@lucide/vue";
-import { Button } from "#registry-ui/button";
+import { Button } from "@registry/components/Button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -8,7 +8,7 @@ import {
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
   DropdownMenuTrigger,
-} from "#registry-ui/dropdown-menu";
+} from "@registry/components/Dropdown-menu";
 
 withDefaults(defineProps<{ class?: string }>(), { class: undefined });
 

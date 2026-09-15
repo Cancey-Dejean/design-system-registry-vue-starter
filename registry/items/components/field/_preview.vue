@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Input } from "../input";
+import { Input } from "../Input";
 import { Field, FieldDescription, FieldGroup, FieldLabel } from ".";
 </script>
 

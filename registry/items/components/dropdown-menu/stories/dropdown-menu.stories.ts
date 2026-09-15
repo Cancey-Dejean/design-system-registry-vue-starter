@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/vue3";
-import { Button } from "../../button";
+import { Button } from "../../Button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "..";
 
 const meta: Meta<typeof DropdownMenu> = {

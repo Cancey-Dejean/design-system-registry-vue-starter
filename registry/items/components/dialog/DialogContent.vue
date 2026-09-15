@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import type { DialogContentEmits, DialogContentProps } from "reka-ui";
-
-import type { HTMLAttributes } from "vue";
 import { XIcon } from "@lucide/vue";
+import { Button } from "@registry/components/Button/index.ts";
 import { reactiveOmit } from "@vueuse/core";
+import type { DialogContentEmits, DialogContentProps } from "reka-ui";
 import { DialogClose, DialogContent, DialogPortal, useForwardPropsEmits } from "reka-ui";
+import type { HTMLAttributes } from "vue";
 import { cn } from "@/lib/utils";
-import { Button } from "#registry-ui/button";
 import DialogOverlay from "./DialogOverlay.vue";
 
 defineOptions({
@@ -15,7 +14,10 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<
-    DialogContentProps & { class?: HTMLAttributes["class"]; showCloseButton?: boolean }
+    DialogContentProps & {
+      class?: HTMLAttributes["class"];
+      showCloseButton?: boolean;
+    }
   >(),
   {
     showCloseButton: true,

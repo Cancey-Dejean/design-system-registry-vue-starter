@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Separator } from "@registry/components/separator";
+import { Separator } from "@registry/components/Separator";
 import PreviewWrapper from "~~/app/components/docs/PreviewWrapper.vue";
 </script>
 

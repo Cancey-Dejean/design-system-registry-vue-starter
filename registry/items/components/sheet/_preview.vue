@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Button } from "../button";
+import { Button } from "../Button";
 import {
   Sheet,
   SheetClose,

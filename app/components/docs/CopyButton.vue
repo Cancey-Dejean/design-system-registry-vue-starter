@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { Check, Copy } from "@lucide/vue";
-import { Button } from "#registry-ui/button";
-import type { ButtonVariants } from "#registry-ui/button";
-import { cn } from "~/lib/utils";
+import type { ButtonVariants } from "@registry/components/Button";
+import { Button } from "@registry/components/Button";
 import { useClipboard } from "~/composables/useClipboard";
+import { cn } from "~/lib/utils";
 
 const props = withDefaults(
   defineProps<{

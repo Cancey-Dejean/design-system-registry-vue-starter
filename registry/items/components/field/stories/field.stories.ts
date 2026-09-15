@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/vue3";
-import { Input } from "../../input";
+import { Input } from "../../Input";
 import { Field, FieldDescription, FieldGroup, FieldLabel } from "..";
 
 const meta: Meta<typeof Field> = {

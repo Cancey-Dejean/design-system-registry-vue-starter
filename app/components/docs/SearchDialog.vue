@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { useMagicKeys } from "@vueuse/core";
 import { Search } from "@lucide/vue";
-import { Button } from "#registry-ui/button";
+import { Button } from "@registry/components/Button";
 import {
   CommandDialog,
   CommandEmpty,
@@ -9,7 +8,8 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "#registry-ui/command";
+} from "@registry/components/Command";
+import { useMagicKeys } from "@vueuse/core";
 import type { SiteNavigationItem } from "~/lib/navigation";
 
 const open = ref(false);

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/vue3";
-import { Input } from "../../input";
+import { Input } from "../../Input";
 import { Label } from "..";
 
 const meta: Meta<typeof Label> = {

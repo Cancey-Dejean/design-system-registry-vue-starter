@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Blocks } from "@lucide/vue";
-import { Button } from "#registry-ui/button";
+import { Button } from "@registry/components/Button";
 import { registryConfig } from "~/lib/registry/config";
 </script>
 

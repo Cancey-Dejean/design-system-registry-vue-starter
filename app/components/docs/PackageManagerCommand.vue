@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ChevronDown } from "@lucide/vue";
-import { Button } from "#registry-ui/button";
+import { Button } from "@registry/components/Button/index.ts";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -8,9 +8,9 @@ import {
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
   DropdownMenuTrigger,
-} from "#registry-ui/dropdown-menu";
+} from "@registry/components/Dropdown-menu/index.ts";
+import { isPackageManager, packageManagers } from "~/lib/package-managers";
 import { cn } from "~/lib/utils";
-import { packageManagers, isPackageManager } from "~/lib/package-managers";
 import CopyButton from "./CopyButton.vue";
 import PackageManagerLogo from "./PackageManagerLogo.vue";
 
