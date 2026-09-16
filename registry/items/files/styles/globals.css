@@ -10,6 +10,7 @@
    project's docs shell imports them directly instead of duplicating them under app/components/ui,
    so their class usage needs to be added to Tailwind's content scan explicitly. */
 @source "../../components";
+@source "../../blocks";
 
 @custom-variant dark (&:is(.dark *));
 
