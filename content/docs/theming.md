@@ -60,11 +60,35 @@ mechanism that toggles a `dark` class:
 Whatever you choose, the class name must be exactly `dark` — `theme.css` doesn't know about any
 other naming convention.
 
-## Accent theme variants (not wired up yet)
+## Accent theme variants
 
 `registry/items/files/styles/` also has `theme-secondary.css` and `theme-tertiary.css`. Each scopes
 an accent palette under `[data-theme="theme-secondary"]` / `[data-theme="theme-tertiary"]` (plus a
-`.dark[data-theme="..."]` variant for dark mode). Neither file is imported by `globals.css`, neither
-is listed in the `styles` item's install table, and nothing in this docs app sets a `data-theme`
-attribute — they're unused scaffolding today. To use one, `@import` it after `theme.css` and set
-`data-theme="theme-secondary"` (or `"theme-tertiary"`) on the element you want re-themed.
+`.dark[data-theme="..."]` variant for dark mode), overriding just the accent-related tokens
+(`primary`, `ring`, `sidebar-primary`, `selection`, `chart-*`) — everything else still comes from
+`theme.css`'s `:root` / `.dark`. `globals.css` imports both files (after `theme.css`, so their
+attribute selectors win the cascade), and the `styles` item publishes them alongside `globals.css`
+and `theme.css`.
+
+Like `dark:` utilities, nothing applies automatically — some ancestor needs a `data-theme` attribute
+set at runtime. This docs app's Palette icon button in the header (`AccentThemeToggle.vue`) does
+that via `useAccentTheme()` (`app/composables/useAccentTheme.ts`), which mirrors the light/dark
+pattern:
+
+```ts
+function applyAccentTheme(value: AccentTheme) {
+  if (value === "default") {
+    document.documentElement.removeAttribute("data-theme");
+  } else {
+    document.documentElement.setAttribute("data-theme", value);
+  }
+}
+```
+
+The preference persists via `useStorage` under the `accent-theme` key, and a small blocking script
+in `app.vue` reads that key and sets `data-theme` before first paint — the same anti-flash trick
+`@nuxtjs/color-mode` uses for `dark`/`light`, hand-rolled here since there's no module for it.
+
+A consumer project can reuse the same shape: read/write a stored preference and toggle a
+`data-theme` attribute to `"theme-secondary"` / `"theme-tertiary"` (or remove it for the default
+palette) on whatever element should be re-themed.

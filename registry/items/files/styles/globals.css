@@ -5,6 +5,8 @@
 @import "@fontsource-variable/geist-mono";
 @plugin "@tailwindcss/typography";
 @import "./theme.css";
+@import "./theme-secondary.css";
+@import "./theme-tertiary.css";
 
 /* Registry components live outside app/ (the Nuxt srcDir Tailwind scans by default) — this
    project's docs shell imports them directly instead of duplicating them under app/components/ui,

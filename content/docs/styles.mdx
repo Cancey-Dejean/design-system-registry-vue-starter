@@ -4,7 +4,7 @@ description: Install the design system CSS foundation with the shadcn-vue CLI.
 order: 2
 ---
 
-Before components look correct, add the design system style files. This installs both `globals.css` and `theme.css` into `src/styles/`.
+Before components look correct, add the design system style files. This installs `globals.css` and its theme files into `src/styles/`.
 
 ## Prerequisites
 
@@ -29,12 +29,18 @@ Without this, the CLI returns `Unknown registry "@design-system-ui-vue"`. See [I
 
 ## What gets installed
 
-| File          | Destination              |
-| ------------- | ------------------------ |
-| `globals.css` | `src/styles/globals.css` |
-| `theme.css`   | `src/styles/theme.css`   |
+| File                  | Destination                      |
+| --------------------- | -------------------------------- |
+| `globals.css`         | `src/styles/globals.css`         |
+| `theme.css`           | `src/styles/theme.css`           |
+| `theme-secondary.css` | `src/styles/theme-secondary.css` |
+| `theme-tertiary.css`  | `src/styles/theme-tertiary.css`  |
 
-If `src/styles/globals.css` or `src/styles/theme.css` already exist, the CLI may ask before overwriting them.
+`theme-secondary.css` and `theme-tertiary.css` are optional accent palettes — `globals.css` imports
+both, but they only apply to an element carrying `data-theme="theme-secondary"` or
+`data-theme="theme-tertiary"`. See [Theming](/docs/theming) for how to use them.
+
+If any of these files already exist under `src/styles/`, the CLI may ask before overwriting them.
 
 ## Import in your app
 

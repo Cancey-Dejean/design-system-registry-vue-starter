@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Button } from "@registry/components/Button/index.ts";
 import { registryConfig } from "~/lib/registry/config";
+import AccentThemeToggle from "./AccentThemeToggle.vue";
 import ThemeToggle from "./ThemeToggle.vue";
 </script>
 
@@ -54,6 +55,7 @@ import ThemeToggle from "./ThemeToggle.vue";
       </svg>
       <span class="sr-only">GitHub</span>
     </Button>
+    <AccentThemeToggle />
     <ThemeToggle />
   </div>
 </template>
