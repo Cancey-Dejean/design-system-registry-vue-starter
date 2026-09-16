@@ -3,9 +3,9 @@ import { ArrowUpRight } from "@lucide/vue";
 </script>
 
 <template>
-  <footer class="mt-10">
+  <footer class="mt-6">
     <div
-      class="mx-auto flex max-w-screen-2xl items-center justify-center px-4 py-6 text-xs text-muted-foreground sm:px-6 lg:px-8"
+      class="mx-auto flex items-center justify-center px-4 py-6 text-xs text-muted-foreground sm:px-6 lg:px-8"
     >
       <a
         href="#/company-name"

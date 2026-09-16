@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from "vue";
 import { cn } from "@/lib/utils";
+import SiteFooter from "~/components/docs/SiteFooter.vue";
 
 const props = defineProps<{
   class?: HTMLAttributes["class"];
@@ -18,5 +19,6 @@ const props = defineProps<{
     "
   >
     <slot />
+    <SiteFooter />
   </main>
 </template>

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ChevronDown } from "@lucide/vue";
 import { Button } from "@registry/components/Button/index.ts";
+import { ButtonGroup } from "@registry/components/Button-group/index.ts";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,7 +15,6 @@ import {
   getPromptUrl,
   getV0RegistryItemUrl,
 } from "~/lib/docs-page-actions";
-import { cn } from "~/lib/utils";
 import BrandIcon from "./BrandIcon.vue";
 import CopyButton from "./CopyButton.vue";
 
@@ -73,7 +73,7 @@ const resolvedItems = computed(() =>
 </script>
 
 <template>
-  <div :class="cn('inline-flex items-center gap-0.5', props.class)">
+  <ButtonGroup :class="props.class">
     <CopyButton
       :value="() => getDocsPageMarkdown(markdownPath)"
       show-label
@@ -105,5 +105,5 @@ const resolvedItems = computed(() =>
         </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>
-  </div>
+  </ButtonGroup>
 </template>
