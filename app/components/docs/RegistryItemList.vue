@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { RegistryNavigationItem } from "~/lib/navigation";
-import { Card, CardDescription, CardHeader, CardTitle } from "#registry-ui/card";
+import { Card, CardDescription, CardHeader, CardTitle } from "#registry-ui/Card";
 import DocsPageHeader from "./DocsPageHeader.vue";
 
 defineProps<{

@@ -7,8 +7,8 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "#registry-ui/breadcrumb";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "#registry-ui/tabs";
+} from "#registry-ui/Breadcrumb";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "#registry-ui/Tabs";
 import { getRegistryItemRoutePath, getRegistrySectionForType } from "~/lib/registry/sections";
 import { hasPreview } from "~/lib/registry/preview-map";
 import CodeBlock from "./CodeBlock.vue";

@@ -9,7 +9,7 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "#registry-ui/dialog";
+} from "#registry-ui/Dialog";
 import Command from "./Command.vue";
 
 const props = withDefaults(
