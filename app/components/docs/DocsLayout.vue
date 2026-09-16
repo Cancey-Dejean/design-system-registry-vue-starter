@@ -7,15 +7,14 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@registry/components/Breadcrumb/index.ts";
-import { Button } from "@registry/components/button/index.ts";
 import { Separator } from "@registry/components/Separator/index.ts";
 import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
 } from "@registry/components/Sidebar/index.ts";
-import { registryConfig } from "~/lib/registry/config";
 import DocsAppSidebar from "./DocsAppSidebar.vue";
+import HeaderActions from "./HeaderActions.vue";
 
 // No `collapsible` prop is passed to DocsAppSidebar on purpose: the nav has no icons, so it
 // relies on Sidebar's own default ("offcanvas") — the sidebar fully hides instead of shrinking
@@ -65,18 +64,7 @@ const activeItem = computed(() =>
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
-          <div class="ml-auto flex items-center gap-2">
-            <Button
-              variant="ghost"
-              size="sm"
-              as="a"
-              :href="registryConfig.repositoryUrl"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GitHub
-            </Button>
-          </div>
+          <HeaderActions class="ml-auto" />
         </div>
       </header>
       <div class="flex flex-1 flex-col gap-4 p-4 pt-6">
