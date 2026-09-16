@@ -29,7 +29,9 @@ function slugFromPath(path: string): string {
 }
 
 async function readDocsMarkdown(slug: string): Promise<string> {
-  const raw = await useStorage("assets:docs").getItem<string>(`${slug}.md`);
+  const storage = useStorage("assets:docs");
+  const raw =
+    (await storage.getItem<string>(`${slug}.md`)) ?? (await storage.getItem<string>(`${slug}.mdx`));
 
   if (typeof raw !== "string") {
     throw createError({ statusCode: 404, statusMessage: `Docs markdown not found: ${slug}` });
