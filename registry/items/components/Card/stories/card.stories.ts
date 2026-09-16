@@ -12,7 +12,7 @@ type Story = StoryObj<typeof Card>;
 export const Default: Story = {
   render: () => ({
     components: { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle },
-    template: `
+    template: /* html */ `
       <Card class="max-w-sm">
         <CardHeader>
           <CardTitle>Card Title</CardTitle>

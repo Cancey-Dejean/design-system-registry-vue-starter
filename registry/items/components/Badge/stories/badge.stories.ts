@@ -20,14 +20,14 @@ export const Default: Story = {
   render: (args) => ({
     components: { Badge },
     setup: () => ({ args }),
-    template: `<Badge v-bind="args">Badge</Badge>`,
+    template: /* html */ `<Badge v-bind="args">Badge</Badge>`,
   }),
 };
 
 export const AllVariants: Story = {
   render: () => ({
     components: { Badge },
-    template: `
+    template: /* html */ `
       <div class="flex flex-wrap items-center gap-2">
         <Badge>Default</Badge>
         <Badge variant="secondary">Secondary</Badge>

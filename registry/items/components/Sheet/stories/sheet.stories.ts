@@ -32,7 +32,7 @@ export const Default: Story = {
       SheetTrigger,
       Button,
     },
-    template: `
+    template: /* html */ `
       <Sheet>
         <SheetTrigger as-child>
           <Button variant="outline">Open</Button>

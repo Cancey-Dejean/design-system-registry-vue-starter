@@ -12,7 +12,7 @@ type Story = StoryObj<typeof Tabs>;
 export const Default: Story = {
   render: () => ({
     components: { Tabs, TabsContent, TabsList, TabsTrigger },
-    template: `
+    template: /* html */ `
       <Tabs default-value="account" class="max-w-sm">
         <TabsList>
           <TabsTrigger value="account">Account</TabsTrigger>
@@ -28,7 +28,7 @@ export const Default: Story = {
 export const LineVariant: Story = {
   render: () => ({
     components: { Tabs, TabsContent, TabsList, TabsTrigger },
-    template: `
+    template: /* html */ `
       <Tabs default-value="account" class="max-w-sm">
         <TabsList variant="line">
           <TabsTrigger value="account">Account</TabsTrigger>

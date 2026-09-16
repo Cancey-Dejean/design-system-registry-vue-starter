@@ -78,7 +78,7 @@ export const Icon: Story = {
     setup() {
       return { args };
     },
-    template: '<Button v-bind="args">+</Button>',
+    template: /* html */ '<Button v-bind="args">+</Button>',
   }),
 };
 
@@ -98,7 +98,7 @@ export const Loading: StoryObj<LoadingStoryArgs> = {
     setup() {
       return { args, cn };
     },
-    template: `
+    template: /* html */ `
       <div data-slot="button-cta-group" class="relative flex items-center justify-center gap-4">
         <Button :variant="args.variant" :size="args.size" :class="args.class">
           <template v-if="args.loading">

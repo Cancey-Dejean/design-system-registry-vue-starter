@@ -32,7 +32,7 @@ export const Default: Story = {
       DialogTrigger,
       Button,
     },
-    template: `
+    template: /* html */ `
       <Dialog>
         <DialogTrigger as-child>
           <Button variant="outline">Open Dialog</Button>

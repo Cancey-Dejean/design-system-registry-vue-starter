@@ -14,13 +14,13 @@ export const Default: Story = {
   render: (args) => ({
     components: { Input },
     setup: () => ({ args }),
-    template: `<Input v-bind="args" class="max-w-sm" />`,
+    template: /* html */ `<Input v-bind="args" class="max-w-sm" />`,
   }),
 };
 
 export const Disabled: Story = {
   render: () => ({
     components: { Input },
-    template: `<Input placeholder="Disabled" disabled class="max-w-sm" />`,
+    template: /* html */ `<Input placeholder="Disabled" disabled class="max-w-sm" />`,
   }),
 };

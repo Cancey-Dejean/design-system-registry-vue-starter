@@ -20,7 +20,7 @@ type Story = StoryObj<typeof ButtonGroup>;
 export const Default: Story = {
   render: () => ({
     components: { ButtonGroup, Button },
-    template: `
+    template: /* html */ `
       <ButtonGroup>
         <Button variant="outline">Archive</Button>
         <Button variant="outline">Report</Button>
@@ -33,7 +33,7 @@ export const Default: Story = {
 export const Split: Story = {
   render: () => ({
     components: { ButtonGroup, ButtonGroupSeparator, Button },
-    template: `
+    template: /* html */ `
       <ButtonGroup>
         <Button variant="secondary">Button</Button>
         <ButtonGroupSeparator />
@@ -54,7 +54,7 @@ export const WithDropdownMenu: Story = {
       DropdownMenuTrigger,
       ChevronDown,
     },
-    template: `
+    template: /* html */ `
       <ButtonGroup>
         <Button variant="outline">Copy Page</Button>
         <DropdownMenu>
@@ -77,7 +77,7 @@ export const WithDropdownMenu: Story = {
 export const Vertical: Story = {
   render: () => ({
     components: { ButtonGroup, Button },
-    template: `
+    template: /* html */ `
       <ButtonGroup orientation="vertical" class="h-fit" aria-label="Media controls">
         <Button variant="outline" size="icon-md">+</Button>
         <Button variant="outline" size="icon-md">-</Button>
@@ -89,7 +89,7 @@ export const Vertical: Story = {
 export const WithText: Story = {
   render: () => ({
     components: { ButtonGroup, ButtonGroupText, Button },
-    template: `
+    template: /* html */ `
       <ButtonGroup>
         <ButtonGroupText>https://</ButtonGroupText>
         <Button variant="outline">example.com</Button>

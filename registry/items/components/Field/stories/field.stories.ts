@@ -13,7 +13,7 @@ type Story = StoryObj<typeof Field>;
 export const Default: Story = {
   render: () => ({
     components: { Field, FieldDescription, FieldGroup, FieldLabel, Input },
-    template: `
+    template: /* html */ `
       <FieldGroup class="max-w-sm">
         <Field>
           <FieldLabel for="email">Email</FieldLabel>

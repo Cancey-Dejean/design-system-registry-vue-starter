@@ -12,7 +12,7 @@ type Story = StoryObj<typeof Accordion>;
 export const Single: Story = {
   render: () => ({
     components: { Accordion, AccordionContent, AccordionItem, AccordionTrigger },
-    template: `
+    template: /* html */ `
       <Accordion type="single" :default-value="['item-1']" collapsible class="max-w-sm">
         <AccordionItem value="item-1">
           <AccordionTrigger>Is it accessible?</AccordionTrigger>

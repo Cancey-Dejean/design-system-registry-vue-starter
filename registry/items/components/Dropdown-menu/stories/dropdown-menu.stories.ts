@@ -19,7 +19,7 @@ export const Default: Story = {
       DropdownMenuTrigger,
       Button,
     },
-    template: `
+    template: /* html */ `
       <DropdownMenu>
         <DropdownMenuTrigger as-child>
           <Button variant="outline">Open</Button>
