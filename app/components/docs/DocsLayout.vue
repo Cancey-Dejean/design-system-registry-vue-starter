@@ -73,3 +73,14 @@ const activeItem = computed(() =>
     </SidebarInset>
   </SidebarProvider>
 </template>
+
+<style>
+/* The "On This Page" nav (DocsTableOfContents.vue) links straight to these ids, and the
+   browser's native anchor scroll otherwise lands the heading right under the sticky header
+   above (h-16) with no room to read it. Applies globally since headings render either as plain
+   h2s (ComponentDoc.vue) or through @nuxtjs/mdc's prose components (markdown docs pages). */
+h2[id],
+h3[id] {
+  scroll-margin-top: 5rem;
+}
+</style>
