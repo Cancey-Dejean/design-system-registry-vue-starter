@@ -12,13 +12,13 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@registry/components/Sidebar/index.ts";
+import { Button } from "@registry/components/button/index.ts";
 import { Separator } from "@registry/components/Separator/index.ts";
-import AppSidebar from "@registry/blocks/Sidebar03/AppSidebar.vue";
+import { registryConfig } from "~/lib/registry/config";
+import DocsAppSidebar from "./DocsAppSidebar.vue";
 
-// AppSidebar still renders the sidebar-03 block's static demo data (nav groups + submenus).
-// Swap it for a real-data-driven sidebar (see DocsSidebarNav.vue) once the layout itself is signed off.
-// No `collapsible` prop is passed here on purpose: sidebar-03 has no icons for its nav items, so
-// it relies on Sidebar's own default ("offcanvas") — the sidebar fully hides instead of shrinking
+// No `collapsible` prop is passed to DocsAppSidebar on purpose: the nav has no icons, so it
+// relies on Sidebar's own default ("offcanvas") — the sidebar fully hides instead of shrinking
 // to an icon rail.
 const { data: sections } = useSiteNavigation();
 const route = useRoute();
@@ -36,10 +36,10 @@ const activeItem = computed(() =>
 
 <template>
   <SidebarProvider>
-    <AppSidebar />
+    <DocsAppSidebar />
     <SidebarInset>
       <header class="flex h-16 shrink-0 items-center gap-2 border-b">
-        <div class="flex items-center gap-2 px-3">
+        <div class="flex w-full items-center gap-2 px-3">
           <SidebarTrigger />
           <Separator orientation="vertical" class="mr-2 data-[orientation=vertical]:h-4" />
           <Breadcrumb v-if="activeSection">
@@ -60,6 +60,18 @@ const activeItem = computed(() =>
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
+          <div class="ml-auto flex items-center gap-2">
+            <Button
+              variant="ghost"
+              size="sm"
+              as="a"
+              :href="registryConfig.repositoryUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub
+            </Button>
+          </div>
         </div>
       </header>
       <div class="flex flex-1 flex-col gap-4 p-4 pt-0">
