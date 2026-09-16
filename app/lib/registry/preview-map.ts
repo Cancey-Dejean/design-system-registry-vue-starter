@@ -9,9 +9,10 @@ const previewModules = import.meta.glob<{ default: Component }>(
 );
 
 function toPreviewKey(name: string): string | undefined {
-  return Object.keys(previewModules).find((path) =>
-    path.includes(`/components/${name}/_preview.vue`),
-  );
+  // Component folders are PascalCase on disk (e.g. Button/) while the registry item's `name`
+  // stays kebab-case (e.g. "button"), so this match has to ignore case.
+  const suffix = `/components/${name}/_preview.vue`.toLowerCase();
+  return Object.keys(previewModules).find((path) => path.toLowerCase().includes(suffix));
 }
 
 export function hasPreview(name: string): boolean {
