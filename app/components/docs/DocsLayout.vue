@@ -1,20 +1,37 @@
 <script setup lang="ts">
-import DocsSidebar from "./DocsSidebar.vue";
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarInset,
+  SidebarProvider,
+  SidebarTrigger,
+} from "@registry/components/Sidebar/index.ts";
+import { Separator } from "@registry/components/Separator/index.ts";
+import DocsSidebarNav from "./DocsSidebarNav.vue";
 
 const { data: sections } = useSiteNavigation();
 </script>
 
 <template>
-  <div class="mx-auto flex w-full max-w-screen-2xl gap-8 px-4 sm:px-6 lg:px-8">
-    <aside
-      class="sticky top-14 hidden h-[calc(100vh-3.5rem)] w-56 shrink-0 overflow-y-auto py-8 lg:block"
+  <SidebarProvider class="min-h-0 w-full">
+    <Sidebar
+      collapsible="offcanvas"
+      class="sticky top-14 h-[calc(100vh-3.5rem)] overflow-hidden group-data-[collapsible=offcanvas]:left-0 group-data-[collapsible=offcanvas]:w-0"
     >
-      <DocsSidebar :sections="sections ?? []" class="[&_[data-sidebar-home]]:hidden" />
-    </aside>
-    <main class="min-w-0 flex-1 py-8">
-      <div class="mx-auto max-w-full">
+      <SidebarContent>
+        <DocsSidebarNav :sections="sections ?? []" />
+      </SidebarContent>
+    </Sidebar>
+    <SidebarInset>
+      <header class="flex h-16 shrink-0 items-center gap-2">
+        <div class="flex items-center gap-2 px-4">
+          <SidebarTrigger class="-ml-1" />
+          <Separator orientation="vertical" class="mr-2 data-[orientation=vertical]:h-4" />
+        </div>
+      </header>
+      <div class="mx-auto w-full max-w-screen-2xl flex-1 px-4 pb-8 sm:px-6 lg:px-8">
         <slot />
       </div>
-    </main>
-  </div>
+    </SidebarInset>
+  </SidebarProvider>
 </template>
