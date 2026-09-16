@@ -84,7 +84,7 @@ watch(keys["Ctrl+K"], (pressed) => {
         <CommandItem
           v-for="item in group.items"
           :key="itemKey(item)"
-          :value="`${item.title} ${item.kind === 'registry' ? item.name : item.slug}`"
+          :value="`${item.title} ${item.kind === 'registry' ? item.name : item.slug} ${item.description}`"
           @select="onSelect(item)"
         >
           <span class="min-w-0 truncate">{{ item.title }}</span>

@@ -41,8 +41,9 @@ const currentElement = useCurrentElement(itemRef);
 onMounted(() => {
   if (!(currentElement.value instanceof HTMLElement)) return;
 
-  // textValue to perform filter
-  allItems.value.set(id, currentElement.value.textContent ?? props.value?.toString() ?? "");
+  // textValue to perform filter — an explicit value prop (e.g. title + description, for
+  // richer matching than the rendered label alone) takes priority over the DOM text content.
+  allItems.value.set(id, props.value?.toString() ?? currentElement.value.textContent ?? "");
 
   const groupId = groupContext?.id;
   if (groupId) {
@@ -60,14 +61,15 @@ onUnmounted(() => {
 
 <template>
   <ListboxItem
-    v-if="isRender"
     v-bind="forwarded"
     :id="id"
     ref="itemRef"
     data-slot="command-item"
+    :hidden="isRender ? undefined : true"
+    :disabled="!isRender"
     :class="
       cn(
-        'data-highlighted:bg-muted data-highlighted:text-foreground data-highlighted:*:[svg]:text-foreground relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none in-data-[slot=dialog-content]:rounded-lg! [&_svg:not([class*=size-])]:size-4 group/command-item data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0',
+        'data-highlighted:bg-muted data-highlighted:text-foreground data-highlighted:*:[svg]:text-foreground relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none in-data-[slot=dialog-content]:rounded-lg! [&_svg:not([class*=size-])]:size-4 group/command-item data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0',
         props.class,
       )
     "
