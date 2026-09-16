@@ -41,6 +41,43 @@
   }
 }
 
+/* Line-number gutter for Shiki-highlighted code blocks (CodeBlock.vue, ProsePre.vue). Shiki
+   wraps every line in a <span class="line">; a CSS counter on those is all a gutter needs —
+   no highlighter transformer or extra markup required. */
+@utility shiki-numbered {
+  counter-reset: line;
+
+  & .line {
+    display: block;
+    position: relative;
+    padding-left: 2.25rem;
+    /* A blank source line is an empty <span class="line"> with no in-flow content of its own
+       (the counter number is position: absolute, so it can't establish height by itself) —
+       without a floor, it collapses to 0px and its number lands on top of the next line's. */
+    min-height: 1.6em;
+    min-height: 1lh;
+  }
+
+  /* Shiki is handed the source with a trailing newline appended (both our own codeToHtml() call
+     and @nuxtjs/mdc's parser do this), which tokenizes to one extra empty .line representing
+     "after the file's own final newline" — not a real line, so it shouldn't get a number or
+     take up space. A genuine blank line in the middle of the code is never :last-child. */
+  & .line:last-child:empty {
+    display: none;
+  }
+
+  & .line::before {
+    counter-increment: line;
+    content: counter(line);
+    position: absolute;
+    left: 0;
+    width: 1.75rem;
+    text-align: right;
+    color: var(--muted-foreground);
+    user-select: none;
+  }
+}
+
 /* Hide default arrows from number inputs. */
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,

@@ -51,7 +51,7 @@ const html = useHighlightedCode(
     />
     <div
       v-if="html"
-      class="overflow-x-auto py-3 pl-4 text-[13px] [&_pre]:!bg-transparent"
+      class="shiki-numbered overflow-x-auto py-3 pl-4 text-[13px] [&_pre]:!bg-transparent"
       :class="slots.header ? 'pr-4' : 'pr-12'"
       v-html="html"
     />
