@@ -7,13 +7,13 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@registry/components/Breadcrumb/index.ts";
+import { Button } from "@registry/components/button/index.ts";
+import { Separator } from "@registry/components/Separator/index.ts";
 import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
 } from "@registry/components/Sidebar/index.ts";
-import { Button } from "@registry/components/button/index.ts";
-import { Separator } from "@registry/components/Separator/index.ts";
 import { registryConfig } from "~/lib/registry/config";
 import DocsAppSidebar from "./DocsAppSidebar.vue";
 
@@ -38,10 +38,15 @@ const activeItem = computed(() =>
   <SidebarProvider>
     <DocsAppSidebar />
     <SidebarInset>
-      <header class="flex h-16 shrink-0 items-center gap-2 border-b">
+      <header
+        class="sticky top-0 z-10 flex h-16 shrink-0 items-center gap-2 border-b bg-background"
+      >
         <div class="flex w-full items-center gap-2 px-3">
           <SidebarTrigger />
-          <Separator orientation="vertical" class="mr-2 data-[orientation=vertical]:h-4" />
+          <Separator
+            orientation="vertical"
+            class="mx-2 data-[orientation=vertical]:h-4 data-[orientation=vertical]:self-center"
+          />
           <Breadcrumb v-if="activeSection">
             <BreadcrumbList>
               <template v-if="activeItem">
@@ -74,7 +79,7 @@ const activeItem = computed(() =>
           </div>
         </div>
       </header>
-      <div class="flex flex-1 flex-col gap-4 p-4 pt-0">
+      <div class="flex flex-1 flex-col gap-4 p-4 pt-6">
         <slot />
       </div>
     </SidebarInset>
