@@ -1,35 +1,68 @@
 <script setup lang="ts">
 import {
-  Sidebar,
-  SidebarContent,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@registry/components/Breadcrumb/index.ts";
+import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
 } from "@registry/components/Sidebar/index.ts";
 import { Separator } from "@registry/components/Separator/index.ts";
-import DocsSidebarNav from "./DocsSidebarNav.vue";
+import AppSidebar from "@registry/blocks/Sidebar03/AppSidebar.vue";
 
+// AppSidebar still renders the sidebar-03 block's static demo data (nav groups + submenus).
+// Swap it for a real-data-driven sidebar (see DocsSidebarNav.vue) once the layout itself is signed off.
+// No `collapsible` prop is passed here on purpose: sidebar-03 has no icons for its nav items, so
+// it relies on Sidebar's own default ("offcanvas") — the sidebar fully hides instead of shrinking
+// to an icon rail.
 const { data: sections } = useSiteNavigation();
+const route = useRoute();
+
+const activeSection = computed(() =>
+  (sections.value ?? []).find(
+    (section) => route.path === section.basePath || route.path.startsWith(`${section.basePath}/`),
+  ),
+);
+
+const activeItem = computed(() =>
+  activeSection.value?.items.find((item) => item.routePath === route.path),
+);
 </script>
 
 <template>
-  <SidebarProvider class="min-h-0 w-full">
-    <Sidebar
-      collapsible="offcanvas"
-      class="sticky top-14 h-[calc(100vh-3.5rem)] overflow-hidden group-data-[collapsible=offcanvas]:left-0 group-data-[collapsible=offcanvas]:w-0"
-    >
-      <SidebarContent>
-        <DocsSidebarNav :sections="sections ?? []" />
-      </SidebarContent>
-    </Sidebar>
+  <SidebarProvider>
+    <AppSidebar />
     <SidebarInset>
-      <header class="flex h-16 shrink-0 items-center gap-2">
-        <div class="flex items-center gap-2 px-4">
-          <SidebarTrigger class="-ml-1" />
+      <header class="flex h-16 shrink-0 items-center gap-2 border-b">
+        <div class="flex items-center gap-2 px-3">
+          <SidebarTrigger />
           <Separator orientation="vertical" class="mr-2 data-[orientation=vertical]:h-4" />
+          <Breadcrumb v-if="activeSection">
+            <BreadcrumbList>
+              <template v-if="activeItem">
+                <BreadcrumbItem class="hidden md:block">
+                  <BreadcrumbLink as-child>
+                    <NuxtLink :to="activeSection.basePath">{{ activeSection.title }}</NuxtLink>
+                  </BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator class="hidden md:block" />
+                <BreadcrumbItem>
+                  <BreadcrumbPage>{{ activeItem.title }}</BreadcrumbPage>
+                </BreadcrumbItem>
+              </template>
+              <BreadcrumbItem v-else>
+                <BreadcrumbPage>{{ activeSection.title }}</BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
         </div>
       </header>
-      <div class="mx-auto w-full max-w-screen-2xl flex-1 px-4 pb-8 sm:px-6 lg:px-8">
+      <div class="flex flex-1 flex-col gap-4 p-4 pt-0">
         <slot />
       </div>
     </SidebarInset>

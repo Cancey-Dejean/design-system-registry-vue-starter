@@ -1,15 +1,7 @@
 <script setup lang="ts">
 import { AppWindow, Code, Files, Terminal } from "@lucide/vue";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "#registry-ui/Breadcrumb";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "#registry-ui/Tabs";
-import { getRegistryItemRoutePath, getRegistrySectionForType } from "~/lib/registry/sections";
+import { getRegistryItemRoutePath } from "~/lib/registry/sections";
 import { hasPreview } from "~/lib/registry/preview-map";
 import CodeBlock from "./CodeBlock.vue";
 import ComponentPreview from "./ComponentPreview.vue";
@@ -36,7 +28,6 @@ const props = defineProps<{
   };
 }>();
 
-const section = computed(() => getRegistrySectionForType(props.item.type as never));
 const pagePath = computed(() =>
   getRegistryItemRoutePath({ name: props.item.name, type: props.item.type as never }),
 );
@@ -46,20 +37,6 @@ const previewCodeFile = computed(() => props.item.files[0]);
 
 <template>
   <article class="flex min-w-0 flex-col gap-8">
-    <Breadcrumb>
-      <BreadcrumbList>
-        <BreadcrumbItem>
-          <BreadcrumbLink as-child>
-            <NuxtLink :to="section.basePath">{{ section.title }}</NuxtLink>
-          </BreadcrumbLink>
-        </BreadcrumbItem>
-        <BreadcrumbSeparator />
-        <BreadcrumbItem>
-          <BreadcrumbPage>{{ item.title }}</BreadcrumbPage>
-        </BreadcrumbItem>
-      </BreadcrumbList>
-    </Breadcrumb>
-
     <DocsPageHeader
       :title="item.title"
       :description="item.description"
