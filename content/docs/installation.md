@@ -24,37 +24,10 @@ Update the URL to your deployed `homepage` from `registry/config.ts`. Do this on
 
 ## Install an item
 
-Add a specific item by its name from the [catalog](/components), prefixed with the `@design-system-ui-vue` namespace. Swap `sidebar` below for any item you want (`button`, `spinner`, and so on).
+Add a specific item by its name from the [catalog](/components). Swap `sidebar` below for any item you want (`button`, `spinner`, and so on).
 
-### npm
-
-```sh
-npx shadcn-vue@latest add @design-system-ui-vue/sidebar
-```
-
-### pnpm
-
-```sh
-pnpm dlx shadcn-vue@latest add @design-system-ui-vue/sidebar
-```
-
-### yarn
-
-```sh
-yarn dlx shadcn-vue@latest add @design-system-ui-vue/sidebar
-```
-
-### bun
-
-```sh
-bunx --bun shadcn-vue@latest add @design-system-ui-vue/sidebar
-```
-
-You can also install via the full item URL without registering the namespace:
-
-```sh
-npx shadcn-vue@latest add https://design-system-registry-vue.vercel.app/r/sidebar.json
-```
+::docs-install-command{item-name="sidebar" class="not-prose"}
+::
 
 ## Find the exact command
 
