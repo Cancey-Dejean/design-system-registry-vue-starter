@@ -11,6 +11,7 @@ import {
 } from "@registry/components/Sidebar/index.ts";
 import { registryConfig } from "~/lib/registry/config";
 import DocsSidebarNav from "./DocsSidebarNav.vue";
+import SearchDialog from "./SearchDialog.vue";
 
 const props = defineProps<SidebarProps>();
 
@@ -31,6 +32,7 @@ const { data: sections } = useSiteNavigation();
           </SidebarMenuButton>
         </SidebarMenuItem>
       </SidebarMenu>
+      <SearchDialog />
     </SidebarHeader>
     <SidebarContent>
       <DocsSidebarNav :sections="sections ?? []" />

@@ -22,6 +22,11 @@ export interface RegistryCatalogItem {
   body: unknown;
   /** Raw markdown usage docs (everything below the frontmatter in _registry.md). */
   usageMarkdown: string;
+  /**
+   * Raw source of `_preview.vue` — the exact code that renders this item's live Preview tab.
+   * Undefined when the item has no preview demo (see preview-map.ts's own hasPreview check).
+   */
+  previewCode?: string;
 }
 
 function toDefaultTitle(name: string): string {
@@ -94,11 +99,23 @@ async function readUsageMarkdown(type: RegistryItemType, name: string): Promise<
   return raw.replace(frontmatterPattern, "").trim();
 }
 
+async function readPreviewCode(type: RegistryItemType, name: string): Promise<string | undefined> {
+  const folder = getRegistryTypeFolder(type);
+
+  try {
+    const raw = await readRegistryAsset(`${folder}/${name}/_preview.vue`);
+    return rewriteInternalAliasesForPublishing(raw);
+  } catch {
+    // Not every item has a _preview.vue (see preview-map.ts's hasPreview) — no demo to show.
+    return undefined;
+  }
+}
+
 async function resolveRegistryCatalogItem(
   item: RegistryItemCollectionRow,
 ): Promise<RegistryCatalogItem> {
   const folder = getRegistryTypeFolder(item.type);
-  const [files, usageMarkdown] = await Promise.all([
+  const [files, usageMarkdown, previewCode] = await Promise.all([
     Promise.all(
       (item.files ?? []).map(async (file) => {
         const rawContent = await readRegistryAsset(`${folder}/${item.name}/${file.path}`);
@@ -106,6 +123,7 @@ async function resolveRegistryCatalogItem(
       }),
     ),
     readUsageMarkdown(item.type, item.name),
+    readPreviewCode(item.type, item.name),
   ]);
 
   return {
@@ -119,6 +137,7 @@ async function resolveRegistryCatalogItem(
     hasUsage: Boolean(item.body),
     body: item.body,
     usageMarkdown,
+    previewCode,
   };
 }
 

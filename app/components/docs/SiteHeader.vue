@@ -63,7 +63,7 @@ function isSectionActive(section: SiteNavigationSection): boolean {
       </nav>
 
       <div class="ml-auto flex items-center gap-1">
-        <SearchDialog />
+        <SearchDialog class="hidden w-56 sm:flex" />
         <HeaderActions />
       </div>
     </div>

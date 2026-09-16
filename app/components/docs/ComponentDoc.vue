@@ -27,6 +27,7 @@ const props = defineProps<{
     files: RegistryItemDocFile[];
     hasUsage: boolean;
     body?: unknown;
+    previewCode?: string;
   };
 }>();
 
@@ -34,13 +35,6 @@ const pagePath = computed(() =>
   getRegistryItemRoutePath({ name: props.item.name, type: props.item.type as never }),
 );
 const itemHasPreview = computed(() => hasPreview(props.item.name));
-const previewCodeFile = computed(() => props.item.files[0]);
-const previewCodeLang = computed(() => {
-  const extension = previewCodeFile.value?.path.split(".").at(-1);
-  return extension === "vue" || extension === "ts" || extension === "js" || extension === "css"
-    ? extension
-    : "vue";
-});
 
 // This page's headings aren't markdown-sourced (unlike docs pages), so there's no toc from
 // @nuxt/content to read — build the same TocLink shape by hand from the sections actually
@@ -70,11 +64,7 @@ const toc = computed<TocLink[]>(() => [
           <ComponentPreview :name="item.name" />
         </TabsContent>
         <TabsContent value="code">
-          <CodeBlock
-            v-if="previewCodeFile"
-            :code="previewCodeFile.content"
-            :lang="previewCodeLang"
-          />
+          <CodeBlock v-if="item.previewCode" :code="item.previewCode" lang="vue" />
           <p v-else class="text-sm text-muted-foreground">No preview source is available.</p>
         </TabsContent>
       </Tabs>
