@@ -8,7 +8,7 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@registry/components/Dropdown-menu/index.ts";
+} from "@registry/components/DropdownMenu";
 import {
   SidebarGroup,
   SidebarGroupLabel,

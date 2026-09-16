@@ -1,0 +1,34 @@
+---
+name: aspect-ratio
+type: registry:ui
+title: Aspect Ratio
+description: A container that locks its child to a fixed width-to-height ratio.
+dependencies:
+  - reka-ui
+files:
+  - path: AspectRatio.vue
+    type: registry:ui
+    target: "@ui/AspectRatio/AspectRatio.vue"
+  - path: index.ts
+    type: registry:ui
+    target: "@ui/AspectRatio/index.ts"
+---
+
+Pass `ratio` as a number — `16 / 9` for landscape video, `1` for a square, `4 / 3` for photos. The
+child fills the frame, so size the wrapper with width (or max-width) and let the ratio decide height.
+
+```vue
+<script setup lang="ts">
+import { AspectRatio } from "@ui/AspectRatio";
+</script>
+
+<template>
+  <AspectRatio :ratio="16 / 9" class="overflow-hidden rounded-lg bg-muted">
+    <img
+      src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80"
+      alt="Photo by Drew Beamer"
+      class="size-full object-cover"
+    />
+  </AspectRatio>
+</template>
+```

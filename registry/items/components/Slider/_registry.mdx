@@ -1,0 +1,29 @@
+---
+name: slider
+type: registry:ui
+title: Slider
+description: An input where the user selects a value from within a given range.
+dependencies:
+  - "@vueuse/core"
+  - reka-ui
+files:
+  - path: Slider.vue
+    type: registry:ui
+    target: "@ui/Slider/Slider.vue"
+  - path: index.ts
+    type: registry:ui
+    target: "@ui/Slider/index.ts"
+---
+
+Value is a number array—one entry for a single thumb, two for a range. Use `default-value` or
+`v-model`, plus `min`, `max`, and `step`.
+
+```vue
+<script setup lang="ts">
+import { Slider } from "@ui/Slider";
+</script>
+
+<template>
+  <Slider :default-value="[50]" :max="100" :step="1" class="w-[60%]" />
+</template>
+```

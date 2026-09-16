@@ -1,0 +1,86 @@
+---
+name: alert-dialog
+type: registry:ui
+title: Alert Dialog
+description: A modal dialog that interrupts the user with a critical confirmation before continuing.
+dependencies:
+  - "@vueuse/core"
+  - reka-ui
+localRegistryDependencies:
+  - button
+files:
+  - path: AlertDialog.vue
+    type: registry:ui
+    target: "@ui/AlertDialog/AlertDialog.vue"
+  - path: AlertDialogTrigger.vue
+    type: registry:ui
+    target: "@ui/AlertDialog/AlertDialogTrigger.vue"
+  - path: AlertDialogContent.vue
+    type: registry:ui
+    target: "@ui/AlertDialog/AlertDialogContent.vue"
+  - path: AlertDialogHeader.vue
+    type: registry:ui
+    target: "@ui/AlertDialog/AlertDialogHeader.vue"
+  - path: AlertDialogFooter.vue
+    type: registry:ui
+    target: "@ui/AlertDialog/AlertDialogFooter.vue"
+  - path: AlertDialogTitle.vue
+    type: registry:ui
+    target: "@ui/AlertDialog/AlertDialogTitle.vue"
+  - path: AlertDialogDescription.vue
+    type: registry:ui
+    target: "@ui/AlertDialog/AlertDialogDescription.vue"
+  - path: AlertDialogAction.vue
+    type: registry:ui
+    target: "@ui/AlertDialog/AlertDialogAction.vue"
+  - path: AlertDialogCancel.vue
+    type: registry:ui
+    target: "@ui/AlertDialog/AlertDialogCancel.vue"
+  - path: index.ts
+    type: registry:ui
+    target: "@ui/AlertDialog/index.ts"
+---
+
+Use an alert dialog when an action needs an explicit yes or no before it runs — deleting a record,
+leaving a page with unsaved edits, or confirming a charge. Compose the parts the same way you would
+a dialog: trigger, content, header, and footer with action and cancel.
+
+```vue
+<script setup lang="ts">
+import Button from "@ui/Button";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@ui/AlertDialog";
+</script>
+
+<template>
+  <AlertDialog>
+    <AlertDialogTrigger as-child>
+      <Button variant="destructive">Delete project</Button>
+    </AlertDialogTrigger>
+    <AlertDialogContent>
+      <AlertDialogHeader>
+        <AlertDialogTitle>Delete this project?</AlertDialogTitle>
+        <AlertDialogDescription>
+          This removes the project and its data. You cannot undo this action.
+        </AlertDialogDescription>
+      </AlertDialogHeader>
+      <AlertDialogFooter>
+        <AlertDialogCancel>Cancel</AlertDialogCancel>
+        <AlertDialogAction>Delete</AlertDialogAction>
+      </AlertDialogFooter>
+    </AlertDialogContent>
+  </AlertDialog>
+</template>
+```
+
+`AlertDialogAction` and `AlertDialogCancel` reuse the button variants from the local `button` item,
+so install that dependency first (or together) and keep their styling in sync.

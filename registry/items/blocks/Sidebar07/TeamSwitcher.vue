@@ -11,7 +11,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuTrigger,
-} from "@registry/components/Dropdown-menu/index.ts";
+} from "@registry/components/DropdownMenu";
 
 import {
   SidebarMenu,

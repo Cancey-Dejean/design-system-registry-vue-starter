@@ -1,0 +1,84 @@
+---
+name: attachment
+type: registry:ui
+title: Attachment
+description: Displays a file or image attachment with media, metadata, upload state, and actions.
+dependencies:
+  - class-variance-authority
+  - reka-ui
+localRegistryDependencies:
+  - button
+files:
+  - path: Attachment.vue
+    type: registry:ui
+    target: "@ui/Attachment/Attachment.vue"
+  - path: AttachmentAction.vue
+    type: registry:ui
+    target: "@ui/Attachment/AttachmentAction.vue"
+  - path: AttachmentActions.vue
+    type: registry:ui
+    target: "@ui/Attachment/AttachmentActions.vue"
+  - path: AttachmentContent.vue
+    type: registry:ui
+    target: "@ui/Attachment/AttachmentContent.vue"
+  - path: AttachmentDescription.vue
+    type: registry:ui
+    target: "@ui/Attachment/AttachmentDescription.vue"
+  - path: AttachmentGroup.vue
+    type: registry:ui
+    target: "@ui/Attachment/AttachmentGroup.vue"
+  - path: AttachmentMedia.vue
+    type: registry:ui
+    target: "@ui/Attachment/AttachmentMedia.vue"
+  - path: AttachmentTitle.vue
+    type: registry:ui
+    target: "@ui/Attachment/AttachmentTitle.vue"
+  - path: AttachmentTrigger.vue
+    type: registry:ui
+    target: "@ui/Attachment/AttachmentTrigger.vue"
+  - path: Attachment.variants.ts
+    type: registry:ui
+    target: "@ui/Attachment/Attachment.variants.ts"
+  - path: index.ts
+    type: registry:ui
+    target: "@ui/Attachment/index.ts"
+---
+
+Use attachment for files and images in chat composers, message threads, and upload lists. Set
+`state` for the upload lifecycle, `orientation="vertical"` for image cards, and compose actions with
+`AttachmentAction`. Label icon-only actions with `aria-label`.
+
+```vue
+<script setup lang="ts">
+import { FileTextIcon, XIcon } from "@lucide/vue";
+import {
+  Attachment,
+  AttachmentAction,
+  AttachmentActions,
+  AttachmentContent,
+  AttachmentDescription,
+  AttachmentMedia,
+  AttachmentTitle,
+} from "@ui/Attachment";
+</script>
+
+<template>
+  <Attachment>
+    <AttachmentMedia>
+      <FileTextIcon />
+    </AttachmentMedia>
+    <AttachmentContent>
+      <AttachmentTitle>sales-dashboard.pdf</AttachmentTitle>
+      <AttachmentDescription>PDF · 2.4 MB</AttachmentDescription>
+    </AttachmentContent>
+    <AttachmentActions>
+      <AttachmentAction aria-label="Remove sales-dashboard.pdf">
+        <XIcon />
+      </AttachmentAction>
+    </AttachmentActions>
+  </Attachment>
+</template>
+```
+
+`AttachmentAction` reuses the local `button` item. Upload title shimmer and group edge fades come from
+`shadcn/tailwind.css` utilities (`shimmer`, `scroll-fade-x`) published with the styles item.

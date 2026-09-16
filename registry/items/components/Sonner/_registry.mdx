@@ -1,0 +1,47 @@
+---
+name: sonner
+type: registry:ui
+title: Sonner
+description: An opinionated toast component for Vue.
+dependencies:
+  - "@lucide/vue"
+  - vue-sonner
+files:
+  - path: Sonner.vue
+    type: registry:ui
+    target: "@ui/Sonner/Sonner.vue"
+  - path: index.ts
+    type: registry:ui
+    target: "@ui/Sonner/index.ts"
+---
+
+Mount `Toaster` once in the app root (and import `vue-sonner/style.css`). Trigger toasts anywhere with
+`toast` from `vue-sonner`.
+
+```vue
+<script setup lang="ts">
+import "vue-sonner/style.css";
+import { toast } from "vue-sonner";
+import { Button } from "@ui/Button";
+import { Toaster } from "@ui/Sonner";
+</script>
+
+<template>
+  <Toaster />
+  <Button
+    variant="outline"
+    @click="
+      () =>
+        toast('Event has been created', {
+          description: 'Sunday, December 03, 2023 at 9:00 AM',
+          action: {
+            label: 'Undo',
+            onClick: () => {},
+          },
+        })
+    "
+  >
+    Add to calendar
+  </Button>
+</template>
+```

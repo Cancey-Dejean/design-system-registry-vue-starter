@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { ChevronDown } from "@lucide/vue";
 import { Button } from "@registry/components/Button/index.ts";
-import { ButtonGroup } from "@registry/components/Button-group/index.ts";
+import { ButtonGroup } from "@registry/components/ButtonGroup/index.ts";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@registry/components/Dropdown-menu/index.ts";
+} from "@registry/components/DropdownMenu/index.ts";
 import {
   type DocsPageActionUrls,
   getDocsPageMarkdown,

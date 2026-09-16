@@ -79,8 +79,8 @@ import type { exampleCva } from "./Example.variants";
 
 type ExampleVariantProps = VariantProps<typeof exampleCva>;
 
-export type ExampleVariant = NonNullable<ExampleVariantProps["variant"]>;
-export type ExampleSize = NonNullable<ExampleVariantProps["size"]>;
+export type ExampleVariant = ExampleVariantProps["variant"];
+export type ExampleSize = ExampleVariantProps["size"];
 ```
 
 Re-export the recipe from `index.ts`:

@@ -1,0 +1,82 @@
+---
+name: drawer
+type: registry:ui
+title: Drawer
+description: A drawer component for mobile devices.
+dependencies:
+  - "@vueuse/core"
+  - reka-ui
+  - vaul-vue
+localRegistryDependencies:
+  - button
+files:
+  - path: Drawer.vue
+    type: registry:ui
+    target: "@ui/Drawer/Drawer.vue"
+  - path: DrawerTrigger.vue
+    type: registry:ui
+    target: "@ui/Drawer/DrawerTrigger.vue"
+  - path: DrawerContent.vue
+    type: registry:ui
+    target: "@ui/Drawer/DrawerContent.vue"
+  - path: DrawerOverlay.vue
+    type: registry:ui
+    target: "@ui/Drawer/DrawerOverlay.vue"
+  - path: DrawerHeader.vue
+    type: registry:ui
+    target: "@ui/Drawer/DrawerHeader.vue"
+  - path: DrawerFooter.vue
+    type: registry:ui
+    target: "@ui/Drawer/DrawerFooter.vue"
+  - path: DrawerTitle.vue
+    type: registry:ui
+    target: "@ui/Drawer/DrawerTitle.vue"
+  - path: DrawerDescription.vue
+    type: registry:ui
+    target: "@ui/Drawer/DrawerDescription.vue"
+  - path: DrawerClose.vue
+    type: registry:ui
+    target: "@ui/Drawer/DrawerClose.vue"
+  - path: index.ts
+    type: registry:ui
+    target: "@ui/Drawer/index.ts"
+---
+
+Compose trigger, content, header, and footer. Use `as-child` on the trigger to style a button, and
+`DrawerClose` for dismiss actions. Pass `direction` on `Drawer` for top, bottom, left, or right.
+
+```vue
+<script setup lang="ts">
+import Button from "@/components/ui/Button.vue";
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@ui/Drawer";
+</script>
+
+<template>
+  <Drawer>
+    <DrawerTrigger as-child>
+      <Button variant="outline">Open</Button>
+    </DrawerTrigger>
+    <DrawerContent>
+      <DrawerHeader>
+        <DrawerTitle>Are you absolutely sure?</DrawerTitle>
+        <DrawerDescription>This action cannot be undone.</DrawerDescription>
+      </DrawerHeader>
+      <DrawerFooter>
+        <Button>Submit</Button>
+        <DrawerClose as-child>
+          <Button variant="outline">Cancel</Button>
+        </DrawerClose>
+      </DrawerFooter>
+    </DrawerContent>
+  </Drawer>
+</template>
+```

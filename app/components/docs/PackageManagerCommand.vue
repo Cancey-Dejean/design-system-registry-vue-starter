@@ -8,7 +8,7 @@ import {
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
   DropdownMenuTrigger,
-} from "@registry/components/Dropdown-menu/index.ts";
+} from "@registry/components/DropdownMenu/index.ts";
 import { isPackageManager, packageManagers } from "~/lib/package-managers";
 import { cn } from "~/lib/utils";
 import CopyButton from "./CopyButton.vue";
