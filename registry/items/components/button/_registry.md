@@ -6,15 +6,21 @@ description: A polymorphic button with variants, sizes, icons, and a CTA group h
 dependencies:
   - class-variance-authority
 files:
+  - path: Button.types.ts
+    type: registry:ui
+    target: components/ui/button/Button.types.ts
+  - path: Button.variants.ts
+    type: registry:ui
+    target: components/ui/button/Button.variants.ts
   - path: Button.vue
     type: registry:ui
-    target: components/ui/Button/Button.vue
+    target: components/ui/button/Button.vue
   - path: ButtonCTAGroup.vue
     type: registry:ui
-    target: components/ui/Button/ButtonCTAGroup.vue
+    target: components/ui/button/ButtonCTAGroup.vue
   - path: index.ts
     type: registry:ui
-    target: components/ui/Button/index.ts
+    target: components/ui/button/index.ts
 ---
 
 Use the button for primary actions, secondary actions, links, and icon-only controls. Pair related
