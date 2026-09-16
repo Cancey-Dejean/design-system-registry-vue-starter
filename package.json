@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev",
+    "dev": "concurrently -n nuxt,storybook -c blue,magenta \"nuxt dev\" \"storybook dev -p 6006\"",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
@@ -49,6 +49,7 @@
     "@tailwindcss/vite": "^4.3.3",
     "@types/negotiator": "^0.6.5",
     "@vitejs/plugin-vue": "6.0.8",
+    "concurrently": "^10.0.5",
     "storybook": "10.5.5",
     "tailwindcss": "^4.3.3",
     "typescript": "^5.7.0",
