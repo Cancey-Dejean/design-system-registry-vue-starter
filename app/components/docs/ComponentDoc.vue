@@ -77,7 +77,7 @@ const previewCodeFile = computed(() => props.item.files[0]);
     <section v-if="item.hasUsage" class="flex flex-col gap-4">
       <h2 class="font-heading text-xl font-semibold tracking-tight">Usage</h2>
       <div class="prose prose-neutral dark:prose-invert max-w-none">
-        <ContentRenderer :value="{ body: item.body }" />
+        <ContentRenderer :key="item.name" :value="{ body: item.body }" />
       </div>
     </section>
   </article>
