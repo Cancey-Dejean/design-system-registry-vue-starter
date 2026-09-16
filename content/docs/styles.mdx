@@ -1,0 +1,79 @@
+---
+title: Styles
+description: Install the design system CSS foundation with the shadcn-vue CLI.
+order: 2
+---
+
+Before components look correct, add the design system style files. This installs both `globals.css` and `theme.css` into `src/styles/`.
+
+## Prerequisites
+
+Your project should already be set up with [shadcn-vue](https://www.shadcn-vue.com/docs/installation) and Tailwind CSS. After `shadcn-vue init`, the CSS file named in `components.json` under `tailwind.css` must **already exist** (often `src/style.css` or `src/styles/globals.css`). The CLI opens that path on every `add` to update CSS variables; a missing file fails with `ENOENT`.
+
+Add the Design System UI Vue registry to `components.json` (once per project):
+
+```json
+{
+  "registries": {
+    "@design-system-ui-vue": "https://design-system-registry-vue.vercel.app/r/{name}.json"
+  }
+}
+```
+
+Without this, the CLI returns `Unknown registry "@design-system-ui-vue"`. See [Installation](/docs/installation) for the full setup flow.
+
+## Install
+
+### npm
+
+```sh
+npx shadcn-vue@latest add @design-system-ui-vue/styles
+```
+
+### pnpm
+
+```sh
+pnpm dlx shadcn-vue@latest add @design-system-ui-vue/styles
+```
+
+### yarn
+
+```sh
+yarn dlx shadcn-vue@latest add @design-system-ui-vue/styles
+```
+
+### bun
+
+```sh
+bunx --bun shadcn-vue@latest add @design-system-ui-vue/styles
+```
+
+You can also install via the full item URL without registering the namespace:
+
+```sh
+npx shadcn-vue@latest add https://design-system-registry-vue.vercel.app/r/styles.json
+```
+
+## What gets installed
+
+| File          | Destination              |
+| ------------- | ------------------------ |
+| `globals.css` | `src/styles/globals.css` |
+| `theme.css`   | `src/styles/theme.css`   |
+
+If `src/styles/globals.css` or `src/styles/theme.css` already exist, the CLI may ask before overwriting them.
+
+## Import in your app
+
+1. Set `tailwind.css` in `components.json` to `src/styles/globals.css`.
+2. Import the globals entry once from your app entry (Vite `main.ts`, Nuxt `css` array, etc.):
+
+```ts
+import "@/styles/globals.css";
+```
+
+`globals.css` already imports `./theme.css`, so you do not need a second import for the theme tokens. You can remove the temporary CSS file left over from init once everything imports `src/styles/globals.css` instead.
+
+## Next steps
+
+Browse [components](/components), [blocks](/blocks), and [utilities](/utilities), then follow each item page's install command.

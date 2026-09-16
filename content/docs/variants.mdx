@@ -1,0 +1,101 @@
+---
+title: Variant files
+description: Author class-variance-authority recipes so stories, types, and installs stay in sync.
+order: 4
+---
+
+Any file named `*.variants.ts` under `registry/items/**` must follow the recipe in [`Button.variants.ts`](/components/button). That file is the source of truth. Do not inline `cva("classes", { variants })` or hardcode variant-name arrays.
+
+## Layout
+
+Keep the recipe next to the component, then re-export it from the item `index.ts`:
+
+```text
+registry/items/components/Example/
+  Example.vue
+  Example.variants.ts
+  Example.types.ts
+  index.ts
+```
+
+## Recipe
+
+Split shared classes, the variant map, and the `cva()` call. Always include `compoundVariants` (empty is fine) so the spread stays typed:
+
+```ts
+import { cn } from "@/lib/utils";
+import { cva } from "class-variance-authority";
+
+const exampleBase = cn(
+  "inline-flex items-center rounded-md font-medium",
+  "disabled:opacity-50 disabled:pointer-events-none",
+);
+
+const exampleConfig = {
+  variants: {
+    variant: {
+      primary: "bg-primary text-primary-foreground",
+      outline: "border-border bg-background",
+    },
+    size: {
+      sm: "h-8 px-3 text-xs",
+      md: "h-10 px-4 text-sm",
+    },
+  },
+  compoundVariants: [],
+  defaultVariants: {
+    variant: "primary",
+    size: "md",
+  },
+} as const;
+
+export const exampleCva = cva(exampleBase, {
+  ...exampleConfig,
+  compoundVariants: [...exampleConfig.compoundVariants],
+});
+
+export const EXAMPLE_VARIANTS = Object.keys(
+  exampleConfig.variants.variant,
+) as (keyof typeof exampleConfig.variants.variant)[];
+
+export const EXAMPLE_SIZES = Object.keys(
+  exampleConfig.variants.size,
+) as (keyof typeof exampleConfig.variants.size)[];
+
+export const exampleVariants = exampleCva;
+```
+
+Export one `Object.keys` list per **string** axis that stories or docs need (`variant`, `size`, `tone`, `orientation`, and so on). Skip boolean axes such as `icon` or `fullWidth`.
+
+If the file defines more than one recipe (for example Bubble and BubbleReactions), repeat the same `base` → `config` → `cva` → keys → alias sequence for each.
+
+## Types and barrel
+
+Put `VariantProps` aliases in `<Component>.types.ts` when that file exists. Derive them from the CVA export, not from a duplicated string union:
+
+```ts
+import type { VariantProps } from "class-variance-authority";
+import type { exampleCva } from "./Example.variants";
+
+type ExampleVariantProps = VariantProps<typeof exampleCva>;
+
+export type ExampleVariant = NonNullable<ExampleVariantProps["variant"]>;
+export type ExampleSize = NonNullable<ExampleVariantProps["size"]>;
+```
+
+Re-export the recipe from `index.ts`:
+
+```ts
+export { exampleVariants, exampleCva, EXAMPLE_VARIANTS, EXAMPLE_SIZES } from "./Example.variants";
+```
+
+Stories should import those key lists for Storybook `argTypes.options` instead of repeating names by hand.
+
+## Checklist
+
+- Import `cn` then `cva`.
+- Name the helpers `{name}Base`, `{name}Config`, `{name}Cva`, and `{name}Variants`.
+- Keep `compoundVariants` on the config object, even when the array is empty.
+- Spread `compoundVariants` when calling `cva()` so `as const` stays compatible.
+- Derive published key lists from `Object.keys(config.variants.*)`.
+- List the `.variants.ts` file in `_registry.mdx` `files` when the item publishes it.
