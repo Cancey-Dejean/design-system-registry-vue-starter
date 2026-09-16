@@ -8,47 +8,8 @@ Use this page to publish notable registry updates, new items, breaking changes, 
 
 ---
 
-## v1.5.4: September 16, 2026
+## v1.0.0: September 16, 2026
 
 - Published `ButtonGroup`, a component for grouping related buttons with consistent styling, orientation, and separators. See [Button Group](/components/button-group).
 - `Button` icons without an explicit `size-*` class now default to `size-4`.
 - Added [Styles](/docs/styles) and [variant files](/docs/variants) documentation covering CSS-foundation installation and `cva` recipe authoring.
-
----
-
-## v1.5.3: September 2, 2026
-
-- Added `useBodyOverflow`, a hook that locks page scroll by toggling `overflow-hidden` on `document.body`.
-- Added `useCloseMobileMenuOnResize`, a hook that dismisses mobile menus and overlays when the viewport is resized.
-
----
-
-## v1.5.2: August 31, 2026
-
-- **Announcement Bar:** Moved the block from `registry/items/blocks/hero/announcement-bar/` to `registry/items/blocks/announcement-bar/` as a standalone block item. Install targets now publish under `components/ui/announcement-bar/` and declare `container` as a local registry dependency.
-  pread`, an absolute-positioned anchor helper for making full card surfaces clickable.
-- Published registry metadata and preview files for both link components so they are discoverable in the registry catalog and docs.
-- Added `Section`, a semantic wrapper component with responsive vertical padding variants.
-- Published registry metadata and preview files for `Section` so it is discoverable in the registry catalog and docs.
-- Added a reusable `DemoSection` for Storybook and aligned the `Section` story to render that shared demo.
-- Added `Spinner`, an accessible loading indicator built on Lucide's Loader2 icon.
-- Published registry metadata and preview files for `Spinner` so it is discoverable in the registry catalog and docs.
-- Added `Text`, a polymorphic body-text component with size, weight, tone, and alignment controls.
-- Published registry metadata and preview files for `Text` so it is discoverable in the registry catalog and docs.
-- Published `Hero` as a registry block, including metadata and preview files so it is discoverable in the registry catalog and docs.
-
----
-
-## v1.1.0: July 19, 2026
-
-- Updated `Button` variants and sizes to use CSS variables for colors and typography, improving theme support (including dark mode on the primary variant).
-- Simplified default icon (`svg`) sizing inside buttons.
-- **Breaking:** Removed the `link` variant. Use an `as="a"` button (or a link styled separately) instead.
-- **Breaking:** Removed the `icon-xs` size. Use `icon-sm`, `icon-md`, or `icon-lg`.
-- **Breaking:** Resized icon buttons — `icon-md` is now `size-9` (was `size-10`) and `icon-lg` is now `size-10` (was `size-12`).
-
----
-
-## v1.0.1: April 21, 2026
-
-- Fixed the pointer cursor when hovering `Button` components.
