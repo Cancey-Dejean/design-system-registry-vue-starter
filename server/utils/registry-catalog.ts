@@ -1,5 +1,3 @@
-import { readFile } from "node:fs/promises";
-import { resolve } from "node:path";
 import { queryCollection } from "@nuxt/content/server";
 import type { H3Event } from "h3";
 import { getRegistryTypeFolder, type RegistryItemType } from "~/lib/registry/item-types";
@@ -25,8 +23,6 @@ export interface RegistryCatalogItem {
   /** Raw markdown usage docs (everything below the frontmatter in _registry.md). */
   usageMarkdown: string;
 }
-
-const registryItemsRoot = resolve(process.cwd(), "registry/items");
 
 function toDefaultTitle(name: string): string {
   return name
@@ -59,10 +55,41 @@ function rewriteInternalAliasesForPublishing(content: string): string {
   return content.replace(/#registry-ui\//g, "@/components/ui/");
 }
 
+// Component folders are a mix of PascalCase (on disk) and kebab-case (in each item's `name`
+// frontmatter, which is what folder/name/file.path keys get built from below) — the same
+// drift fixed case-insensitively elsewhere in this project (preview-map.ts, CommandItem.vue).
+// unstorage's key lookup is exact-match, so build a case-insensitive index once per cold start.
+let registryAssetKeyMapPromise: Promise<Map<string, string>> | undefined;
+
+async function getRegistryAssetKeyMap(): Promise<Map<string, string>> {
+  registryAssetKeyMapPromise ??= useStorage("assets:registry-items")
+    .getKeys()
+    .then((keys) => new Map(keys.map((key) => [key.toLowerCase(), key])));
+
+  return registryAssetKeyMapPromise;
+}
+
+/** @param path Slash-joined segments, e.g. `${folder}/${name}/file.vue` — unstorage's own keys
+ *  use `:` as the separator (and match the real on-disk casing), so both get normalized here. */
+async function readRegistryAsset(path: string): Promise<string> {
+  const keyMap = await getRegistryAssetKeyMap();
+  const lookupKey = path.replace(/\//g, ":").toLowerCase();
+  const realKey = keyMap.get(lookupKey);
+  const raw = realKey ? await useStorage("assets:registry-items").getItem(realKey) : null;
+
+  if (raw == null) {
+    throw createError({ statusCode: 404, statusMessage: `Registry asset not found: ${path}` });
+  }
+
+  // Server assets are decoded as text only when unstorage's MIME sniff recognizes the
+  // extension as text/*; `.vue`/`.ts` don't (`.ts` even collides with the MPEG-TS video
+  // type), so those come back as raw bytes instead of a string — decode them ourselves.
+  return typeof raw === "string" ? raw : Buffer.from(raw as ArrayBufferLike).toString("utf-8");
+}
+
 async function readUsageMarkdown(type: RegistryItemType, name: string): Promise<string> {
   const folder = getRegistryTypeFolder(type);
-  const registryPath = resolve(registryItemsRoot, folder, name, "_registry.md");
-  const raw = await readFile(registryPath, "utf8");
+  const raw = await readRegistryAsset(`${folder}/${name}/_registry.md`);
 
   return raw.replace(frontmatterPattern, "").trim();
 }
@@ -74,8 +101,7 @@ async function resolveRegistryCatalogItem(
   const [files, usageMarkdown] = await Promise.all([
     Promise.all(
       (item.files ?? []).map(async (file) => {
-        const fullPath = resolve(registryItemsRoot, folder, item.name, file.path);
-        const rawContent = await readFile(fullPath, "utf8");
+        const rawContent = await readRegistryAsset(`${folder}/${item.name}/${file.path}`);
         return { ...file, content: rewriteInternalAliasesForPublishing(rawContent) };
       }),
     ),

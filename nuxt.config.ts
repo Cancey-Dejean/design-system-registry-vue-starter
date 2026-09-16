@@ -65,6 +65,21 @@ export default defineNuxtConfig({
       },
     },
   },
+  nitro: {
+    // server/utils/{docs,registry}-catalog.ts read markdown/source files at runtime via
+    // node:fs with dynamically-computed paths (slug/name only known per-request). Nitro's
+    // build-time file tracer can't see those paths statically, so on a serverless deploy
+    // (Vercel) the files never get bundled into the function — works in dev only, since the
+    // full repo is on disk there. serverAssets bundles them explicitly and exposes them
+    // through useStorage("assets:<baseName>") instead, which the tracer does pick up.
+    serverAssets: [
+      { baseName: "docs", dir: fileURLToPath(new URL("./content/docs", import.meta.url)) },
+      {
+        baseName: "registry-items",
+        dir: fileURLToPath(new URL("./registry/items", import.meta.url)),
+      },
+    ],
+  },
   modules: [
     "@nuxt/a11y",
     "@nuxt/fonts",

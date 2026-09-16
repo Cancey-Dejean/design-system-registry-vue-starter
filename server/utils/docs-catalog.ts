@@ -1,5 +1,3 @@
-import { readFile } from "node:fs/promises";
-import { resolve } from "node:path";
 import { queryCollection } from "@nuxt/content/server";
 import type { H3Event } from "h3";
 
@@ -13,7 +11,6 @@ export interface DocsCatalogPage {
   body: unknown;
 }
 
-const docsRoot = resolve(process.cwd(), "content/docs");
 const frontmatterPattern = /^---\r?\n[\s\S]*?\r?\n---\r?\n?/;
 
 interface DocsCollectionRow {
@@ -29,7 +26,11 @@ function slugFromPath(path: string): string {
 }
 
 async function readDocsMarkdown(slug: string): Promise<string> {
-  const raw = await readFile(resolve(docsRoot, `${slug}.md`), "utf8");
+  const raw = await useStorage("assets:docs").getItem<string>(`${slug}.md`);
+
+  if (typeof raw !== "string") {
+    throw createError({ statusCode: 404, statusMessage: `Docs markdown not found: ${slug}` });
+  }
 
   return raw.replace(frontmatterPattern, "").trim();
 }

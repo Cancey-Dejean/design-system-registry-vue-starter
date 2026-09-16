@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
+import StorybookWrapperSimple from "@registry/utility/StorybookWrapperSimple.vue";
 import { Spinner } from "../";
 
 const meta = {
@@ -8,6 +9,12 @@ const meta = {
   parameters: {
     layout: "centered",
   },
+  decorators: [
+    () => ({
+      components: { StorybookWrapperSimple },
+      template: "<StorybookWrapperSimple><story /></StorybookWrapperSimple>",
+    }),
+  ],
   argTypes: {
     class: { control: "text" },
   },
