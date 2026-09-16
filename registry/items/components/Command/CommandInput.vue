@@ -6,7 +6,7 @@ import { SearchIcon } from "@lucide/vue";
 import { reactiveOmit } from "@vueuse/core";
 import { ListboxFilter, useForwardProps } from "reka-ui";
 import { cn } from "@/lib/utils";
-import { InputGroup, InputGroupAddon } from "#registry-ui/Input-group";
+import { InputGroup, InputGroupAddon } from "#registry-ui/InputGroup";
 import { useCommand } from ".";
 
 defineOptions({
