@@ -19,17 +19,6 @@
   }
 }
 
-/* Custom Brand Themes */
-:root,
-[data-theme="theme-primary"] {
-}
-
-[data-theme="theme-secondary"] {
-}
-
-[data-theme="theme-tertiary"] {
-}
-
 @layer base {
   * {
     @apply border-border outline-ring/50;
