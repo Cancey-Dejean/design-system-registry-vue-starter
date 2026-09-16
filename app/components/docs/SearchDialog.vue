@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Blocks, Component, FileText, Folder, Search, Wrench } from "@lucide/vue";
 import type { LucideIcon } from "@lucide/vue";
+import { Blocks, Component, FileText, Folder, Search, Wrench } from "@lucide/vue";
 import { Button } from "@registry/components/Button";
 import {
   CommandDialog,
@@ -88,7 +88,7 @@ watch(keys["Ctrl+K"], (pressed) => {
     description="Search docs and registry items."
   >
     <CommandInput placeholder="Search docs..." />
-    <CommandList>
+    <CommandList class="py-2">
       <CommandEmpty>No results found.</CommandEmpty>
       <CommandGroup v-for="group in groupedItems" :key="group.id" :heading="group.title">
         <CommandItem

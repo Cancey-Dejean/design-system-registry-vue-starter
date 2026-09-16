@@ -67,7 +67,7 @@ const activeItem = computed(() =>
           <HeaderActions class="ml-auto" />
         </div>
       </header>
-      <div class="flex flex-1 flex-col gap-4 p-4 pt-6">
+      <div class="flex flex-1 flex-col gap-4 pl-6 pr-4 pt-6">
         <slot />
       </div>
     </SidebarInset>
