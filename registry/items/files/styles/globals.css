@@ -47,6 +47,11 @@
    no highlighter transformer or extra markup required. */
 @utility shiki-numbered {
   counter-reset: line;
+  /* Pinned rather than left to inherit: CodeBlock.vue's <pre> sits outside .prose (ambient
+     line-height ~1.43) while ProsePre.vue's sits inside .prose (default line-height 1.75) —
+     without an explicit value here the two renderers' code blocks show different line spacing
+     for the same font-size. */
+  line-height: 1.75;
 
   & .line {
     display: block;
@@ -55,7 +60,7 @@
     /* A blank source line is an empty <span class="line"> with no in-flow content of its own
        (the counter number is position: absolute, so it can't establish height by itself) —
        without a floor, it collapses to 0px and its number lands on top of the next line's. */
-    min-height: 1.6em;
+    min-height: 1.75em;
     min-height: 1lh;
   }
 
