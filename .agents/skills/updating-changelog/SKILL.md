@@ -11,7 +11,7 @@ description: >-
 
 Keep `content/docs/changelog.mdx` current after meaningful work. Skip it only for no-op, Storybook/`_preview.vue`-only, or unpublished docs-shell edits with no consumer or maintainer impact.
 
-This repo is a Nuxt 4 + shadcn-vue registry. Installable source lives in `registry/items/**` (`_registry.md` is the published item). The docs site is `app/` + `content/docs/`. Changelog versions are the source of truth — `package.json` has no `version`, and there is no `registry:doctor` script.
+This repo is a Nuxt 4 + shadcn-vue registry. Installable source lives in `registry/items/**` (`_registry.md` is the published item). The docs site is `app/` + `content/docs/`. Changelog versions are the source of truth (`package.json` has no `version`). Registry item checks use `bun --bun ./scripts/doctor.ts`; this page is validated with `vp check`.
 
 ## When to update
 

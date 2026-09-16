@@ -12,10 +12,16 @@ This is a Nuxt 4 + shadcn-vue registry. Published source lives in `registry/item
 
 ## Workflow
 
-1. Copy a similar published item (`Badge` for a simple UI primitive, `Button` for variants, `Field` for local deps) rather than inventing a layout.
+1. For new items, scaffold before editing:
+
+```sh
+bun --bun ./scripts/new.ts --type registry:ui --name example-card --description "A compact card component."
+```
+
+Interactive (no flags): `bun --bun ./scripts/new.ts`. `--name` is kebab-case. `--title` defaults from the name. Use `--target` for `registry:page`, `registry:file`, custom install paths, and targeted `registry:item` files. Use `--file-extension` for `registry:file` and targeted `registry:item` (default `ts`). Then replace the placeholder source — copy patterns from `Badge`, `Button` (variants), or `Field` (local deps) as needed.
+
 2. Put installable source under `registry/items/**`. Do not put installable item source under `app/`.
-3. There is no `scripts/new.ts`. Use an existing item as the template. `scripts/lib/scaffold.ts` is a reference for the intended file set, not a CLI.
-4. Every published item needs `_registry.md`. Blocks, hooks, and files without one are unpublished.
+3. Every published item needs `_registry.md`. Blocks, hooks, and files without one are unpublished.
 
 ## Type map
 
@@ -30,7 +36,7 @@ This is a Nuxt 4 + shadcn-vue registry. Published source lives in `registry/item
 | explicit target file      | `registry:file`      | `registry/items/files/<Name>/`      |
 | style / theme / font / base / universal | `registry:style` / `theme` / `font` / `base` / `item` | matching type folder |
 
-`name` in frontmatter is kebab-case (`button`, `button-group`). The on-disk folder capitalizes the first letter and keeps hyphens (`Button/`, `Button-group/`). Vue files and exports are PascalCase (`Button.vue`, `ButtonGroup.vue`). `registry/items/utility/` is unpublished Storybook helpers, not a registry type.
+`name` in frontmatter is kebab-case (`button`, `button-group`). `scripts/new.ts` writes a PascalCase folder (`example-card` → `ExampleCard/`). Older items may still be `Button-group` (first letter capitalized, hyphens kept). Catalog lookup is case-insensitive. Vue files and exports are PascalCase (`Button.vue`, `ButtonGroup.vue`). `registry/items/utility/` is unpublished Storybook helpers, not a registry type.
 
 ## `_registry.md`
 
