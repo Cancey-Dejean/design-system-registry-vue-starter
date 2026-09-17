@@ -1,12 +1,16 @@
-import type { Meta, StoryObj } from "@storybook/vue3-vite"
-import StorybookWrapperSimple from "@/components/utility/StorybookWrapperSimple.vue"
-import { NativeSelect, NativeSelectOptGroup, NativeSelectOption } from ".."
+import type { Meta, StoryObj } from "@storybook/vue3-vite";
+import StorybookWrapperSimple from "@/components/utility/StorybookWrapperSimple.vue";
+import {
+  NativeSelect,
+  NativeSelectOptGroup,
+  NativeSelectOption,
+} from "@registry/components/NativeSelect";
 
 const nativeSelectParts = {
   NativeSelect,
   NativeSelectOptGroup,
   NativeSelectOption,
-}
+};
 
 const meta = {
   title: "Components/Native Select",
@@ -18,20 +22,19 @@ const meta = {
   decorators: [
     () => ({
       components: { StorybookWrapperSimple },
-      template:
-        "<StorybookWrapperSimple class='w-full max-w-xs px-4'><story /></StorybookWrapperSimple>",
+      template: /* html */ `<StorybookWrapperSimple class='w-full max-w-xs px-4'><story /></StorybookWrapperSimple>`,
     }),
   ],
-} satisfies Meta<typeof NativeSelect>
+} satisfies Meta<typeof NativeSelect>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 /** Basic status select with placeholder option. */
 export const Default: Story = {
   render: () => ({
     components: nativeSelectParts,
-    template: `
+    template: /* html */ `
       <NativeSelect aria-label="Status">
         <NativeSelectOption value="">Select status</NativeSelectOption>
         <NativeSelectOption value="todo">Todo</NativeSelectOption>
@@ -41,13 +44,13 @@ export const Default: Story = {
       </NativeSelect>
     `,
   }),
-}
+};
 
 /** Options organized with NativeSelectOptGroup. */
 export const WithGroups: Story = {
   render: () => ({
     components: nativeSelectParts,
-    template: `
+    template: /* html */ `
       <NativeSelect aria-label="Department">
         <NativeSelectOption value="">Select department</NativeSelectOption>
         <NativeSelectOptGroup label="Engineering">
@@ -67,13 +70,13 @@ export const WithGroups: Story = {
       </NativeSelect>
     `,
   }),
-}
+};
 
 /** Entire select disabled. */
 export const Disabled: Story = {
   render: () => ({
     components: nativeSelectParts,
-    template: `
+    template: /* html */ `
       <NativeSelect disabled aria-label="Priority">
         <NativeSelectOption value="">Select priority</NativeSelectOption>
         <NativeSelectOption value="low">Low</NativeSelectOption>
@@ -82,13 +85,13 @@ export const Disabled: Story = {
       </NativeSelect>
     `,
   }),
-}
+};
 
 /** Validation error styling via aria-invalid. */
 export const Invalid: Story = {
   render: () => ({
     components: nativeSelectParts,
-    template: `
+    template: /* html */ `
       <NativeSelect aria-invalid="true" aria-label="Role">
         <NativeSelectOption value="">Select role</NativeSelectOption>
         <NativeSelectOption value="admin">Admin</NativeSelectOption>
@@ -97,4 +100,4 @@ export const Invalid: Story = {
       </NativeSelect>
     `,
   }),
-}
+};

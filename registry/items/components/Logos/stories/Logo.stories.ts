@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import StorybookWrapperSimple from "@registry/utility/StorybookWrapperSimple.vue";
-import { LOGO_SIZES, LogoGallery, Logo, LOGOS } from "../";
+import { LOGO_SIZES, LogoGallery, Logo, LOGOS } from "@registry/components/Logos";
 
 const meta = {
   title: "Components/Logo",
@@ -12,7 +12,7 @@ const meta = {
   decorators: [
     () => ({
       components: { StorybookWrapperSimple },
-      template: "<StorybookWrapperSimple><story /></StorybookWrapperSimple>",
+      template: /* html */ `<StorybookWrapperSimple><story /></StorybookWrapperSimple>`,
     }),
   ],
   args: {
@@ -41,7 +41,7 @@ export const Default: Story = {
   render: (args) => ({
     components: { Logo },
     setup: () => ({ args }),
-    template: `<Logo v-bind="args" />`,
+    template: /* html */ `<Logo v-bind="args" />`,
   }),
 };
 
@@ -53,12 +53,11 @@ export const AllLogos: Story = {
   decorators: [
     () => ({
       components: { StorybookWrapperSimple },
-      template:
-        "<StorybookWrapperSimple class='mx-auto w-full max-w-6xl p-8'><story /></StorybookWrapperSimple>",
+      template: /* html */ `<StorybookWrapperSimple class='mx-auto w-full max-w-6xl p-8'><story /></StorybookWrapperSimple>`,
     }),
   ],
   render: () => ({
     components: { LogoGallery },
-    template: `<LogoGallery />`,
+    template: /* html */ `<LogoGallery />`,
   }),
 };

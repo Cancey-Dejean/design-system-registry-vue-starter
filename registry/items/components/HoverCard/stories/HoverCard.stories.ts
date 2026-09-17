@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import { CalendarDaysIcon } from "@lucide/vue";
 import StorybookWrapperSimple from "@registry/utility/StorybookWrapperSimple.vue";
-import { Avatar, AvatarFallback, AvatarImage } from "../../Avatar";
-import { Button } from "../../Button";
+import { Avatar, AvatarFallback, AvatarImage } from "@registry/components/Avatar";
+import { Button } from "@registry/components/Button";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "../";
 
 const hoverCardParts = {
@@ -26,7 +26,7 @@ const meta = {
   decorators: [
     () => ({
       components: { StorybookWrapperSimple },
-      template: "<StorybookWrapperSimple><story /></StorybookWrapperSimple>",
+      template: /* html */ `<StorybookWrapperSimple><story /></StorybookWrapperSimple>`,
     }),
   ],
 } satisfies Meta<typeof HoverCard>;
@@ -38,7 +38,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: () => ({
     components: hoverCardParts,
-    template: `
+    template: /* html */ `
       <HoverCard>
         <HoverCardTrigger as-child>
           <Button variant="ghost">@nuxt</Button>
@@ -72,7 +72,7 @@ export const Default: Story = {
 export const Simple: Story = {
   render: () => ({
     components: hoverCardParts,
-    template: `
+    template: /* html */ `
       <HoverCard>
         <HoverCardTrigger as-child>
           <Button variant="outline">Hover</Button>

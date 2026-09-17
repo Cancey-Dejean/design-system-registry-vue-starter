@@ -1,12 +1,16 @@
-import type { Meta, StoryObj } from "@storybook/vue3-vite"
-import StorybookWrapperSimple from "@/components/utility/StorybookWrapperSimple.vue"
-import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from ".."
+import type { Meta, StoryObj } from "@storybook/vue3-vite";
+import StorybookWrapperSimple from "@registry/utility/StorybookWrapperSimple.vue";
+import {
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup,
+} from "@registry/components/Resizable";
 
 const resizableParts = {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
-}
+};
 
 const meta = {
   title: "Components/Resizable",
@@ -18,23 +22,22 @@ const meta = {
   decorators: [
     () => ({
       components: { StorybookWrapperSimple },
-      template:
-        "<StorybookWrapperSimple class='w-full max-w-2xl px-4'><story /></StorybookWrapperSimple>",
+      template: /* html */ `<StorybookWrapperSimple class='w-full max-w-2xl px-4'><story /></StorybookWrapperSimple>`,
     }),
   ],
   args: {
     direction: "horizontal",
   },
-} satisfies Meta<typeof ResizablePanelGroup>
+} satisfies Meta<typeof ResizablePanelGroup>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 /** Nested horizontal and vertical panel layout. */
 export const Default: Story = {
   render: () => ({
     components: resizableParts,
-    template: `
+    template: /* html */ `
       <ResizablePanelGroup
         direction="horizontal"
         class="max-w-md rounded-lg border md:min-w-[450px]"
@@ -63,13 +66,13 @@ export const Default: Story = {
       </ResizablePanelGroup>
     `,
   }),
-}
+};
 
 /** Stacked panels that resize vertically. */
 export const Vertical: Story = {
   render: () => ({
     components: resizableParts,
-    template: `
+    template: /* html */ `
       <ResizablePanelGroup
         direction="vertical"
         class="min-h-[200px] max-w-md rounded-lg border"
@@ -88,13 +91,13 @@ export const Vertical: Story = {
       </ResizablePanelGroup>
     `,
   }),
-}
+};
 
 /** Horizontal split with a visible drag handle. */
 export const WithHandle: Story = {
   render: () => ({
     components: resizableParts,
-    template: `
+    template: /* html */ `
       <ResizablePanelGroup
         direction="horizontal"
         class="min-h-[200px] max-w-md rounded-lg border"
@@ -113,4 +116,4 @@ export const WithHandle: Story = {
       </ResizablePanelGroup>
     `,
   }),
-}
+};

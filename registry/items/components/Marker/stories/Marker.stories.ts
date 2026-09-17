@@ -1,8 +1,8 @@
-import type { Meta, StoryObj } from "@storybook/vue3-vite"
-import { FileTextIcon, GitBranchIcon, SearchIcon } from "@lucide/vue"
-import StorybookWrapperSimple from "@/components/utility/StorybookWrapperSimple.vue"
-import { Spinner } from "../../Spinner"
-import { Marker, MarkerContent, MarkerIcon } from ".."
+import type { Meta, StoryObj } from "@storybook/vue3-vite";
+import { FileTextIcon, GitBranchIcon, SearchIcon } from "@lucide/vue";
+import StorybookWrapperSimple from "@/components/utility/StorybookWrapperSimple.vue";
+import { Spinner } from "@registry/components/Spinner";
+import { Marker, MarkerContent, MarkerIcon } from "@registry/components/Marker";
 
 const markerParts = {
   FileTextIcon,
@@ -12,7 +12,7 @@ const markerParts = {
   MarkerIcon,
   SearchIcon,
   Spinner,
-}
+};
 
 const meta = {
   title: "Components/Marker",
@@ -24,20 +24,19 @@ const meta = {
   decorators: [
     () => ({
       components: { StorybookWrapperSimple },
-      template:
-        "<StorybookWrapperSimple class='w-full max-w-sm px-4'><story /></StorybookWrapperSimple>",
+      template: /* html */ `<StorybookWrapperSimple class='w-full max-w-sm px-4'><story /></StorybookWrapperSimple>`,
     }),
   ],
-} satisfies Meta<typeof Marker>
+} satisfies Meta<typeof Marker>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 /** Conversation markers: note, streaming status, separator, and activity. */
 export const Default: Story = {
   render: () => ({
     components: markerParts,
-    template: `
+    template: /* html */ `
       <div class="flex w-full max-w-sm flex-col gap-8 py-4">
         <Marker>
           <MarkerIcon>
@@ -63,13 +62,13 @@ export const Default: Story = {
       </div>
     `,
   }),
-}
+};
 
 /** Default, separator, and border layouts. */
 export const Variants: Story = {
   render: () => ({
     components: markerParts,
-    template: `
+    template: /* html */ `
       <div class="flex w-full max-w-sm flex-col gap-8 py-4">
         <Marker>
           <MarkerContent>A default marker for inline notes.</MarkerContent>
@@ -83,13 +82,13 @@ export const Variants: Story = {
       </div>
     `,
   }),
-}
+};
 
 /** Streaming markers with role="status" and Spinner. */
 export const Status: Story = {
   render: () => ({
     components: markerParts,
-    template: `
+    template: /* html */ `
       <div class="flex w-full max-w-sm flex-col gap-8 py-4">
         <Marker role="status">
           <MarkerIcon>
@@ -106,13 +105,13 @@ export const Status: Story = {
       </div>
     `,
   }),
-}
+};
 
 /** Bordered activity rows for a tool log. */
 export const Border: Story = {
   render: () => ({
     components: markerParts,
-    template: `
+    template: /* html */ `
       <div class="flex w-full max-w-sm flex-col gap-3 py-4">
         <Marker variant="border">
           <MarkerIcon>
@@ -135,4 +134,4 @@ export const Border: Story = {
       </div>
     `,
   }),
-}
+};

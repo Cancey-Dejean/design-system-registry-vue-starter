@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/vue3-vite"
-import { ref } from "vue"
-import StorybookWrapperSimple from "@/components/utility/StorybookWrapperSimple.vue"
+import type { Meta, StoryObj } from "@storybook/vue3-vite";
+import { ref } from "vue";
+import StorybookWrapperSimple from "@/components/utility/StorybookWrapperSimple.vue";
 import {
   Select,
   SelectContent,
@@ -9,7 +9,7 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from ".."
+} from "..";
 
 const selectParts = {
   Select,
@@ -19,7 +19,7 @@ const selectParts = {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-}
+};
 
 const meta = {
   title: "Components/Select",
@@ -31,19 +31,19 @@ const meta = {
   decorators: [
     () => ({
       components: { StorybookWrapperSimple },
-      template: "<StorybookWrapperSimple><story /></StorybookWrapperSimple>",
+      template: /* html */ `<StorybookWrapperSimple><story /></StorybookWrapperSimple>`,
     }),
   ],
-} satisfies Meta<typeof Select>
+} satisfies Meta<typeof Select>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 /** Fruit picker with grouped options. */
 export const Default: Story = {
   render: () => ({
     components: selectParts,
-    template: `
+    template: /* html */ `
       <Select>
         <SelectTrigger class="w-[180px]">
           <SelectValue placeholder="Select a fruit" />
@@ -61,17 +61,17 @@ export const Default: Story = {
       </Select>
     `,
   }),
-}
+};
 
 /** Controlled selection with v-model. */
 export const Controlled: Story = {
   render: () => ({
     components: selectParts,
     setup() {
-      const fruit = ref("apple")
-      return { fruit }
+      const fruit = ref("apple");
+      return { fruit };
     },
-    template: `
+    template: /* html */ `
       <div class="grid gap-2">
         <Select v-model="fruit">
           <SelectTrigger class="w-[180px]">
@@ -94,13 +94,13 @@ export const Controlled: Story = {
       </div>
     `,
   }),
-}
+};
 
 /** Scrollable long list of timezones. */
 export const Scrollable: Story = {
   render: () => ({
     components: selectParts,
-    template: `
+    template: /* html */ `
       <Select>
         <SelectTrigger class="w-[280px]">
           <SelectValue placeholder="Select a timezone" />
@@ -152,13 +152,13 @@ export const Scrollable: Story = {
       </Select>
     `,
   }),
-}
+};
 
 /** Compact trigger size. */
 export const Small: Story = {
   render: () => ({
     components: selectParts,
-    template: `
+    template: /* html */ `
       <Select>
         <SelectTrigger class="w-[180px]" size="sm">
           <SelectValue placeholder="Select a fruit" />
@@ -174,13 +174,13 @@ export const Small: Story = {
       </Select>
     `,
   }),
-}
+};
 
 /** Disabled select that cannot open. */
 export const Disabled: Story = {
   render: () => ({
     components: selectParts,
-    template: `
+    template: /* html */ `
       <Select disabled>
         <SelectTrigger class="w-[180px]">
           <SelectValue placeholder="Select a fruit" />
@@ -195,4 +195,4 @@ export const Disabled: Story = {
       </Select>
     `,
   }),
-}
+};

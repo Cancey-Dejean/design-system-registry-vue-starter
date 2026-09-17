@@ -1,8 +1,8 @@
-import type { Meta, StoryObj } from "@storybook/vue3-vite"
-import { computed, ref } from "vue"
-import StorybookWrapperSimple from "@/components/utility/StorybookWrapperSimple.vue"
-import { Button } from "../../Button"
-import { Message, MessageContent } from "../../Message"
+import type { Meta, StoryObj } from "@storybook/vue3-vite";
+import { computed, ref } from "vue";
+import StorybookWrapperSimple from "@/components/utility/StorybookWrapperSimple.vue";
+import { Button } from "@registry/components/Button";
+import { Message, MessageContent } from "@registry/components/Message";
 import {
   MessageScrollerProvider,
   MessageScrollerButton,
@@ -10,14 +10,14 @@ import {
   MessageScrollerItem,
   MessageScrollerViewport,
   MessageScroller,
-} from ".."
-import { Bubble, BubbleContent } from "../../Bubble"
+} from "@registry/components/MessageScroller";
+import { Bubble, BubbleContent } from "@registry/components/Bubble";
 
 type ChatMessage = {
-  id: string
-  role: "user" | "assistant"
-  text: string
-}
+  id: string;
+  role: "user" | "assistant";
+  text: string;
+};
 
 const scrollerParts = {
   Bubble,
@@ -31,7 +31,7 @@ const scrollerParts = {
   MessageScrollerItem,
   MessageScrollerProvider,
   MessageScrollerViewport,
-}
+};
 
 const sampleMessages: ChatMessage[] = [
   {
@@ -74,7 +74,7 @@ const sampleMessages: ChatMessage[] = [
     role: "assistant",
     text: 'MessageScrollerContent sets role="log" and aria-relevant="additions" by default, so screen readers announce new messages as they stream in.',
   },
-]
+];
 
 const scriptedMessages: ChatMessage[] = [
   {
@@ -107,7 +107,7 @@ const scriptedMessages: ChatMessage[] = [
     role: "assistant",
     text: "You're set. Keep the provider height-bounded and compose Message / Bubble inside each item.",
   },
-]
+];
 
 const meta = {
   title: "Components/Message Scroller",
@@ -119,21 +119,20 @@ const meta = {
   decorators: [
     () => ({
       components: { StorybookWrapperSimple },
-      template:
-        "<StorybookWrapperSimple class='w-full max-w-md px-4'><story /></StorybookWrapperSimple>",
+      template: /* html */ `<StorybookWrapperSimple class='w-full max-w-md px-4'><story /></StorybookWrapperSimple>`,
     }),
   ],
-} satisfies Meta<typeof MessageScroller>
+} satisfies Meta<typeof MessageScroller>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 /** Bounded chat transcript with turn anchors and jump-to-end control. */
 export const Default: Story = {
   render: () => ({
     components: scrollerParts,
     setup: () => ({ messages: sampleMessages }),
-    template: `
+    template: /* html */ `
       <MessageScrollerProvider auto-scroll default-scroll-position="last-anchor">
         <MessageScroller class="h-96 w-full rounded-xl border">
           <MessageScrollerViewport>
@@ -159,32 +158,32 @@ export const Default: Story = {
       </MessageScrollerProvider>
     `,
   }),
-}
+};
 
 /** Append scripted turns to exercise auto-scroll and the jump button. */
 export const Interactive: Story = {
   render: () => ({
     components: scrollerParts,
     setup() {
-      const messages = ref<ChatMessage[]>([])
-      const index = ref(0)
-      const nextMessage = computed(() => scriptedMessages[index.value] ?? null)
+      const messages = ref<ChatMessage[]>([]);
+      const index = ref(0);
+      const nextMessage = computed(() => scriptedMessages[index.value] ?? null);
 
       function send() {
-        const next = nextMessage.value
-        if (!next) return
-        messages.value = [...messages.value, next]
-        index.value += 1
+        const next = nextMessage.value;
+        if (!next) return;
+        messages.value = [...messages.value, next];
+        index.value += 1;
       }
 
       function reset() {
-        messages.value = []
-        index.value = 0
+        messages.value = [];
+        index.value = 0;
       }
 
-      return { messages, nextMessage, send, reset }
+      return { messages, nextMessage, send, reset };
     },
-    template: `
+    template: /* html */ `
       <div class="flex w-full flex-col gap-3">
         <MessageScrollerProvider auto-scroll default-scroll-position="last-anchor">
           <MessageScroller class="h-96 w-full rounded-xl border">
@@ -226,4 +225,4 @@ export const Interactive: Story = {
       </div>
     `,
   }),
-}
+};

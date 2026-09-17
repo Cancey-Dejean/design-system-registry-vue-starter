@@ -1,13 +1,8 @@
-import type { Meta, StoryObj } from "@storybook/vue3-vite"
-import {
-  CopyIcon,
-  RefreshCcwIcon,
-  ThumbsDownIcon,
-  ThumbsUpIcon,
-} from "@lucide/vue"
-import StorybookWrapperSimple from "@/components/utility/StorybookWrapperSimple.vue"
-import { Button } from "../../Button"
-import { Marker, MarkerContent } from "../../Marker"
+import type { Meta, StoryObj } from "@storybook/vue3-vite";
+import { CopyIcon, RefreshCcwIcon, ThumbsDownIcon, ThumbsUpIcon } from "@lucide/vue";
+import StorybookWrapperSimple from "@/components/utility/StorybookWrapperSimple.vue";
+import { Button } from "@registry/components/Button";
+import { Marker, MarkerContent } from "@registry/components/Marker";
 import {
   Message,
   MessageAvatar,
@@ -15,14 +10,9 @@ import {
   MessageFooter,
   MessageGroup,
   MessageHeader,
-} from ".."
-import {
-  Bubble,
-  BubbleContent,
-  BubbleGroup,
-  BubbleReactions,
-} from "../../Bubble"
-import { Avatar, AvatarFallback, AvatarImage } from "../../Avatar"
+} from "@registry/components/Message";
+import { Bubble, BubbleContent, BubbleGroup, BubbleReactions } from "@registry/components/Bubble";
+import { Avatar, AvatarFallback, AvatarImage } from "@registry/components/Avatar";
 
 const messageParts = {
   Avatar,
@@ -45,7 +35,7 @@ const messageParts = {
   RefreshCcwIcon,
   ThumbsDownIcon,
   ThumbsUpIcon,
-}
+};
 
 const meta = {
   title: "Components/Message",
@@ -57,20 +47,19 @@ const meta = {
   decorators: [
     () => ({
       components: { StorybookWrapperSimple },
-      template:
-        "<StorybookWrapperSimple class='w-full max-w-sm px-4'><story /></StorybookWrapperSimple>",
+      template: /* html */ `<StorybookWrapperSimple class='w-full max-w-sm px-4'><story /></StorybookWrapperSimple>`,
     }),
   ],
-} satisfies Meta<typeof Message>
+} satisfies Meta<typeof Message>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 /** Conversation thread with avatars, groups, reactions, and typing marker. */
 export const Default: Story = {
   render: () => ({
     components: messageParts,
-    template: `
+    template: /* html */ `
       <div class="flex w-full max-w-sm flex-col gap-6 py-4">
         <Message align="end">
           <MessageAvatar>
@@ -141,13 +130,13 @@ export const Default: Story = {
       </div>
     `,
   }),
-}
+};
 
 /** Stacked messages from the same sender with spacer avatars. */
 export const Group: Story = {
   render: () => ({
     components: messageParts,
-    template: `
+    template: /* html */ `
       <div class="flex w-full max-w-sm flex-col gap-6 py-4">
         <MessageGroup>
           <Message>
@@ -177,13 +166,13 @@ export const Group: Story = {
       </div>
     `,
   }),
-}
+};
 
 /** Sender name header and delivery status footer. */
 export const HeaderAndFooter: Story = {
   render: () => ({
     components: messageParts,
-    template: `
+    template: /* html */ `
       <div class="flex w-full max-w-sm flex-col gap-8 py-4">
         <Message>
           <MessageContent>
@@ -210,13 +199,13 @@ export const HeaderAndFooter: Story = {
       </div>
     `,
   }),
-}
+};
 
 /** Footer action buttons for copy, feedback, and retry. */
 export const Actions: Story = {
   render: () => ({
     components: messageParts,
-    template: `
+    template: /* html */ `
       <div class="flex w-full max-w-sm flex-col gap-8 py-4">
         <Message>
           <MessageContent>
@@ -266,4 +255,4 @@ export const Actions: Story = {
       </div>
     `,
   }),
-}
+};

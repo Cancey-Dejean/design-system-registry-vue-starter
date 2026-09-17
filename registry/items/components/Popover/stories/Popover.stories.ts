@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import StorybookWrapperSimple from "@registry/utility/StorybookWrapperSimple.vue";
-import { Button } from "../../Button";
-import { Popover, PopoverContent, PopoverTrigger } from "../";
+import { Button } from "@registry/components/Button";
+import { Popover, PopoverContent, PopoverTrigger } from "@registry/components/Popover";
 
 const popoverParts = {
   Button,
@@ -20,7 +20,7 @@ const meta = {
   decorators: [
     () => ({
       components: { StorybookWrapperSimple },
-      template: "<StorybookWrapperSimple><story /></StorybookWrapperSimple>",
+      template: /* html */ `<StorybookWrapperSimple><story /></StorybookWrapperSimple>`,
     }),
   ],
 } satisfies Meta<typeof Popover>;
@@ -32,7 +32,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: () => ({
     components: popoverParts,
-    template: `
+    template: /* html */ `
       <Popover>
         <PopoverTrigger as-child>
           <Button variant="outline">Open popover</Button>

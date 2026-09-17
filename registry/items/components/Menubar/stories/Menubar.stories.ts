@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/vue3-vite"
-import { ref } from "vue"
-import StorybookWrapperSimple from "@/components/utility/StorybookWrapperSimple.vue"
+import type { Meta, StoryObj } from "@storybook/vue3-vite";
+import { ref } from "vue";
+import StorybookWrapperSimple from "@/components/utility/StorybookWrapperSimple.vue";
 
 import {
   Menubar,
@@ -16,7 +16,7 @@ import {
   MenubarSubContent,
   MenubarSubTrigger,
   MenubarTrigger,
-} from ".."
+} from "@registry/components/Menubar";
 
 const menubarParts = {
   Menubar,
@@ -32,7 +32,7 @@ const menubarParts = {
   MenubarSubContent,
   MenubarSubTrigger,
   MenubarTrigger,
-}
+};
 
 const meta = {
   title: "Components/Menubar",
@@ -44,24 +44,24 @@ const meta = {
   decorators: [
     () => ({
       components: { StorybookWrapperSimple },
-      template: "<StorybookWrapperSimple><story /></StorybookWrapperSimple>",
+      template: /* html */ `<StorybookWrapperSimple><story /></StorybookWrapperSimple>`,
     }),
   ],
-} satisfies Meta<typeof Menubar>
+} satisfies Meta<typeof Menubar>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 /** Full app menubar with File, Edit, View, and Profiles. */
 export const Default: Story = {
   render: () => ({
     components: menubarParts,
     setup() {
-      const showFullUrls = ref(true)
-      const profile = ref("benoit")
-      return { showFullUrls, profile }
+      const showFullUrls = ref(true);
+      const profile = ref("benoit");
+      return { showFullUrls, profile };
     },
-    template: `
+    template: /* html */ `
       <Menubar>
         <MenubarMenu>
           <MenubarTrigger>File</MenubarTrigger>
@@ -155,13 +155,13 @@ export const Default: Story = {
       </Menubar>
     `,
   }),
-}
+};
 
 /** Single File menu with shortcuts. */
 export const Simple: Story = {
   render: () => ({
     components: menubarParts,
-    template: `
+    template: /* html */ `
       <Menubar>
         <MenubarMenu>
           <MenubarTrigger>File</MenubarTrigger>
@@ -179,4 +179,4 @@ export const Simple: Story = {
       </Menubar>
     `,
   }),
-}
+};

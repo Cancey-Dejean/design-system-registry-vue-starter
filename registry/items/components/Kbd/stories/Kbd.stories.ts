@@ -1,9 +1,9 @@
-import type { Meta, StoryObj } from "@storybook/vue3-vite"
-import { SearchIcon } from "@lucide/vue"
-import StorybookWrapperSimple from "@/components/utility/StorybookWrapperSimple.vue"
-import { Button } from "../../Button"
-import { InputGroupInput, InputGroupAddon, InputGroup } from "../../InputGroup"
-import { Kbd, KbdGroup } from "../"
+import type { Meta, StoryObj } from "@storybook/vue3-vite";
+import { SearchIcon } from "@lucide/vue";
+import StorybookWrapperSimple from "@/components/utility/StorybookWrapperSimple.vue";
+import { Button } from "@registry/components/Button";
+import { InputGroupAddon, InputGroup, InputGroupInput } from "@registry/components/InputGroup";
+import { Kbd, KbdGroup } from "@registry/components/Kbd";
 
 const kbdParts = {
   Button,
@@ -13,7 +13,7 @@ const kbdParts = {
   Kbd,
   KbdGroup,
   SearchIcon,
-}
+};
 
 const meta = {
   title: "Components/Kbd",
@@ -28,10 +28,10 @@ const meta = {
       template: "<StorybookWrapperSimple><story /></StorybookWrapperSimple>",
     }),
   ],
-} satisfies Meta<typeof Kbd>
+} satisfies Meta<typeof Kbd>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 /** Modifier keys and a Ctrl+B chord. */
 export const Default: Story = {
@@ -53,7 +53,7 @@ export const Default: Story = {
       </div>
     `,
   }),
-}
+};
 
 /** Inline groups inside helper copy. */
 export const Group: Story = {
@@ -70,7 +70,7 @@ export const Group: Story = {
       </p>
     `,
   }),
-}
+};
 
 /** Keys embedded in outline buttons. */
 export const WithButton: Story = {
@@ -87,7 +87,7 @@ export const WithButton: Story = {
       </div>
     `,
   }),
-}
+};
 
 /** Search field with keyboard shortcut addon. */
 export const WithInputGroup: Story = {
@@ -108,4 +108,4 @@ export const WithInputGroup: Story = {
       </div>
     `,
   }),
-}
+};

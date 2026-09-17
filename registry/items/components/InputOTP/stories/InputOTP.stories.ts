@@ -2,7 +2,12 @@ import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import { REGEXP_ONLY_DIGITS_AND_CHARS } from "vue-input-otp";
 import { ref } from "vue";
 import StorybookWrapperSimple from "@registry/utility/StorybookWrapperSimple.vue";
-import { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot } from "../";
+import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSeparator,
+  InputOTPSlot,
+} from "@registry/components/InputOTP";
 
 const otpParts = {
   InputOTP,
@@ -21,7 +26,7 @@ const meta = {
   decorators: [
     () => ({
       components: { StorybookWrapperSimple },
-      template: "<StorybookWrapperSimple><story /></StorybookWrapperSimple>",
+      template: /* html */ `<StorybookWrapperSimple><story /></StorybookWrapperSimple>`,
     }),
   ],
   args: {
@@ -36,7 +41,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: () => ({
     components: otpParts,
-    template: `
+    template: /* html */ `
       <InputOTP :maxlength="6">
         <InputOTPGroup>
           <InputOTPSlot :index="0" />
@@ -59,7 +64,7 @@ export const Pattern: Story = {
   render: () => ({
     components: otpParts,
     setup: () => ({ REGEXP_ONLY_DIGITS_AND_CHARS }),
-    template: `
+    template: /* html */ `
       <InputOTP :maxlength="6" :pattern="REGEXP_ONLY_DIGITS_AND_CHARS">
         <InputOTPGroup>
           <InputOTPSlot :index="0" />
@@ -78,7 +83,7 @@ export const Pattern: Story = {
 export const Separator: Story = {
   render: () => ({
     components: otpParts,
-    template: `
+    template: /* html */ `
       <InputOTP :maxlength="6">
         <InputOTPGroup>
           <InputOTPSlot :index="0" />
@@ -107,7 +112,7 @@ export const Controlled: Story = {
       const value = ref("");
       return { value };
     },
-    template: `
+    template: /* html */ `
       <div class="space-y-2">
         <InputOTP v-model="value" :maxlength="6">
           <InputOTPGroup>

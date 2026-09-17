@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import StorybookWrapper from "@registry/utility/StorybookWrapper.vue";
-import { LinkText, LINK_TONES, LINK_UNDERLINES, LINK_SIZES } from "../";
+import { LinkText, LINK_TONES, LINK_UNDERLINES, LINK_SIZES } from "@registry/components/LinkText";
 
 const meta = {
   title: "Components/Link Text",

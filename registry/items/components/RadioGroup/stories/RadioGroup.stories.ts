@@ -1,9 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import { ref } from "vue";
 import StorybookWrapperSimple from "@registry/utility/StorybookWrapperSimple.vue";
-import Label from "../../Label/Label.vue";
-import RadioGroup from "../RadioGroup.vue";
-import RadioGroupItem from "../RadioGroupItem.vue";
+import { Label } from "@registry/components/Label";
+import { RadioGroup, RadioGroupItem } from "@registry/components/RadioGroup";
 
 const radioParts = {
   Label,
@@ -21,8 +20,7 @@ const meta = {
   decorators: [
     () => ({
       components: { StorybookWrapperSimple },
-      template:
-        "<StorybookWrapperSimple class='w-full max-w-sm px-4'><story /></StorybookWrapperSimple>",
+      template: /* html */ `<StorybookWrapperSimple class='w-full max-w-sm px-4'><story /></StorybookWrapperSimple>`,
     }),
   ],
 } satisfies Meta<typeof RadioGroup>;
@@ -34,7 +32,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: () => ({
     components: radioParts,
-    template: `
+    template: /* html */ `
       <RadioGroup default-value="comfortable">
         <div class="flex items-center space-x-2">
           <RadioGroupItem id="r1" value="default" />
@@ -61,7 +59,7 @@ export const Controlled: Story = {
       const plan = ref("pro");
       return { plan };
     },
-    template: `
+    template: /* html */ `
       <div class="grid gap-3">
         <RadioGroup v-model="plan">
           <div class="flex items-center space-x-2">
@@ -89,7 +87,7 @@ export const Controlled: Story = {
 export const Disabled: Story = {
   render: () => ({
     components: radioParts,
-    template: `
+    template: /* html */ `
       <RadioGroup default-value="comfortable" disabled>
         <div class="flex items-center space-x-2">
           <RadioGroupItem id="d1" value="default" />
@@ -116,7 +114,7 @@ export const Cards: Story = {
       const plan = ref("starter");
       return { plan };
     },
-    template: `
+    template: /* html */ `
       <RadioGroup v-model="plan" class="grid gap-3">
         <Label
           for="card-starter"

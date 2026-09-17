@@ -1,6 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import StorybookWrapper from "@registry/utility/StorybookWrapper.vue";
-import { Heading, HEADING_LEVELS, HEADING_SIZES, HEADING_WEIGHTS, HEADING_TONES } from "../";
+import {
+  Heading,
+  HEADING_LEVELS,
+  HEADING_SIZES,
+  HEADING_WEIGHTS,
+  HEADING_TONES,
+} from "@registry/components/Heading";
 
 const meta = {
   title: "Components/Heading",
@@ -12,7 +18,7 @@ const meta = {
   decorators: [
     () => ({
       components: { StorybookWrapper },
-      template: "<StorybookWrapper><story /></StorybookWrapper>",
+      template: /* html */ `<StorybookWrapper><story /></StorybookWrapper>`,
     }),
   ],
   argTypes: {

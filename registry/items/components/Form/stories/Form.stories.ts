@@ -3,9 +3,16 @@ import { toTypedSchema } from "@vee-validate/zod";
 import { useForm } from "vee-validate";
 import { z } from "zod";
 import StorybookWrapper from "@registry/utility/StorybookWrapper.vue";
-import { Button } from "../../Button";
-import { Checkbox } from "../../Checkbox";
-import { FormField, FormControl, FormDescription, FormItem, FormLabel, FormMessage } from "../";
+import { Button } from "@registry/components/Button";
+import { Checkbox } from "@registry/components/Checkbox";
+import {
+  FormField,
+  FormControl,
+  FormDescription,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@registry/components/Form";
 
 const inputClass =
   "border-input bg-background h-9 w-full rounded-md border px-3 text-sm shadow-xs outline-none aria-invalid:border-destructive";
@@ -31,7 +38,7 @@ const meta = {
   decorators: [
     () => ({
       components: { StorybookWrapper },
-      template: "<StorybookWrapper class='w-full max-w-sm px-4'><story /></StorybookWrapper>",
+      template: /* html */ `<StorybookWrapper class='w-full max-w-sm px-4'><story /></StorybookWrapper>`,
     }),
   ],
 } satisfies Meta<typeof FormItem>;
@@ -62,7 +69,7 @@ export const Default: Story = {
 
       return { onSubmit, inputClass };
     },
-    template: `
+    template: /* html */ `
       <form class="w-full space-y-6" @submit="onSubmit">
         <FormField v-slot="{ componentField }" name="username">
           <FormItem>
@@ -121,7 +128,7 @@ export const Profile: Story = {
 
       return { onSubmit, inputClass };
     },
-    template: `
+    template: /* html */ `
       <form class="w-full space-y-6" @submit="onSubmit">
         <FormField v-slot="{ componentField }" name="username">
           <FormItem>

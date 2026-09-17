@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/vue3-vite"
-import StorybookWrapperSimple from "@/components/utility/StorybookWrapperSimple.vue"
+import type { Meta, StoryObj } from "@storybook/vue3-vite";
+import StorybookWrapperSimple from "@/components/utility/StorybookWrapperSimple.vue";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -8,7 +8,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from ".."
+} from "@registry/components/NavigationMenu";
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -20,8 +20,7 @@ const components: { title: string; href: string; description: string }[] = [
   {
     title: "Hover Card",
     href: "#",
-    description:
-      "For sighted users to preview content available behind a link.",
+    description: "For sighted users to preview content available behind a link.",
   },
   {
     title: "Progress",
@@ -46,7 +45,7 @@ const components: { title: string; href: string; description: string }[] = [
     description:
       "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
   },
-]
+];
 
 const navigationMenuParts = {
   NavigationMenu,
@@ -55,7 +54,7 @@ const navigationMenuParts = {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-}
+};
 
 const meta = {
   title: "Components/Navigation Menu",
@@ -67,21 +66,22 @@ const meta = {
   decorators: [
     () => ({
       components: { StorybookWrapperSimple },
-      template:
-        "<StorybookWrapperSimple class='flex min-h-80 items-start justify-center pt-8'><story /></StorybookWrapperSimple>",
+      template: /* html */ `<StorybookWrapperSimple class='flex min-h-80 items-start justify-center pt-8'>
+        <story />
+      </StorybookWrapperSimple>`,
     }),
   ],
-} satisfies Meta<typeof NavigationMenu>
+} satisfies Meta<typeof NavigationMenu>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 /** Full nav with Getting started mega-menu, Components grid, and Documentation link. */
 export const Default: Story = {
   render: () => ({
     components: navigationMenuParts,
     setup: () => ({ components, navigationMenuTriggerStyle }),
-    template: `
+    template: /* html */ `
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem>
@@ -160,14 +160,14 @@ export const Default: Story = {
       </NavigationMenu>
     `,
   }),
-}
+};
 
 /** Compact menu without the shared sliding viewport. */
 export const WithoutViewport: Story = {
   render: () => ({
     components: navigationMenuParts,
     setup: () => ({ navigationMenuTriggerStyle }),
-    template: `
+    template: /* html */ `
       <NavigationMenu :viewport="false">
         <NavigationMenuList>
           <NavigationMenuItem>
@@ -218,4 +218,4 @@ export const WithoutViewport: Story = {
       </NavigationMenu>
     `,
   }),
-}
+};

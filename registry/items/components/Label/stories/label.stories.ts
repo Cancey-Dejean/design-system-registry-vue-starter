@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/vue3";
-import { Input } from "../../Input";
-import { Label } from "..";
+import { Input } from "@registry/components/Input";
+import { Label } from "@registry/components/Label";
 
 const meta: Meta<typeof Label> = {
   title: "Components/Label",

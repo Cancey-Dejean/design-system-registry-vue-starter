@@ -1,11 +1,9 @@
-import type { Meta, StoryObj } from "@storybook/vue3-vite"
-import StorybookWrapperSimple from "@/components/utility/StorybookWrapperSimple.vue"
-import { Separator } from "../../Separator"
-import { ScrollArea, ScrollBar } from ".."
+import type { Meta, StoryObj } from "@storybook/vue3-vite";
+import StorybookWrapperSimple from "@/components/utility/StorybookWrapperSimple.vue";
+import { Separator } from "@registry/components/Separator";
+import { ScrollArea, ScrollBar } from "@registry/components/ScrollArea";
 
-const tags = Array.from({ length: 50 }).map(
-  (_, i, a) => `v1.2.0-beta.${a.length - i}`,
-)
+const tags = Array.from({ length: 50 }).map((_, i, a) => `v1.2.0-beta.${a.length - i}`);
 
 const works = [
   {
@@ -20,13 +18,13 @@ const works = [
     artist: "Vladimir Malyavko",
     art: "https://images.unsplash.com/photo-1494337480532-3725c85fd2ab?auto=format&fit=crop&w=300&q=80",
   },
-]
+];
 
 const scrollParts = {
   ScrollArea,
   ScrollBar,
   Separator,
-}
+};
 
 const meta = {
   title: "Components/ScrollArea",
@@ -38,20 +36,20 @@ const meta = {
   decorators: [
     () => ({
       components: { StorybookWrapperSimple },
-      template: "<StorybookWrapperSimple><story /></StorybookWrapperSimple>",
+      template: /* html */ `<StorybookWrapperSimple><story /></StorybookWrapperSimple>`,
     }),
   ],
-} satisfies Meta<typeof ScrollArea>
+} satisfies Meta<typeof ScrollArea>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 /** Vertical tag list in a fixed-height viewport. */
 export const Default: Story = {
   render: () => ({
     components: scrollParts,
     setup: () => ({ tags }),
-    template: `
+    template: /* html */ `
       <ScrollArea class="h-72 w-48 rounded-md border">
         <div class="p-4">
           <h4 class="mb-4 text-sm leading-none font-medium">Tags</h4>
@@ -65,13 +63,13 @@ export const Default: Story = {
       </ScrollArea>
     `,
   }),
-}
+};
 
 /** Long prose block with constrained height. */
 export const Text: Story = {
   render: () => ({
     components: scrollParts,
-    template: `
+    template: /* html */ `
       <ScrollArea class="h-[200px] w-[350px] rounded-md border p-4">
         Jokester began sneaking into the castle in the middle of the night and leaving
         jokes all over the place: under the king's pillow, in his soup, even in the
@@ -82,14 +80,14 @@ export const Text: Story = {
       </ScrollArea>
     `,
   }),
-}
+};
 
 /** Horizontal image strip with an explicit horizontal scrollbar. */
 export const Horizontal: Story = {
   render: () => ({
     components: scrollParts,
     setup: () => ({ works }),
-    template: `
+    template: /* html */ `
       <ScrollArea class="w-96 rounded-md border whitespace-nowrap">
         <div class="flex w-max space-x-4 p-4">
           <figure
@@ -118,4 +116,4 @@ export const Horizontal: Story = {
       </ScrollArea>
     `,
   }),
-}
+};

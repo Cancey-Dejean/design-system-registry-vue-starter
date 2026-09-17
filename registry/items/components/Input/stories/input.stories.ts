@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/vue3";
-import { Input } from "..";
+import { Input } from "@registry/components/Input";
 
 const meta: Meta<typeof Input> = {
   title: "Components/Input",

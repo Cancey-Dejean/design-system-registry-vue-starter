@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 
-import { Label } from "../../Label";
+import { Label } from "@registry/components/Label";
 import {
   NumberField,
   NumberFieldContent,
   NumberFieldDecrement,
   NumberFieldIncrement,
   NumberFieldInput,
-} from "..";
+} from "@registry/components/NumberField";
 import StorybookWrapperSimple from "@registry/utility/StorybookWrapperSimple.vue";
 
 const numberFieldParts = {

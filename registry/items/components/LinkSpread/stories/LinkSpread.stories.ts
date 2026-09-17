@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import StorybookWrapper from "@registry/utility/StorybookWrapper.vue";
-import { LinkSpread } from "..";
+import { LinkSpread } from "@registry/components/LinkSpread";
 
 const meta = {
   title: "Components/Link Spread",

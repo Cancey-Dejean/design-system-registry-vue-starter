@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/vue3-vite"
-import { ChevronLeftIcon, ChevronRightIcon } from "@lucide/vue"
-import StorybookWrapperSimple from "@/components/utility/StorybookWrapperSimple.vue"
+import type { Meta, StoryObj } from "@storybook/vue3-vite";
+import { ChevronLeftIcon, ChevronRightIcon } from "@lucide/vue";
+import StorybookWrapperSimple from "@/components/utility/StorybookWrapperSimple.vue";
 import {
   Pagination,
   PaginationContent,
@@ -10,7 +10,7 @@ import {
   PaginationLast,
   PaginationNext,
   PaginationPrevious,
-} from ".."
+} from "@registry/components/Pagination";
 
 const paginationParts = {
   ChevronLeftIcon,
@@ -23,7 +23,7 @@ const paginationParts = {
   PaginationLast,
   PaginationNext,
   PaginationPrevious,
-}
+};
 
 const meta = {
   title: "Components/Pagination",
@@ -35,22 +35,22 @@ const meta = {
   decorators: [
     () => ({
       components: { StorybookWrapperSimple },
-      template: "<StorybookWrapperSimple><story /></StorybookWrapperSimple>",
+      template: /* html */ `<StorybookWrapperSimple><story /></StorybookWrapperSimple>`,
     }),
   ],
   args: {
     itemsPerPage: 10,
   },
-} satisfies Meta<typeof Pagination>
+} satisfies Meta<typeof Pagination>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 /** Previous/next with page numbers for a small set. */
 export const Default: Story = {
   render: () => ({
     components: paginationParts,
-    template: `
+    template: /* html */ `
       <Pagination v-slot="{ page }" :items-per-page="10" :total="30" :default-page="2">
         <PaginationContent v-slot="{ items }">
           <PaginationPrevious />
@@ -69,13 +69,13 @@ export const Default: Story = {
       </Pagination>
     `,
   }),
-}
+};
 
 /** Larger range with first/last jump controls and ellipses. */
 export const WithEdges: Story = {
   render: () => ({
     components: paginationParts,
-    template: `
+    template: /* html */ `
       <Pagination
         v-slot="{ page }"
         :items-per-page="10"
@@ -103,13 +103,13 @@ export const WithEdges: Story = {
       </Pagination>
     `,
   }),
-}
+};
 
 /** Icon-only previous and next for dense layouts. */
 export const IconsOnly: Story = {
   render: () => ({
     components: paginationParts,
-    template: `
+    template: /* html */ `
       <Pagination :items-per-page="10" :total="50" :default-page="1">
         <PaginationContent>
           <PaginationPrevious size="icon-md" class="px-0">
@@ -124,4 +124,4 @@ export const IconsOnly: Story = {
       </Pagination>
     `,
   }),
-}
+};

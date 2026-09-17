@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import { BadgeCheckIcon, ChevronRightIcon, ShieldAlertIcon } from "@lucide/vue";
 import StorybookWrapperSimple from "@registry/utility/StorybookWrapperSimple.vue";
-import { Button } from "../../Button";
+import { Button } from "@registry/components/Button";
 import {
   Item,
   ItemActions,
@@ -11,7 +11,7 @@ import {
   ItemMedia,
   ItemSeparator,
   ItemTitle,
-} from "../";
+} from "@registry/components/Item";
 
 const itemParts = {
   BadgeCheckIcon,
@@ -39,7 +39,7 @@ const meta = {
     () => ({
       components: { StorybookWrapperSimple },
       template:
-        "<StorybookWrapperSimple class='w-full max-w-md px-4'><story /></StorybookWrapperSimple>",
+        /* html */ `<StorybookWrapperSimple class='w-full max-w-md px-4'><story /></StorybookWrapperSimple>`,
     }),
   ],
 } satisfies Meta<typeof Item>;
@@ -51,7 +51,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: () => ({
     components: itemParts,
-    template: `
+    template: /* html */ `
       <div class="flex w-full max-w-md flex-col gap-6">
         <Item variant="outline">
           <ItemContent>
@@ -86,7 +86,7 @@ export const Default: Story = {
 export const Variants: Story = {
   render: () => ({
     components: itemParts,
-    template: `
+    template: /* html */ `
       <div class="flex flex-col gap-6">
         <Item>
           <ItemContent>
@@ -130,7 +130,7 @@ export const Variants: Story = {
 export const Icon: Story = {
   render: () => ({
     components: itemParts,
-    template: `
+    template: /* html */ `
       <Item variant="outline">
         <ItemMedia variant="icon">
           <ShieldAlertIcon />
@@ -153,7 +153,7 @@ export const Icon: Story = {
 export const Group: Story = {
   render: () => ({
     components: itemParts,
-    template: `
+    template: /* html */ `
       <ItemGroup class="w-full max-w-md rounded-md border">
         <Item>
           <ItemContent>

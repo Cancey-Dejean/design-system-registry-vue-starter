@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
-import StorybookWrapperSimple from "@registry/components/utility/StorybookWrapperSimple.vue";
-import { ICON_SIZES, IconGallery, Icon, ICONS } from "../../";
+import StorybookWrapperSimple from "@registry/utility/StorybookWrapperSimple.vue";
+import { ICON_SIZES, IconGallery, Icon, ICONS } from "@registry/components/Icons";
 
 const meta = {
   title: "Components/Icon",
@@ -12,7 +12,7 @@ const meta = {
   decorators: [
     () => ({
       components: { StorybookWrapperSimple },
-      template: "<StorybookWrapperSimple><story /></StorybookWrapperSimple>",
+      template: /* html */ `<StorybookWrapperSimple><story /></StorybookWrapperSimple>`,
     }),
   ],
   args: {

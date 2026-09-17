@@ -1,7 +1,7 @@
-import type { Meta, StoryObj } from "@storybook/vue3-vite"
-import { onMounted, onUnmounted, ref } from "vue"
-import StorybookWrapperSimple from "@/components/utility/StorybookWrapperSimple.vue"
-import { Progress } from ".."
+import type { Meta, StoryObj } from "@storybook/vue3-vite";
+import { onMounted, onUnmounted, ref } from "vue";
+import StorybookWrapperSimple from "@/components/utility/StorybookWrapperSimple.vue";
+import { Progress } from "..";
 
 const meta = {
   title: "Components/Progress",
@@ -13,8 +13,7 @@ const meta = {
   decorators: [
     () => ({
       components: { StorybookWrapperSimple },
-      template:
-        "<StorybookWrapperSimple class='w-full max-w-sm px-4'><story /></StorybookWrapperSimple>",
+      template: /* html */ `<StorybookWrapperSimple class='w-full max-w-sm px-4'><story /></StorybookWrapperSimple>`,
     }),
   ],
   argTypes: {
@@ -25,19 +24,19 @@ const meta = {
   args: {
     modelValue: 33,
   },
-} satisfies Meta<typeof Progress>
+} satisfies Meta<typeof Progress>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 /** Progress bar bound to a static completion value. */
 export const Default: Story = {
   render: (args) => ({
     components: { Progress },
     setup: () => ({ args }),
-    template: `<Progress v-bind="args" class="w-full" />`,
+    template: /* html */ `<Progress v-bind="args" class="w-full" />`,
   }),
-}
+};
 
 /** Empty progress at zero percent. */
 export const Empty: Story = {
@@ -47,9 +46,9 @@ export const Empty: Story = {
   render: (args) => ({
     components: { Progress },
     setup: () => ({ args }),
-    template: `<Progress v-bind="args" class="w-full" />`,
+    template: /* html */ `<Progress v-bind="args" class="w-full" />`,
   }),
-}
+};
 
 /** Full progress at one hundred percent. */
 export const Complete: Story = {
@@ -59,9 +58,9 @@ export const Complete: Story = {
   render: (args) => ({
     components: { Progress },
     setup: () => ({ args }),
-    template: `<Progress v-bind="args" class="w-full" />`,
+    template: /* html */ `<Progress v-bind="args" class="w-full" />`,
   }),
-}
+};
 
 /** Animates from 13% to 66% after a short delay. */
 export const Animated: Story = {
@@ -71,21 +70,21 @@ export const Animated: Story = {
   render: () => ({
     components: { Progress },
     setup() {
-      const progress = ref(13)
-      let timer: ReturnType<typeof setTimeout> | undefined
+      const progress = ref(13);
+      let timer: ReturnType<typeof setTimeout> | undefined;
 
       onMounted(() => {
         timer = setTimeout(() => {
-          progress.value = 66
-        }, 500)
-      })
+          progress.value = 66;
+        }, 500);
+      });
 
       onUnmounted(() => {
-        if (timer) clearTimeout(timer)
-      })
+        if (timer) clearTimeout(timer);
+      });
 
-      return { progress }
+      return { progress };
     },
-    template: `<Progress :model-value="progress" class="w-full" />`,
+    template: /* html */ `<Progress :model-value="progress" class="w-full" />`,
   }),
-}
+};

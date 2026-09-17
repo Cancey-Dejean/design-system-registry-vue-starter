@@ -1,10 +1,10 @@
-import type { Meta, StoryObj } from "@storybook/vue3-vite"
-import type { DateRange } from "reka-ui"
-import type { Ref } from "vue"
-import { getLocalTimeZone, today } from "@internationalized/date"
-import { ref } from "vue"
-import StorybookWrapperSimple from "@/components/utility/StorybookWrapperSimple.vue"
-import { RangeCalendar } from ".."
+import type { Meta, StoryObj } from "@storybook/vue3-vite";
+import type { DateRange } from "reka-ui";
+import type { Ref } from "vue";
+import { getLocalTimeZone, today } from "@internationalized/date";
+import { ref } from "vue";
+import StorybookWrapperSimple from "@/components/utility/StorybookWrapperSimple.vue";
+import { RangeCalendar } from "@registry/components/RangeCalendar";
 
 const meta = {
   title: "Components/Range Calendar",
@@ -16,18 +16,18 @@ const meta = {
   decorators: [
     () => ({
       components: { StorybookWrapperSimple },
-      template: "<StorybookWrapperSimple><story /></StorybookWrapperSimple>",
+      template: /* html */ `<StorybookWrapperSimple><story /></StorybookWrapperSimple>`,
     }),
   ],
-} satisfies Meta<typeof RangeCalendar>
+} satisfies Meta<typeof RangeCalendar>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 function createWeekRange() {
-  const start = today(getLocalTimeZone())
-  const end = start.add({ days: 7 })
-  return ref({ start, end }) as Ref<DateRange>
+  const start = today(getLocalTimeZone());
+  const end = start.add({ days: 7 });
+  return ref({ start, end }) as Ref<DateRange>;
 }
 
 /** Single-month range picker with a preselected week. */
@@ -35,27 +35,27 @@ export const Default: Story = {
   render: () => ({
     components: { RangeCalendar },
     setup() {
-      const dateRange = createWeekRange()
-      return { dateRange }
+      const dateRange = createWeekRange();
+      return { dateRange };
     },
-    template: `
+    template: /* html */ `
       <RangeCalendar
         v-model="dateRange"
         class="rounded-md border shadow-sm"
       />
     `,
   }),
-}
+};
 
 /** Two months side by side with outside-view days disabled. */
 export const TwoMonths: Story = {
   render: () => ({
     components: { RangeCalendar },
     setup() {
-      const dateRange = createWeekRange()
-      return { dateRange }
+      const dateRange = createWeekRange();
+      return { dateRange };
     },
-    template: `
+    template: /* html */ `
       <RangeCalendar
         v-model="dateRange"
         class="rounded-md border shadow-sm"
@@ -64,7 +64,7 @@ export const TwoMonths: Story = {
       />
     `,
   }),
-}
+};
 
 /** Empty range ready for start/end selection. */
 export const Empty: Story = {
@@ -74,14 +74,14 @@ export const Empty: Story = {
       const dateRange = ref({
         start: undefined,
         end: undefined,
-      }) as Ref<DateRange>
-      return { dateRange }
+      }) as Ref<DateRange>;
+      return { dateRange };
     },
-    template: `
+    template: /* html */ `
       <RangeCalendar
         v-model="dateRange"
         class="rounded-md border shadow-sm"
       />
     `,
   }),
-}
+};
