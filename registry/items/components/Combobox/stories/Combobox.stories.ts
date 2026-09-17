@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import { CheckIcon, ChevronsUpDownIcon } from "@lucide/vue";
 import { ref } from "vue";
 import StorybookWrapperSimple from "@registry/utility/StorybookWrapperSimple.vue";
-import Button from "../../Button/Button.vue";
+import Button from "@registry/components/Button/Button.vue";
 import {
   Combobox,
   ComboboxAnchor,
@@ -14,7 +14,7 @@ import {
   ComboboxList,
   ComboboxTrigger,
   ComboboxViewport,
-} from "../";
+} from "@registry/components/Combobox";
 
 const frameworks = [
   { value: "next.js", label: "Next.js" },
@@ -69,7 +69,7 @@ const meta = {
   decorators: [
     () => ({
       components: { StorybookWrapperSimple },
-      template: "<StorybookWrapperSimple><story /></StorybookWrapperSimple>",
+      template: /* html */ "<StorybookWrapperSimple><story /></StorybookWrapperSimple>",
     }),
   ],
 } satisfies Meta<typeof Combobox>;
@@ -85,11 +85,11 @@ export const Default: Story = {
       const selectedFramework = ref<(typeof frameworks)[number]>();
       return { frameworks, selectedFramework };
     },
-    template: `
+    template: /* html */ `
       <Combobox v-model="selectedFramework" by="label">
         <ComboboxAnchor as-child>
           <ComboboxTrigger as-child>
-            <Button variant="outline" class="w-[200px] justify-between">
+            <Button variant="outline" class="w-50 justify-between">
               {{ selectedFramework?.label ?? "Select framework..." }}
               <ChevronsUpDownIcon class="opacity-50" />
             </Button>
@@ -124,11 +124,11 @@ export const Multiple: Story = {
       const selectedFrameworks = ref<typeof frameworks>([]);
       return { frameworks, selectedFrameworks };
     },
-    template: `
+    template: /* html */ `
       <Combobox v-model="selectedFrameworks" multiple by="label">
         <ComboboxAnchor as-child>
           <ComboboxTrigger as-child>
-            <Button variant="outline" class="w-[280px] justify-between">
+            <Button variant="outline" class="w-70 justify-between">
               <span class="truncate">
                 {{
                   selectedFrameworks.length > 0
@@ -140,7 +140,7 @@ export const Multiple: Story = {
             </Button>
           </ComboboxTrigger>
         </ComboboxAnchor>
-        <ComboboxList class="w-[280px]" align="start">
+        <ComboboxList class="w-70" align="start">
           <ComboboxInput placeholder="Search framework..." />
           <ComboboxEmpty>No framework found.</ComboboxEmpty>
           <ComboboxGroup>

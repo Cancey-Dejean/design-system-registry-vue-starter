@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/vue3";
-import { Input } from "../../Input";
-import { Field, FieldDescription, FieldGroup, FieldLabel } from "..";
+import { Input } from "@registry/components/Input";
+import { Field, FieldDescription, FieldGroup, FieldLabel } from "@registry/components/Field";
 
 const meta: Meta<typeof Field> = {
   title: "Components/Field",

@@ -13,7 +13,7 @@ const meta = {
   decorators: [
     () => ({
       components: { StorybookWrapper },
-      template: "<StorybookWrapper><story /></StorybookWrapper>",
+      template: /* html */ `<StorybookWrapper><story /></StorybookWrapper>`,
     }),
   ],
   argTypes: {

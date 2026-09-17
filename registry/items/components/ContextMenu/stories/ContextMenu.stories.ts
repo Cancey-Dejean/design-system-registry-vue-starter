@@ -16,7 +16,7 @@ import {
   ContextMenuSubContent,
   ContextMenuSubTrigger,
   ContextMenuTrigger,
-} from "../";
+} from "@registry/components/ContextMenu";
 
 const contextMenuParts = {
   Code2Icon,
@@ -47,7 +47,7 @@ const meta = {
   decorators: [
     () => ({
       components: { StorybookWrapperSimple },
-      template: "<StorybookWrapperSimple><story /></StorybookWrapperSimple>",
+      template: /* html */ `<StorybookWrapperSimple><story /></StorybookWrapperSimple>`,
     }),
   ],
 } satisfies Meta<typeof ContextMenu>;
@@ -65,10 +65,10 @@ export const Default: Story = {
       const person = ref("pedro");
       return { showBookmarks, showFullUrls, person };
     },
-    template: `
+    template: /* html */ `
       <ContextMenu>
         <ContextMenuTrigger
-          class="flex h-[150px] w-[300px] items-center justify-center rounded-md border border-dashed text-sm"
+          class="flex h-37.5 w-75 items-center justify-center rounded-md border border-dashed text-sm"
         >
           Right click here
         </ContextMenuTrigger>
@@ -133,10 +133,10 @@ export const Default: Story = {
 export const Simple: Story = {
   render: () => ({
     components: contextMenuParts,
-    template: `
+    template: /* html */ `
       <ContextMenu>
         <ContextMenuTrigger
-          class="flex h-[120px] w-[240px] items-center justify-center rounded-md border border-dashed text-sm"
+          class="flex h-30 w-60 items-center justify-center rounded-md border border-dashed text-sm"
         >
           Right click
         </ContextMenuTrigger>

@@ -1,8 +1,15 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import { ArrowUpRightIcon, Bell, Cloud, FolderCode, RefreshCcw } from "@lucide/vue";
 import StorybookWrapperSimple from "@registry/utility/StorybookWrapperSimple.vue";
-import { Button } from "../../Button";
-import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from "../";
+import { Button } from "@registry/components/Button";
+import {
+  Empty,
+  EmptyContent,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyMedia,
+  EmptyTitle,
+} from "@registry/components/Empty";
 
 const emptyParts = {
   ArrowUpRightIcon,
@@ -30,7 +37,7 @@ const meta = {
     () => ({
       components: { StorybookWrapperSimple },
       template:
-        "<StorybookWrapperSimple class='w-full max-w-lg px-4'><story /></StorybookWrapperSimple>",
+        /* html */ `<StorybookWrapperSimple class='w-full max-w-lg px-4'><story /></StorybookWrapperSimple>`,
     }),
   ],
 } satisfies Meta<typeof Empty>;
@@ -42,7 +49,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: () => ({
     components: emptyParts,
-    template: `
+    template: /* html */ `
       <Empty>
         <EmptyHeader>
           <EmptyMedia variant="icon">
@@ -74,7 +81,7 @@ export const Default: Story = {
 export const Outline: Story = {
   render: () => ({
     components: emptyParts,
-    template: `
+    template: /* html */ `
       <Empty class="border border-dashed">
         <EmptyHeader>
           <EmptyMedia variant="icon">
@@ -97,7 +104,7 @@ export const Outline: Story = {
 export const Background: Story = {
   render: () => ({
     components: emptyParts,
-    template: `
+    template: /* html */ `
       <Empty class="from-muted/50 to-background h-full bg-gradient-to-b from-30%">
         <EmptyHeader>
           <EmptyMedia variant="icon">

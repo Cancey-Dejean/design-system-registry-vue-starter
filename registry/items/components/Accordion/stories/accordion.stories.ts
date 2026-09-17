@@ -1,5 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@registry/components/Accordion";
 import { sections } from "./Accordion.data.ts";
 import StorybookWrapper from "@registry/utility/StorybookWrapper.vue";
 

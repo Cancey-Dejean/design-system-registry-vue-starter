@@ -8,7 +8,7 @@ import {
   CommandList,
   CommandSeparator,
   CommandShortcut,
-} from "..";
+} from "@registry/components/Command";
 
 const meta: Meta<typeof Command> = {
   title: "Components/Command",

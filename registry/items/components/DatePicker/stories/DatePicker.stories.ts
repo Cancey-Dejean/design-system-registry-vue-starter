@@ -4,7 +4,7 @@ import type { Ref } from "vue";
 import { getLocalTimeZone, today } from "@internationalized/date";
 import { ref } from "vue";
 import StorybookWrapperSimple from "@registry/utility/StorybookWrapperSimple.vue";
-import { DatePicker } from "../";
+import { DatePicker } from "@registry/components/DatePicker";
 
 const meta = {
   title: "Components/Date Picker",
@@ -16,7 +16,7 @@ const meta = {
   decorators: [
     () => ({
       components: { StorybookWrapperSimple },
-      template: "<StorybookWrapperSimple><story /></StorybookWrapperSimple>",
+      template: /* html */ "<StorybookWrapperSimple><story /></StorybookWrapperSimple>",
     }),
   ],
 } satisfies Meta<typeof DatePicker>;
@@ -32,7 +32,7 @@ export const Default: Story = {
       const date = ref() as Ref<DateValue | undefined>;
       return { date };
     },
-    template: '<DatePicker v-model="date" />',
+    template: /* html */ `<DatePicker v-model="date" />`,
   }),
 };
 
@@ -44,7 +44,7 @@ export const WithValue: Story = {
       const date = ref(today(getLocalTimeZone())) as Ref<DateValue | undefined>;
       return { date };
     },
-    template: '<DatePicker v-model="date" />',
+    template: /* html */ `<DatePicker v-model="date" />`,
   }),
 };
 
@@ -56,6 +56,6 @@ export const CustomPlaceholder: Story = {
       const date = ref() as Ref<DateValue | undefined>;
       return { date };
     },
-    template: '<DatePicker v-model="date" placeholder="Select a birth date" />',
+    template: /* html */ `<DatePicker v-model="date" placeholder="Select a birth date" />`,
   }),
 };

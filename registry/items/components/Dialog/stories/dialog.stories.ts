@@ -9,7 +9,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "..";
+} from "@registry/components/Dialog";
 
 const meta: Meta<typeof Dialog> = {
   title: "Components/Dialog",

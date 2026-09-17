@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import { Minus, Plus } from "@lucide/vue";
 import { ref } from "vue";
 import StorybookWrapperSimple from "@registry/utility/StorybookWrapperSimple.vue";
-import { Button } from "../../Button";
+import { Button } from "@registry/components/Button";
 import {
   Drawer,
   DrawerClose,
@@ -12,7 +12,7 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "../";
+} from "@registry/components/Drawer";
 
 const drawerParts = {
   Button,
@@ -38,7 +38,7 @@ const meta = {
   decorators: [
     () => ({
       components: { StorybookWrapperSimple },
-      template: "<StorybookWrapperSimple><story /></StorybookWrapperSimple>",
+      template: /* html */ `<StorybookWrapperSimple><story /></StorybookWrapperSimple>`,
     }),
   ],
 } satisfies Meta<typeof Drawer>;
@@ -54,7 +54,7 @@ export const Default: Story = {
       const goal = ref(350);
       return { goal };
     },
-    template: `
+    template: /* html */ `
       <Drawer>
         <DrawerTrigger as-child>
           <Button variant="outline">Open Drawer</Button>
@@ -116,7 +116,7 @@ export const Default: Story = {
 export const Confirmation: Story = {
   render: () => ({
     components: drawerParts,
-    template: `
+    template: /* html */ `
       <Drawer>
         <DrawerTrigger as-child>
           <Button variant="outline">Open</Button>
@@ -144,7 +144,7 @@ export const Confirmation: Story = {
 export const Right: Story = {
   render: () => ({
     components: drawerParts,
-    template: `
+    template: /* html */ `
       <Drawer direction="right">
         <DrawerTrigger as-child>
           <Button variant="outline">Open Right</Button>
