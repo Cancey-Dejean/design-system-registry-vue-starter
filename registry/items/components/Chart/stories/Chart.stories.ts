@@ -7,7 +7,7 @@ import {
   VisTooltip,
   VisXYContainer,
 } from "@unovis/vue";
-import StorybookWrapperSimple from "@/components/utility/StorybookWrapperSimple.vue";
+import StorybookWrapperSimple from "@registry/utility/StorybookWrapperSimple.vue";
 import type { ChartConfig } from "../Chart.types";
 import ChartContainer from "../ChartContainer.vue";
 import ChartLegendContent from "../ChartLegendContent.vue";

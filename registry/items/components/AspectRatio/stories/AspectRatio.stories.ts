@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
-import StorybookWrapper from "@/components/utility/StorybookWrapper.vue";
 import { AspectRatio } from "../";
+import StorybookWrapper from "@registry/utility/StorybookWrapper.vue";
 
 const meta = {
   title: "Components/Aspect Ratio",
@@ -14,7 +14,7 @@ const meta = {
       components: { StorybookWrapper },
       // Explicit width: AspectRatio is width:100% of its parent, and the
       // absolutely positioned child does not give the parent intrinsic size.
-      template: '<StorybookWrapper class="w-96"><story /></StorybookWrapper>',
+      template: /* html */ `<StorybookWrapper class="w-96"><story /></StorybookWrapper>`,
     }),
   ],
   argTypes: {
@@ -36,7 +36,7 @@ const meta = {
   render: (args) => ({
     components: { AspectRatio },
     setup: () => ({ args }),
-    template: `
+    template: /* html */ `
       <AspectRatio v-bind="args" class="bg-muted overflow-hidden rounded-lg">
         <img
           src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80"

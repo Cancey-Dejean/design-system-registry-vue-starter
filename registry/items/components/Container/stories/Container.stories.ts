@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
-import StorybookWrapper from "@registry/components/utility/StorybookWrapper.vue";
+
 import { CONTAINER_SIZES, Container } from "../";
+import StorybookWrapper from "@registry/utility/StorybookWrapper.vue";
 
 const meta = {
   title: "Components/Container",

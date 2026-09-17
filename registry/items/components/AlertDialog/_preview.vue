@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Button from "../Button/Button.vue";
+import Button from "@registry/components/Button/Button.vue";
 import {
   AlertDialog,
   AlertDialogAction,

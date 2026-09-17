@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import { watchOnce } from "@vueuse/core";
 import { ref } from "vue";
-import StorybookWrapperSimple from "@/components/utility/StorybookWrapperSimple.vue";
+import StorybookWrapperSimple from "@registry/utility/StorybookWrapperSimple.vue";
 import { Card, CardContent } from "../../Card";
 import type { CarouselApi } from "../index";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "../";

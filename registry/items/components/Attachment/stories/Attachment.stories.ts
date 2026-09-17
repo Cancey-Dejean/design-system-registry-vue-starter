@@ -9,17 +9,17 @@ import {
   TableIcon,
   XIcon,
 } from "@lucide/vue";
-import StorybookWrapper from "@/components/utility/StorybookWrapper.vue";
-import Spinner from "../../Spinner/Spinner.vue";
-import Attachment from "../Attachment.vue";
+import StorybookWrapper from "@registry/utility/StorybookWrapper.vue";
+import Spinner from "@registry/components/Spinner/Spinner.vue";
+import Attachment from "@registry/components/Attachment/Attachment.vue";
 import AttachmentAction from "../AttachmentAction.vue";
-import AttachmentActions from "../AttachmentActions.vue";
-import AttachmentContent from "../AttachmentContent.vue";
-import AttachmentDescription from "../AttachmentDescription.vue";
-import AttachmentGroup from "../AttachmentGroup.vue";
-import AttachmentMedia from "../AttachmentMedia.vue";
-import AttachmentTitle from "../AttachmentTitle.vue";
-import AttachmentTrigger from "../AttachmentTrigger.vue";
+import AttachmentActions from "@registry/components/Attachment/AttachmentActions.vue";
+import AttachmentContent from "@registry/components/Attachment/AttachmentContent.vue";
+import AttachmentDescription from "@registry/components/Attachment/AttachmentDescription.vue";
+import AttachmentGroup from "@registry/components/Attachment/AttachmentGroup.vue";
+import AttachmentMedia from "@registry/components/Attachment/AttachmentMedia.vue";
+import AttachmentTitle from "@registry/components/Attachment/AttachmentTitle.vue";
+import AttachmentTrigger from "@registry/components/Attachment/AttachmentTrigger.vue";
 
 const images = [
   {
@@ -73,7 +73,7 @@ const meta = {
   decorators: [
     () => ({
       components: { StorybookWrapper },
-      template: "<StorybookWrapper class='w-full max-w-sm px-4'><story /></StorybookWrapper>",
+      template: /* html */ `<StorybookWrapper class='w-full max-w-sm px-4'><story /></StorybookWrapper>`,
     }),
   ],
   argTypes: {
@@ -105,7 +105,7 @@ export const Default: Story = {
   render: (args) => ({
     components: attachmentParts,
     setup: () => ({ args }),
-    template: `
+    template: /* html */ `
       <Attachment v-bind="args" class="w-full">
         <AttachmentMedia>
           <FileTextIcon />
@@ -129,7 +129,7 @@ export const Image: Story = {
   render: () => ({
     components: attachmentParts,
     setup: () => ({ images }),
-    template: `
+    template: /* html */ `
       <AttachmentGroup class="w-full">
         <Attachment
           v-for="image in images"
@@ -166,7 +166,7 @@ export const Image: Story = {
 export const States: Story = {
   render: () => ({
     components: attachmentParts,
-    template: `
+    template: /* html */ `
       <div class="flex w-full flex-col gap-2">
         <Attachment state="idle" class="w-full">
           <AttachmentMedia>
@@ -250,7 +250,7 @@ export const States: Story = {
 export const Sizes: Story = {
   render: () => ({
     components: attachmentParts,
-    template: `
+    template: /* html */ `
       <div class="flex w-full flex-col gap-3">
         <Attachment size="default" class="w-full">
           <AttachmentMedia>
@@ -299,7 +299,7 @@ export const Group: Story = {
         { name: "renderer.vue", meta: "Vue · 12 KB", icon: FileCodeIcon },
       ],
     }),
-    template: `
+    template: /* html */ `
       <AttachmentGroup class="w-full">
         <Attachment v-for="item in items" :key="item.name" class="w-64">
           <AttachmentMedia v-if="item.src" variant="image">
@@ -327,7 +327,7 @@ export const Group: Story = {
 export const Trigger: Story = {
   render: () => ({
     components: attachmentParts,
-    template: `
+    template: /* html */ `
       <Attachment class="w-full">
         <AttachmentMedia>
           <FileTextIcon />

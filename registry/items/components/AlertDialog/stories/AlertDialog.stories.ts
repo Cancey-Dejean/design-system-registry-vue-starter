@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
-import StorybookWrapperSimple from "@/components/utility/StorybookWrapperSimple.vue";
+
 import {
   AlertDialog,
   AlertDialogAction,
@@ -11,7 +11,9 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "../";
-import { Button } from "../../Button";
+
+import StorybookWrapperSimple from "@registry/utility/StorybookWrapperSimple.vue";
+import Button from "@registry/components/Button/Button.vue";
 
 const meta = {
   title: "Components/Alert Dialog",
@@ -23,7 +25,7 @@ const meta = {
   decorators: [
     () => ({
       components: { StorybookWrapperSimple },
-      template: "<StorybookWrapperSimple><story /></StorybookWrapperSimple>",
+      template: /* html */ `<StorybookWrapperSimple><story /></StorybookWrapperSimple>`,
     }),
   ],
   render: (args) => ({
@@ -40,7 +42,7 @@ const meta = {
       Button,
     },
     setup: () => ({ args }),
-    template: `
+    template: /* html */ `
       <AlertDialog v-bind="args">
         <AlertDialogTrigger as-child>
           <Button variant="outline">Open dialog</Button>
@@ -83,7 +85,7 @@ export const DeleteConfirmation: Story = {
       Button,
     },
     setup: () => ({ args }),
-    template: `
+    template: /* html */ `
       <AlertDialog v-bind="args">
         <AlertDialogTrigger as-child>
           <Button variant="destructive">Delete project</Button>

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import { REGEXP_ONLY_DIGITS_AND_CHARS } from "vue-input-otp";
 import { ref } from "vue";
-import StorybookWrapperSimple from "@/components/utility/StorybookWrapperSimple.vue";
+import StorybookWrapperSimple from "@registry/utility/StorybookWrapperSimple.vue";
 import { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot } from "../";
 
 const otpParts = {

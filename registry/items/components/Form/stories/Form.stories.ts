@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import { toTypedSchema } from "@vee-validate/zod";
 import { useForm } from "vee-validate";
 import { z } from "zod";
-import StorybookWrapper from "@/components/utility/StorybookWrapper.vue";
+import StorybookWrapper from "@registry/utility/StorybookWrapper.vue";
 import { Button } from "../../Button";
 import { Checkbox } from "../../Checkbox";
 import { FormField, FormControl, FormDescription, FormItem, FormLabel, FormMessage } from "../";

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import { CalendarDaysIcon } from "@lucide/vue";
-import StorybookWrapperSimple from "@/components/utility/StorybookWrapperSimple.vue";
+import StorybookWrapperSimple from "@registry/utility/StorybookWrapperSimple.vue";
 import { Avatar, AvatarFallback, AvatarImage } from "../../Avatar";
 import { Button } from "../../Button";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "../";

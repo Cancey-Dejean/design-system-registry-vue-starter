@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import { Code2Icon, PlusIcon, TrashIcon } from "@lucide/vue";
 import { ref } from "vue";
-import StorybookWrapperSimple from "@/components/utility/StorybookWrapperSimple.vue";
+import StorybookWrapperSimple from "@registry/utility/StorybookWrapperSimple.vue";
 import {
   ContextMenu,
   ContextMenuCheckboxItem,

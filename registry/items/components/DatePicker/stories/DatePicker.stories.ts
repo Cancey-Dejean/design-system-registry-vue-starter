@@ -3,7 +3,7 @@ import type { DateValue } from "@internationalized/date";
 import type { Ref } from "vue";
 import { getLocalTimeZone, today } from "@internationalized/date";
 import { ref } from "vue";
-import StorybookWrapperSimple from "@/components/utility/StorybookWrapperSimple.vue";
+import StorybookWrapperSimple from "@registry/utility/StorybookWrapperSimple.vue";
 import { DatePicker } from "../";
 
 const meta = {

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
-import StorybookWrapperSimple from "@/components/utility/StorybookWrapperSimple.vue";
+import StorybookWrapperSimple from "@registry/utility/StorybookWrapperSimple.vue";
 import { Bubble, BubbleContent, BubbleGroup, BubbleReactions, BUBBLE_VARIANTS } from "../";
 
 const bubbleParts = {

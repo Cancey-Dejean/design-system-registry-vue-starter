@@ -145,7 +145,7 @@ Most components need nothing extra. A component whose whole point is filling its
 width with nothing to constrain it against:
 
 ```ts
-import StorybookWrapper from "@registry/components/utility/StorybookWrapper.vue";
+import StorybookWrapper from "@registry/utility/StorybookWrapper.vue";
 
 const meta = {
   title: "Components/Container",
