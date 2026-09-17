@@ -49,16 +49,13 @@ const html = useHighlightedCode(
       size="icon-sm"
       class="absolute top-2 right-2 z-10 bg-muted/90 group-hover/code-block:opacity-100 sm:opacity-0"
     />
-    <div
-      v-if="html"
-      class="shiki-numbered overflow-x-auto py-3 pl-4 text-[13px] [&_pre]:!bg-transparent"
-      :class="slots.header ? 'pr-4' : 'pr-12'"
-      v-html="html"
-    />
     <pre
-      v-else
-      class="overflow-x-auto py-3 pl-4 text-[13px]"
-      :class="slots.header ? 'pr-4' : 'pr-12'"
-    ><code>{{ code }}</code></pre>
+      :class="
+        cn(
+          'shiki shiki-themes github-light github-dark shiki-numbered overflow-x-auto py-3 pl-4 text-[13px]',
+          slots.header ? 'pr-4' : 'pr-12',
+        )
+      "
+    ><code v-if="html" v-html="html" /><code v-else>{{ code }}</code></pre>
   </div>
 </template>

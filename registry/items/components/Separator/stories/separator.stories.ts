@@ -12,7 +12,7 @@ type Story = StoryObj<typeof Separator>;
 export const Horizontal: Story = {
   render: () => ({
     components: { Separator },
-    template: `
+    template: /* html */ `
       <div>
         <div class="text-sm">Section one</div>
         <Separator class="my-4" />
@@ -25,7 +25,7 @@ export const Horizontal: Story = {
 export const Vertical: Story = {
   render: () => ({
     components: { Separator },
-    template: `
+    template: /* html */ `
       <div class="flex h-5 items-center gap-4 text-sm">
         <span>Left</span>
         <Separator orientation="vertical" />

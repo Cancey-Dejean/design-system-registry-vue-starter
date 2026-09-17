@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/vue3";
-import { Button } from "../../Button";
+import { Button } from "@registry/components/Button";
 import {
   Sheet,
   SheetClose,
@@ -9,7 +9,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "..";
+} from "@registry/components/Sheet";
 
 const meta: Meta<typeof Sheet> = {
   title: "Components/Sheet",
@@ -32,7 +32,7 @@ export const Default: Story = {
       SheetTrigger,
       Button,
     },
-    template: `
+    template: /* html */ `
       <Sheet>
         <SheetTrigger as-child>
           <Button variant="outline">Open</Button>

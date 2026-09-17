@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { RegistryNavigationItem } from "~/lib/navigation";
 import { Card, CardDescription, CardHeader, CardTitle } from "#registry-ui/Card";
+import type { RegistryNavigationItem } from "~/lib/navigation";
 import DocsPageHeader from "./DocsPageHeader.vue";
 
 defineProps<{
@@ -21,7 +21,10 @@ defineProps<{
       :page-path="catalog.basePath"
     />
 
-    <div v-if="catalog.items.length > 0" class="grid gap-4 sm:grid-cols-2 md:grid-cols-4">
+    <div
+      v-if="catalog.items.length > 0"
+      class="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+    >
       <NuxtLink
         v-for="item in catalog.items"
         :key="item.name"

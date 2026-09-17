@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { Search } from "@lucide/vue";
+import type { LucideIcon } from "@lucide/vue";
+import { Blocks, Component, FileText, Folder, Search, Wrench } from "@lucide/vue";
 import { Button } from "@registry/components/Button";
 import {
   CommandDialog,
@@ -10,12 +11,30 @@ import {
   CommandList,
 } from "@registry/components/Command";
 import { useMagicKeys } from "@vueuse/core";
-import type { SiteNavigationItem } from "~/lib/navigation";
+import type { HTMLAttributes } from "vue";
+import type { SiteNavigationItem, SiteNavigationSectionId } from "~/lib/navigation";
+import { cn } from "~/lib/utils";
+
+const props = defineProps<{
+  class?: HTMLAttributes["class"];
+}>();
 
 const open = ref(false);
 const { data: sections } = useSiteNavigation();
 
-const sectionOrder: SiteNavigationItem["kind"][] = ["docs"];
+// One icon per navigation section so results stay scannable. A new registry section
+// (added to `registrySections`) falls back to `Folder` instead of needing a code change here.
+const sectionIcons: Partial<Record<SiteNavigationSectionId, LucideIcon>> = {
+  docs: FileText,
+  components: Component,
+  blocks: Blocks,
+  utilities: Wrench,
+};
+
+function itemIcon(item: SiteNavigationItem): LucideIcon {
+  const sectionId: SiteNavigationSectionId = item.kind === "docs" ? "docs" : item.sectionId;
+  return sectionIcons[sectionId] ?? Folder;
+}
 
 const groupedItems = computed(() => {
   const groups = (sections.value ?? []).map((section) => ({
@@ -53,7 +72,7 @@ watch(keys["Ctrl+K"], (pressed) => {
 <template>
   <Button
     variant="outline"
-    class="mr-4 hidden w-56 justify-between text-muted-foreground sm:flex"
+    :class="cn('w-full justify-between text-muted-foreground', props.class)"
     @click="open = true"
   >
     <span class="flex min-w-0 items-center gap-2">
@@ -62,15 +81,6 @@ watch(keys["Ctrl+K"], (pressed) => {
     </span>
     <span class="rounded border px-1.5 text-xs text-muted-foreground">⌘K</span>
   </Button>
-  <Button
-    variant="ghost"
-    size="icon-md"
-    class="sm:hidden"
-    aria-label="Search docs and registry"
-    @click="open = true"
-  >
-    <Search />
-  </Button>
 
   <CommandDialog
     v-model:open="open"
@@ -78,7 +88,7 @@ watch(keys["Ctrl+K"], (pressed) => {
     description="Search docs and registry items."
   >
     <CommandInput placeholder="Search docs..." />
-    <CommandList>
+    <CommandList class="py-2">
       <CommandEmpty>No results found.</CommandEmpty>
       <CommandGroup v-for="group in groupedItems" :key="group.id" :heading="group.title">
         <CommandItem
@@ -87,6 +97,7 @@ watch(keys["Ctrl+K"], (pressed) => {
           :value="`${item.title} ${item.kind === 'registry' ? item.name : item.slug} ${item.description}`"
           @select="onSelect(item)"
         >
+          <component :is="itemIcon(item)" />
           <span class="min-w-0 truncate">{{ item.title }}</span>
         </CommandItem>
       </CommandGroup>

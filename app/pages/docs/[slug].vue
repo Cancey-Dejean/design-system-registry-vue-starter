@@ -26,6 +26,7 @@ useHead({ title: computed(() => page.value?.title) });
         description: page.description,
         routePath: `/docs/${page.slug}`,
         body: page.body,
+        toc: page.toc,
       }"
     />
   </DocsLayout>

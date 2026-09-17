@@ -1,4 +1,5 @@
 import { queryCollection } from "@nuxt/content/server";
+import type { Toc } from "@nuxt/content";
 import type { H3Event } from "h3";
 
 export interface DocsCatalogPage {
@@ -9,6 +10,8 @@ export interface DocsCatalogPage {
   markdown: string;
   /** Parsed markdown AST (render with <ContentRenderer :value="{ body }" />). */
   body: unknown;
+  /** Table of contents generated from the page's h2/h3 headings. */
+  toc?: Toc;
 }
 
 const frontmatterPattern = /^---\r?\n[\s\S]*?\r?\n---\r?\n?/;
@@ -26,7 +29,9 @@ function slugFromPath(path: string): string {
 }
 
 async function readDocsMarkdown(slug: string): Promise<string> {
-  const raw = await useStorage("assets:docs").getItem<string>(`${slug}.md`);
+  const storage = useStorage("assets:docs");
+  const raw =
+    (await storage.getItem<string>(`${slug}.md`)) ?? (await storage.getItem<string>(`${slug}.mdx`));
 
   if (typeof raw !== "string") {
     throw createError({ statusCode: 404, statusMessage: `Docs markdown not found: ${slug}` });
@@ -37,6 +42,7 @@ async function readDocsMarkdown(slug: string): Promise<string> {
 
 async function toDocsCatalogPage(row: DocsCollectionRow): Promise<DocsCatalogPage> {
   const slug = slugFromPath(row.path);
+  const body = row.body as { toc?: Toc } | undefined;
 
   return {
     slug,
@@ -45,6 +51,7 @@ async function toDocsCatalogPage(row: DocsCollectionRow): Promise<DocsCatalogPag
     order: row.order,
     markdown: await readDocsMarkdown(slug),
     body: row.body,
+    toc: body?.toc,
   };
 }
 

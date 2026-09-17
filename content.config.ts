@@ -44,7 +44,7 @@ export default defineContentConfig({
     docs: defineCollection({
       type: "page",
       source: {
-        include: "**/*.md",
+        include: "**/*.{md,mdx}",
         cwd: "content/docs",
       },
       schema: z.object({

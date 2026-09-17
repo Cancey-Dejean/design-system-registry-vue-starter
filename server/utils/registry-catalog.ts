@@ -22,6 +22,11 @@ export interface RegistryCatalogItem {
   body: unknown;
   /** Raw markdown usage docs (everything below the frontmatter in _registry.md). */
   usageMarkdown: string;
+  /**
+   * Raw source of `_preview.vue` — the exact code that renders this item's live Preview tab.
+   * Undefined when the item has no preview demo (see preview-map.ts's own hasPreview check).
+   */
+  previewCode?: string;
 }
 
 function toDefaultTitle(name: string): string {
@@ -55,16 +60,23 @@ function rewriteInternalAliasesForPublishing(content: string): string {
   return content.replace(/#registry-ui\//g, "@/components/ui/");
 }
 
-// Component folders are a mix of PascalCase (on disk) and kebab-case (in each item's `name`
-// frontmatter, which is what folder/name/file.path keys get built from below) — the same
-// drift fixed case-insensitively elsewhere in this project (preview-map.ts, CommandItem.vue).
-// unstorage's key lookup is exact-match, so build a case-insensitive index once per cold start.
+// Component folders are a mix of PascalCase (on disk, no word separator, e.g. "AlertDialog") and
+// kebab-case (in each item's `name` frontmatter, e.g. "alert-dialog" — which is what
+// folder/name/file.path keys get built from below). Lowercasing alone only reconciles casing
+// drift, not the missing hyphen, so both sides also strip non-alphanumeric characters here —
+// the same drift fixed case-insensitively (but not hyphen-insensitively) elsewhere in this
+// project (preview-map.ts, CommandItem.vue). unstorage's key lookup is exact-match, so build a
+// normalized index once per cold start.
 let registryAssetKeyMapPromise: Promise<Map<string, string>> | undefined;
+
+function normalizeAssetKey(key: string): string {
+  return key.toLowerCase().replace(/[^a-z0-9:]/g, "");
+}
 
 async function getRegistryAssetKeyMap(): Promise<Map<string, string>> {
   registryAssetKeyMapPromise ??= useStorage("assets:registry-items")
     .getKeys()
-    .then((keys) => new Map(keys.map((key) => [key.toLowerCase(), key])));
+    .then((keys) => new Map(keys.map((key) => [normalizeAssetKey(key), key])));
 
   return registryAssetKeyMapPromise;
 }
@@ -73,7 +85,7 @@ async function getRegistryAssetKeyMap(): Promise<Map<string, string>> {
  *  use `:` as the separator (and match the real on-disk casing), so both get normalized here. */
 async function readRegistryAsset(path: string): Promise<string> {
   const keyMap = await getRegistryAssetKeyMap();
-  const lookupKey = path.replace(/\//g, ":").toLowerCase();
+  const lookupKey = normalizeAssetKey(path.replace(/\//g, ":"));
   const realKey = keyMap.get(lookupKey);
   const raw = realKey ? await useStorage("assets:registry-items").getItem(realKey) : null;
 
@@ -94,11 +106,23 @@ async function readUsageMarkdown(type: RegistryItemType, name: string): Promise<
   return raw.replace(frontmatterPattern, "").trim();
 }
 
+async function readPreviewCode(type: RegistryItemType, name: string): Promise<string | undefined> {
+  const folder = getRegistryTypeFolder(type);
+
+  try {
+    const raw = await readRegistryAsset(`${folder}/${name}/_preview.vue`);
+    return rewriteInternalAliasesForPublishing(raw);
+  } catch {
+    // Not every item has a _preview.vue (see preview-map.ts's hasPreview) — no demo to show.
+    return undefined;
+  }
+}
+
 async function resolveRegistryCatalogItem(
   item: RegistryItemCollectionRow,
 ): Promise<RegistryCatalogItem> {
   const folder = getRegistryTypeFolder(item.type);
-  const [files, usageMarkdown] = await Promise.all([
+  const [files, usageMarkdown, previewCode] = await Promise.all([
     Promise.all(
       (item.files ?? []).map(async (file) => {
         const rawContent = await readRegistryAsset(`${folder}/${item.name}/${file.path}`);
@@ -106,6 +130,7 @@ async function resolveRegistryCatalogItem(
       }),
     ),
     readUsageMarkdown(item.type, item.name),
+    readPreviewCode(item.type, item.name),
   ]);
 
   return {
@@ -119,6 +144,7 @@ async function resolveRegistryCatalogItem(
     hasUsage: Boolean(item.body),
     body: item.body,
     usageMarkdown,
+    previewCode,
   };
 }
 

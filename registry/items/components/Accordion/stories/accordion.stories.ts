@@ -1,28 +1,75 @@
-import type { Meta, StoryObj } from "@storybook/vue3";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "..";
+import type { Meta, StoryObj } from "@storybook/vue3-vite";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@registry/components/Accordion";
+import { sections } from "./Accordion.data.ts";
+import StorybookWrapper from "@registry/utility/StorybookWrapper.vue";
 
-const meta: Meta<typeof Accordion> = {
+const meta = {
   title: "Components/Accordion",
   component: Accordion,
-};
-
-export default meta;
-type Story = StoryObj<typeof Accordion>;
-
-export const Single: Story = {
-  render: () => ({
+  parameters: {
+    layout: "fullscreen",
+  },
+  decorators: [
+    () => ({
+      components: { StorybookWrapper },
+      template: /* html */ `<StorybookWrapper><story /></StorybookWrapper>`,
+    }),
+  ],
+  argTypes: {
+    type: {
+      description: "Allow one open section or several",
+      control: "inline-radio",
+      options: ["single", "multiple"],
+    },
+    collapsible: {
+      description: "Let the open section close again (single type only)",
+      control: "boolean",
+    },
+    disabled: { control: "boolean" },
+  },
+  args: {
+    type: "single",
+    collapsible: true,
+    disabled: false,
+  },
+  render: (args) => ({
     components: { Accordion, AccordionContent, AccordionItem, AccordionTrigger },
-    template: `
-      <Accordion type="single" :default-value="['item-1']" collapsible class="max-w-sm">
-        <AccordionItem value="item-1">
-          <AccordionTrigger>Is it accessible?</AccordionTrigger>
-          <AccordionContent>Yes. It adheres to the WAI-ARIA design pattern.</AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="item-2">
-          <AccordionTrigger>Is it styled?</AccordionTrigger>
-          <AccordionContent>Yes. It comes with default styles.</AccordionContent>
+    setup: () => ({ args, sections }),
+    template: /* html */ `
+      <Accordion v-bind="args" class="w-full max-w-md">
+        <AccordionItem v-for="section in sections" :key="section.value" :value="section.value">
+          <AccordionTrigger>{{ section.question }}</AccordionTrigger>
+          <AccordionContent>{{ section.answer }}</AccordionContent>
         </AccordionItem>
       </Accordion>
     `,
   }),
+} satisfies Meta<typeof Accordion>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {
+  args: {
+    defaultValue: "shipping",
+  },
+};
+
+export const Multiple: Story = {
+  args: {
+    type: "multiple",
+    defaultValue: ["shipping", "returns"],
+  },
+};
+
+export const Disabled: Story = {
+  args: {
+    defaultValue: "shipping",
+    disabled: true,
+  },
 };

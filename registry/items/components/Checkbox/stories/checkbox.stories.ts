@@ -12,7 +12,7 @@ type Story = StoryObj<typeof Checkbox>;
 export const Default: Story = {
   render: () => ({
     components: { Checkbox },
-    template: `
+    template: /* html */ `
       <div class="flex items-center gap-2">
         <Checkbox id="terms" />
         <label for="terms" class="text-sm">Accept terms and conditions</label>
@@ -24,7 +24,7 @@ export const Default: Story = {
 export const Disabled: Story = {
   render: () => ({
     components: { Checkbox },
-    template: `
+    template: /* html */ `
       <div class="flex items-center gap-2">
         <Checkbox id="terms-disabled" disabled />
         <label for="terms-disabled" class="text-sm opacity-50">Disabled</label>

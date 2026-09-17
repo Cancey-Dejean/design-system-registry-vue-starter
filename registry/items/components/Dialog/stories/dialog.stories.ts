@@ -9,7 +9,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "..";
+} from "@registry/components/Dialog";
 
 const meta: Meta<typeof Dialog> = {
   title: "Components/Dialog",
@@ -32,7 +32,7 @@ export const Default: Story = {
       DialogTrigger,
       Button,
     },
-    template: `
+    template: /* html */ `
       <Dialog>
         <DialogTrigger as-child>
           <Button variant="outline">Open Dialog</Button>

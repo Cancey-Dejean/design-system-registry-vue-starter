@@ -1,0 +1,51 @@
+---
+title: Registry
+description: Scaffold and author installable registry items under registry/items.
+order: 5
+---
+
+Registry items live under `registry/items/**` and can be installed by shadcn-compatible CLIs. Start new items with the scaffold command so the folder, `_registry.md`, source file, metadata, and generated registry JSON paths follow the template conventions.
+
+```sh
+bun --bun ./scripts/new.ts --type registry:ui --name example-card --description "A compact card component."
+```
+
+Or run the command without flags for an interactive prompt:
+
+```sh
+bun --bun ./scripts/new.ts
+```
+
+These authoring scripts expect [Bun](https://bun.com/). Consumers of the published registry do not need Bun — they install with `npx`, `pnpm dlx`, `yarn dlx`, or `bunx`.
+
+## Item layout
+
+The scaffold command above writes a PascalCase folder even though `--name` stays kebab-case
+(`example-card` → `ExampleCard/`), and the same PascalCase applies to the `.vue` file and its
+exports:
+
+```text
+registry/items/components/ExampleCard/
+  ExampleCard.vue
+  index.ts
+  _registry.md
+  _preview.vue
+```
+
+- `_registry.md` — YAML frontmatter (`name`, `type`, `title`, `description`, `files`,
+  `dependencies`, `localRegistryDependencies`) plus optional Usage markdown below it
+- `index.ts` — barrel export consumers import from (`export { default as ExampleCard } from "./ExampleCard.vue";`)
+- `_preview.vue` — live docs demo (never published in item JSON)
+- Source `.vue` / `.ts` files — published to consumers via `/r/<name>.json`
+
+Storybook stories aren't scaffolded — add them yourself under `stories/*.stories.ts`
+(`stories/ExampleCard.stories.ts`) if the item needs one; never list them in `_registry.md`'s
+`files`.
+
+CVA recipes belong in `*.variants.ts` files. Follow [variant files](/docs/variants) so keys, types, and Storybook controls stay derived from one config object.
+
+Validate the catalog after changes:
+
+```sh
+bun --bun ./scripts/doctor.ts
+```

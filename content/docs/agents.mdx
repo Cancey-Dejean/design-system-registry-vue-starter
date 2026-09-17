@@ -1,0 +1,42 @@
+---
+title: Agents
+description: Give AI coding tools the right context for using and authoring this registry.
+order: 6
+---
+
+This template is designed to work well with coding agents and LLM-powered tools. It exposes Markdown-first routes for reading context, and it ships an installable Agent Skill for authoring registry items correctly.
+
+## Install the Registry Skill
+
+From this repository (or your fork):
+
+```sh
+npx skills add <owner>/<repo> --skill shadcn-registry
+```
+
+The skill teaches agents to scaffold items under `registry/items/**`, write `_registry.md` and `_preview.vue`, follow the [variant file](/docs/variants) recipe, and run `scripts/doctor.ts`.
+
+Add a Storybook story alongside a new item with the `writing-story-files` skill:
+
+```sh
+npx skills add <owner>/<repo> --skill writing-story-files
+```
+
+After user-facing registry or docs changes, use the `updating-changelog` skill to keep [changelog](/docs/changelog) current:
+
+```sh
+npx skills add <owner>/<repo> --skill updating-changelog
+```
+
+For consuming shadcn-vue primitives in the docs shell, use the separate `shadcn-vue` skill under `.agents/skills/shadcn-vue`.
+
+## Machine-readable routes
+
+- `/llms.txt` — short index for LLM tools
+- `/llms-full.txt` — fuller dump of docs and registry context
+- Any docs or registry page as `.md` (for example `/docs/installation.md` or `/components/button.md`)
+- The same pages also negotiate by `Accept` header, so a request for `/docs/installation` or
+  `/components/button` with `Accept: text/markdown` gets raw markdown back without the `.md` suffix
+- A request from a `shadcn`-prefixed `User-Agent`, or one that sends
+  `Accept: application/vnd.shadcn.v1+json`, gets the item's registry JSON back from its page URL —
+  this is what lets `npx shadcn-vue add <page-url>` work without a separate `/r/<name>.json` link

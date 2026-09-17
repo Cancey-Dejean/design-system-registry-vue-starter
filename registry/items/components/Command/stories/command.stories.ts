@@ -8,7 +8,7 @@ import {
   CommandList,
   CommandSeparator,
   CommandShortcut,
-} from "..";
+} from "@registry/components/Command";
 
 const meta: Meta<typeof Command> = {
   title: "Components/Command",
@@ -30,7 +30,7 @@ export const Default: Story = {
       CommandSeparator,
       CommandShortcut,
     },
-    template: `
+    template: /* html */ `
       <Command class="max-w-sm rounded-lg border">
         <CommandInput placeholder="Type a command or search..." />
         <CommandList>

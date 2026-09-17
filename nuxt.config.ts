@@ -91,4 +91,13 @@ export default defineNuxtConfig({
   colorMode: {
     classSuffix: "",
   },
+  content: {
+    build: {
+      markdown: {
+        // Include h3s in the generated table of contents (default only goes to h2), so the
+        // right-side "On This Page" nav can show nested sub-sections.
+        toc: { depth: 3, searchDepth: 3 },
+      },
+    },
+  },
 });

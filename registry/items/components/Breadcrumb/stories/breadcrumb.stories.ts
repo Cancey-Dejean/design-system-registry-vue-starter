@@ -26,7 +26,7 @@ export const Default: Story = {
       BreadcrumbPage,
       BreadcrumbSeparator,
     },
-    template: `
+    template: /* html */ `
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem><BreadcrumbLink href="/">Home</BreadcrumbLink></BreadcrumbItem>

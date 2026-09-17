@@ -50,7 +50,9 @@ function getManualInstallFilePath(file: ManualInstallSourceFile): string {
 
 function langFromPath(path: string): string {
   const extension = path.split(".").at(-1);
-  return extension === "vue" || extension === "ts" || extension === "js" ? extension : "text";
+  return extension === "vue" || extension === "ts" || extension === "js" || extension === "css"
+    ? extension
+    : "text";
 }
 </script>
 

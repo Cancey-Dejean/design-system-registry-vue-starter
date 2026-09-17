@@ -3,8 +3,6 @@ import { Primitive } from "reka-ui";
 import { cn } from "@/lib/utils";
 import { type ButtonProps, buttonVariants } from ".";
 
-// import type { ButtonProps, buttonVariants } from "./Button.types";
-
 const props = withDefaults(defineProps<ButtonProps>(), {
   as: "button",
 });
