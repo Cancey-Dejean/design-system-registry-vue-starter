@@ -9,14 +9,23 @@ const previewModules = import.meta.glob<{ default: Component }>([
   "../../../registry/items/blocks/*/_preview.vue",
 ]);
 
+// Item folders are PascalCase on disk with no word separator (e.g. AlertDialog/, Hero/) while the
+// registry item's `name` stays kebab-case (e.g. "alert-dialog", "hero") — lowercasing alone isn't
+// enough to match them, so hyphens (and any other non-alphanumeric characters) are stripped too.
+function normalizeSegment(segment: string): string {
+  return segment.toLowerCase().replace(/[^a-z0-9]/g, "");
+}
+
 function toPreviewKey(name: string): string | undefined {
-  // Item folders are PascalCase on disk (e.g. Button/, Hero/) while the registry item's `name`
-  // stays kebab-case (e.g. "button", "hero"), so this match has to ignore case.
-  const lowerName = name.toLowerCase();
-  const suffixes = [`/components/${lowerName}/_preview.vue`, `/blocks/${lowerName}/_preview.vue`];
+  const normalizedName = normalizeSegment(name);
+  const suffixes = [`/components/${normalizedName}/_preview.vue`, `/blocks/${normalizedName}/_preview.vue`];
   return Object.keys(previewModules).find((path) => {
-    const lowerPath = path.toLowerCase();
-    return suffixes.some((suffix) => lowerPath.includes(suffix));
+    const normalizedPath = path
+      .split("/")
+      .map((segment) => (segment.endsWith("_preview.vue") ? segment : normalizeSegment(segment)))
+      .join("/")
+      .toLowerCase();
+    return suffixes.some((suffix) => normalizedPath.includes(suffix));
   });
 }
 

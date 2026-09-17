@@ -15,6 +15,7 @@ import {
 } from "@registry/components/Sidebar/index.ts";
 import DocsAppSidebar from "./DocsAppSidebar.vue";
 import HeaderActions from "./HeaderActions.vue";
+import SiteFooter from "./SiteFooter.vue";
 
 // No `collapsible` prop is passed to DocsAppSidebar on purpose: the nav has no icons, so it
 // relies on Sidebar's own default ("offcanvas") — the sidebar fully hides instead of shrinking
@@ -70,6 +71,9 @@ const activeItem = computed(() =>
       <div class="flex flex-1 flex-col gap-4 pl-6 pr-4 pt-6">
         <slot />
       </div>
+      <template #footer>
+        <SiteFooter />
+      </template>
     </SidebarInset>
   </SidebarProvider>
 </template>

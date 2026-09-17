@@ -8,10 +8,10 @@ dependencies:
 files:
   - path: Textarea.vue
     type: registry:ui
-    target: "@ui/Textarea/Textarea.vue"
+    target: components/ui/textarea/Textarea.vue
   - path: index.ts
     type: registry:ui
-    target: "@ui/Textarea/index.ts"
+    target: components/ui/textarea/index.ts
 ---
 
 Use the native `placeholder`, `disabled`, and `v-model` props. Pair with `Label` for accessible
@@ -19,7 +19,7 @@ forms.
 
 ```vue
 <script setup lang="ts">
-import { Textarea } from "@ui/Textarea";
+import { Textarea } from "@/components/ui/textarea";
 </script>
 
 <template>

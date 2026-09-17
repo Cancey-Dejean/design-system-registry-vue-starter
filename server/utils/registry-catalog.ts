@@ -60,16 +60,23 @@ function rewriteInternalAliasesForPublishing(content: string): string {
   return content.replace(/#registry-ui\//g, "@/components/ui/");
 }
 
-// Component folders are a mix of PascalCase (on disk) and kebab-case (in each item's `name`
-// frontmatter, which is what folder/name/file.path keys get built from below) — the same
-// drift fixed case-insensitively elsewhere in this project (preview-map.ts, CommandItem.vue).
-// unstorage's key lookup is exact-match, so build a case-insensitive index once per cold start.
+// Component folders are a mix of PascalCase (on disk, no word separator, e.g. "AlertDialog") and
+// kebab-case (in each item's `name` frontmatter, e.g. "alert-dialog" — which is what
+// folder/name/file.path keys get built from below). Lowercasing alone only reconciles casing
+// drift, not the missing hyphen, so both sides also strip non-alphanumeric characters here —
+// the same drift fixed case-insensitively (but not hyphen-insensitively) elsewhere in this
+// project (preview-map.ts, CommandItem.vue). unstorage's key lookup is exact-match, so build a
+// normalized index once per cold start.
 let registryAssetKeyMapPromise: Promise<Map<string, string>> | undefined;
+
+function normalizeAssetKey(key: string): string {
+  return key.toLowerCase().replace(/[^a-z0-9:]/g, "");
+}
 
 async function getRegistryAssetKeyMap(): Promise<Map<string, string>> {
   registryAssetKeyMapPromise ??= useStorage("assets:registry-items")
     .getKeys()
-    .then((keys) => new Map(keys.map((key) => [key.toLowerCase(), key])));
+    .then((keys) => new Map(keys.map((key) => [normalizeAssetKey(key), key])));
 
   return registryAssetKeyMapPromise;
 }
@@ -78,7 +85,7 @@ async function getRegistryAssetKeyMap(): Promise<Map<string, string>> {
  *  use `:` as the separator (and match the real on-disk casing), so both get normalized here. */
 async function readRegistryAsset(path: string): Promise<string> {
   const keyMap = await getRegistryAssetKeyMap();
-  const lookupKey = path.replace(/\//g, ":").toLowerCase();
+  const lookupKey = normalizeAssetKey(path.replace(/\//g, ":"));
   const realKey = keyMap.get(lookupKey);
   const raw = realKey ? await useStorage("assets:registry-items").getItem(realKey) : null;
 
