@@ -20,7 +20,7 @@ const meta = {
     () => ({
       components: { StorybookWrapperSimple },
       template:
-        "<StorybookWrapperSimple class='w-full max-w-sm px-4'><story /></StorybookWrapperSimple>",
+        /* html */ `<StorybookWrapperSimple class='w-full max-w-sm px-4'><story /></StorybookWrapperSimple>`,
     }),
   ],
   argTypes: {
@@ -47,7 +47,7 @@ export const Default: Story = {
   render: (args) => ({
     components: bubbleParts,
     setup: () => ({ args }),
-    template: `
+    template: /* html */ `
       <Bubble v-bind="args">
         <BubbleContent>I checked the registry output and removed the stale route.</BubbleContent>
         <BubbleReactions>
@@ -66,7 +66,7 @@ export const AlignEnd: Story = {
   render: (args) => ({
     components: bubbleParts,
     setup: () => ({ args }),
-    template: `
+    template: /* html */ `
       <Bubble v-bind="args">
         <BubbleContent>Sure. Hit me with your best demo.</BubbleContent>
       </Bubble>
@@ -82,7 +82,7 @@ export const Variants: Story = {
   render: () => ({
     components: bubbleParts,
     setup: () => ({ variants: BUBBLE_VARIANTS }),
-    template: `
+    template: /* html */ `
       <div class="flex w-full flex-col gap-3">
         <Bubble v-for="variant in variants" :key="variant" :variant="variant">
           <BubbleContent>{{ variant }}</BubbleContent>
@@ -96,7 +96,7 @@ export const Variants: Story = {
 export const Group: Story = {
   render: () => ({
     components: bubbleParts,
-    template: `
+    template: /* html */ `
       <BubbleGroup>
         <Bubble variant="muted">
           <BubbleContent>Hey! Want to see chat bubbles?</BubbleContent>
@@ -118,7 +118,7 @@ export const Group: Story = {
 export const Thread: Story = {
   render: () => ({
     components: bubbleParts,
-    template: `
+    template: /* html */ `
       <div class="flex w-full flex-col gap-8">
         <Bubble align="end">
           <BubbleContent>Hey there! what's up?</BubbleContent>

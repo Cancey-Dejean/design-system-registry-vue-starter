@@ -2,9 +2,17 @@ import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import { watchOnce } from "@vueuse/core";
 import { ref } from "vue";
 import StorybookWrapperSimple from "@registry/utility/StorybookWrapperSimple.vue";
-import { Card, CardContent } from "../../Card";
-import type { CarouselApi } from "../index";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "../";
+
+import { CardContent, Card } from "@registry/components/Card";
+
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+  type CarouselApi,
+} from "../";
 
 const carouselParts = {
   Card,
@@ -27,7 +35,7 @@ const meta = {
     () => ({
       components: { StorybookWrapperSimple },
       template:
-        "<StorybookWrapperSimple class='w-full max-w-md px-16'><story /></StorybookWrapperSimple>",
+        /* html */ `<StorybookWrapperSimple class='w-full max-w-md px-16'><story /></StorybookWrapperSimple>`,
     }),
   ],
   argTypes: {
@@ -49,7 +57,7 @@ export const Default: Story = {
   render: (args) => ({
     components: carouselParts,
     setup: () => ({ args }),
-    template: `
+    template: /* html */ `
       <Carousel v-bind="args" class="w-full max-w-xs">
         <CarouselContent>
           <CarouselItem v-for="i in 5" :key="i">
@@ -73,7 +81,7 @@ export const Default: Story = {
 export const Sizes: Story = {
   render: () => ({
     components: carouselParts,
-    template: `
+    template: /* html */ `
       <Carousel
         class="relative w-full max-w-xs"
         :opts="{ align: 'start' }"
@@ -108,7 +116,7 @@ export const Orientation: Story = {
   render: (args) => ({
     components: carouselParts,
     setup: () => ({ args }),
-    template: `
+    template: /* html */ `
       <Carousel
         v-bind="args"
         class="relative w-full max-w-xs"
@@ -162,7 +170,7 @@ export const WithApi: Story = {
 
       return { setApi, totalCount, current };
     },
-    template: `
+    template: /* html */ `
       <div class="w-full max-w-xs">
         <Carousel class="relative w-full" @init-api="setApi">
           <CarouselContent>

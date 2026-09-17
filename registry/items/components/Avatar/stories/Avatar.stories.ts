@@ -18,7 +18,7 @@ const meta = {
   decorators: [
     () => ({
       components: { StorybookWrapperSimple },
-      template: "<StorybookWrapperSimple><story /></StorybookWrapperSimple>",
+      template: /* html */ `<StorybookWrapperSimple><story /></StorybookWrapperSimple>`,
     }),
   ],
   argTypes: {
@@ -37,7 +37,7 @@ export const Default: Story = {
   render: (args) => ({
     components: avatarParts,
     setup: () => ({ args }),
-    template: `
+    template: /* html */ `
       <Avatar v-bind="args">
         <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
         <AvatarFallback>CN</AvatarFallback>
@@ -51,7 +51,7 @@ export const Fallback: Story = {
   render: (args) => ({
     components: avatarParts,
     setup: () => ({ args }),
-    template: `
+    template: /* html */ `
       <Avatar v-bind="args">
         <AvatarFallback>JD</AvatarFallback>
       </Avatar>
@@ -63,7 +63,7 @@ export const Fallback: Story = {
 export const Sizes: Story = {
   render: () => ({
     components: avatarParts,
-    template: `
+    template: /* html */ `
       <div class="flex items-center gap-4">
         <Avatar class="size-6">
           <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
@@ -86,7 +86,7 @@ export const Sizes: Story = {
 export const Group: Story = {
   render: () => ({
     components: avatarParts,
-    template: `
+    template: /* html */ `
       <div class="flex -space-x-2 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:ring-background *:data-[slot=avatar]:grayscale">
         <Avatar>
           <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />

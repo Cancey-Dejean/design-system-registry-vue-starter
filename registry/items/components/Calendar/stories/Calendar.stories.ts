@@ -41,7 +41,7 @@ export const Default: Story = {
       const date = ref(today(getLocalTimeZone())) as Ref<DateValue>;
       return { args, date };
     },
-    template: `
+    template: /* html */ `
       <Calendar
         v-bind="args"
         v-model="date"
@@ -62,7 +62,7 @@ export const MonthAndYear: Story = {
       const date = ref(fromDate(new Date(), getLocalTimeZone())) as Ref<DateValue>;
       return { args, date, CalendarDate };
     },
-    template: `
+    template: /* html */ `
       <Calendar
         v-bind="args"
         v-model="date"
@@ -85,7 +85,7 @@ export const MonthOnly: Story = {
       const date = ref(today(getLocalTimeZone())) as Ref<DateValue>;
       return { args, date };
     },
-    template: `
+    template: /* html */ `
       <Calendar
         v-bind="args"
         v-model="date"
@@ -106,7 +106,7 @@ export const YearOnly: Story = {
       const date = ref(today(getLocalTimeZone())) as Ref<DateValue>;
       return { args, date };
     },
-    template: `
+    template: /* html */ `
       <Calendar
         v-bind="args"
         v-model="date"

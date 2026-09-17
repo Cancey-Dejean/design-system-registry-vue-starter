@@ -1,13 +1,14 @@
 import type { Meta, StoryObj } from "@storybook/vue3";
 import { ChevronDown } from "@lucide/vue";
-import { Button } from "../../Button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "../../DropdownMenu";
-import { ButtonGroup, ButtonGroupSeparator, ButtonGroupText } from "..";
+
+import Button from "@registry/components/Button/Button.vue";
+import ButtonGroup from "../ButtonGroup.vue";
+import ButtonGroupSeparator from "../ButtonGroupSeparator.vue";
+import ButtonGroupText from "../ButtonGroupText.vue";
+import DropdownMenu from "@registry/components/DropdownMenu/DropdownMenu.vue";
+import DropdownMenuContent from "@registry/components/DropdownMenu/DropdownMenuContent.vue";
+import DropdownMenuItem from "@registry/components/DropdownMenu/DropdownMenuItem.vue";
+import DropdownMenuTrigger from "@registry/components/DropdownMenu/DropdownMenuTrigger.vue";
 
 const meta: Meta<typeof ButtonGroup> = {
   title: "Components/ButtonGroup",
