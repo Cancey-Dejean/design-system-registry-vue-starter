@@ -4,7 +4,6 @@ import { LinkSpread } from "@registry/components/LinkSpread";
 
 const meta = {
   title: "Components/Link Spread",
-  tags: ["autodocs"],
   component: LinkSpread,
   parameters: {
     layout: "centered",

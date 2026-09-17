@@ -1,14 +1,14 @@
-import type { Meta, StoryObj } from "@storybook/vue3-vite"
-import { ref } from "vue"
-import StorybookWrapperSimple from "@/components/utility/StorybookWrapperSimple.vue"
-import { Label } from "../../Label"
+import type { Meta, StoryObj } from "@storybook/vue3-vite";
+import { ref } from "vue";
+import StorybookWrapperSimple from "@registry/utility/StorybookWrapperSimple.vue";
+import { Label } from "@registry/components/Label";
 import {
   TagsInput,
   TagsInputInput,
   TagsInputItem,
   TagsInputItemDelete,
   TagsInputItemText,
-} from ".."
+} from "@registry/components/TagsInput";
 
 const tagsParts = {
   Label,
@@ -17,11 +17,10 @@ const tagsParts = {
   TagsInputItem,
   TagsInputItemDelete,
   TagsInputItemText,
-}
+};
 
 const meta = {
   title: "Components/Tags Input",
-  tags: ["autodocs"],
   component: TagsInput,
   parameters: {
     layout: "centered",
@@ -29,24 +28,24 @@ const meta = {
   decorators: [
     () => ({
       components: { StorybookWrapperSimple },
-      template:
-        "<StorybookWrapperSimple class='w-full max-w-sm px-4'><story /></StorybookWrapperSimple>",
+      template: /* html */ `
+        <StorybookWrapperSimple class='w-full max-w-sm px-4'><story /></StorybookWrapperSimple>`,
     }),
   ],
-} satisfies Meta<typeof TagsInput>
+} satisfies Meta<typeof TagsInput>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 /** Fruit tags with add/remove. */
 export const Default: Story = {
   render: () => ({
     components: tagsParts,
     setup() {
-      const modelValue = ref(["Apple", "Banana"])
-      return { modelValue }
+      const modelValue = ref(["Apple", "Banana"]);
+      return { modelValue };
     },
-    template: `
+    template: /* html */ `
       <TagsInput v-model="modelValue" class="w-full">
         <TagsInputItem v-for="item in modelValue" :key="item" :value="item">
           <TagsInputItemText />
@@ -56,17 +55,17 @@ export const Default: Story = {
       </TagsInput>
     `,
   }),
-}
+};
 
 /** Empty field ready for tags. */
 export const Empty: Story = {
   render: () => ({
     components: tagsParts,
     setup() {
-      const modelValue = ref<string[]>([])
-      return { modelValue }
+      const modelValue = ref<string[]>([]);
+      return { modelValue };
     },
-    template: `
+    template: /* html */ `
       <TagsInput v-model="modelValue" class="w-full">
         <TagsInputItem v-for="item in modelValue" :key="item" :value="item">
           <TagsInputItemText />
@@ -76,17 +75,17 @@ export const Empty: Story = {
       </TagsInput>
     `,
   }),
-}
+};
 
 /** Disabled tags input. */
 export const Disabled: Story = {
   render: () => ({
     components: tagsParts,
     setup() {
-      const modelValue = ref(["Apple", "Banana"])
-      return { modelValue }
+      const modelValue = ref(["Apple", "Banana"]);
+      return { modelValue };
     },
-    template: `
+    template: /* html */ `
       <TagsInput v-model="modelValue" disabled class="w-full">
         <TagsInputItem v-for="item in modelValue" :key="item" :value="item">
           <TagsInputItemText />
@@ -96,17 +95,17 @@ export const Disabled: Story = {
       </TagsInput>
     `,
   }),
-}
+};
 
 /** Labeled field with live tag list. */
 export const WithLabel: Story = {
   render: () => ({
     components: tagsParts,
     setup() {
-      const modelValue = ref(["design", "vue", "ui"])
-      return { modelValue }
+      const modelValue = ref(["design", "vue", "ui"]);
+      return { modelValue };
     },
-    template: `
+    template: /* html */ `
       <div class="grid w-full gap-2">
         <Label for="tags">Tags</Label>
         <TagsInput id="tags" v-model="modelValue" class="w-full">
@@ -125,4 +124,4 @@ export const WithLabel: Story = {
       </div>
     `,
   }),
-}
+};

@@ -17,7 +17,6 @@ import Button from "@registry/components/Button/Button.vue";
 
 const meta = {
   title: "Components/Alert Dialog",
-  tags: ["autodocs"],
   component: AlertDialog,
   parameters: {
     layout: "centered",

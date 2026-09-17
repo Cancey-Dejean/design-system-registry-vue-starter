@@ -30,7 +30,6 @@ const formParts = {
 
 const meta = {
   title: "Components/Form",
-  tags: ["autodocs"],
   component: FormItem,
   parameters: {
     layout: "padded",

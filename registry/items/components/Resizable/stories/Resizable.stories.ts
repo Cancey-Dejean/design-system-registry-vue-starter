@@ -14,7 +14,6 @@ const resizableParts = {
 
 const meta = {
   title: "Components/Resizable",
-  tags: ["autodocs"],
   component: ResizablePanelGroup,
   parameters: {
     layout: "centered",

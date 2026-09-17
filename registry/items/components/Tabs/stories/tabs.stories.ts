@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/vue3";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "..";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@registry/components/Tabs";
 
 const meta: Meta<typeof Tabs> = {
   title: "Components/Tabs",

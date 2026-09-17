@@ -28,7 +28,6 @@ const emptyParts = {
 
 const meta = {
   title: "Components/Empty",
-  tags: ["autodocs"],
   component: Empty,
   parameters: {
     layout: "padded",

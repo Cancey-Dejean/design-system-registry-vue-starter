@@ -4,7 +4,6 @@ import { Hero } from "..";
 
 const meta = {
   title: "Blocks/Hero",
-  tags: ["autodocs"],
   component: Hero,
   parameters: {
     layout: "fullscreen",

@@ -1,11 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import { onMounted, onUnmounted, ref } from "vue";
-import StorybookWrapperSimple from "@/components/utility/StorybookWrapperSimple.vue";
+import StorybookWrapperSimple from "@registry/utility/StorybookWrapperSimple.vue";
 import { Progress } from "..";
 
 const meta = {
   title: "Components/Progress",
-  tags: ["autodocs"],
   component: Progress,
   parameters: {
     layout: "centered",

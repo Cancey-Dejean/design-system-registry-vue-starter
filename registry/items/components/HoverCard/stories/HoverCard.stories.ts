@@ -18,7 +18,6 @@ const hoverCardParts = {
 
 const meta = {
   title: "Components/Hover Card",
-  tags: ["autodocs"],
   component: HoverCard,
   parameters: {
     layout: "centered",

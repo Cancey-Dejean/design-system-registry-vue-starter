@@ -50,7 +50,6 @@ const chartParts = {
 
 const meta = {
   title: "Components/Chart",
-  tags: ["autodocs"],
   component: ChartContainer,
   parameters: {
     layout: "centered",

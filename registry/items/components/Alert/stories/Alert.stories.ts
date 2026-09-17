@@ -5,7 +5,6 @@ import { Alert, ALERT_VARIANTS, AlertDescription, AlertTitle } from "../";
 
 const meta = {
   title: "Components/Alert",
-  tags: ["autodocs"],
   component: Alert,
   parameters: {
     layout: "centered",

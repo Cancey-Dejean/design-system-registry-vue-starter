@@ -1,10 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import StorybookWrapperSimple from "@registry/utility/StorybookWrapperSimple.vue";
-import { Spinner } from "../";
+import { Spinner } from "@registry/components/Spinner";
 
 const meta = {
   title: "Components/Spinner",
-  tags: ["autodocs"],
   component: Spinner,
   parameters: {
     layout: "centered",
@@ -12,7 +11,7 @@ const meta = {
   decorators: [
     () => ({
       components: { StorybookWrapperSimple },
-      template: "<StorybookWrapperSimple><story /></StorybookWrapperSimple>",
+      template: /* html */ `<StorybookWrapperSimple><story /></StorybookWrapperSimple>`,
     }),
   ],
   argTypes: {

@@ -1,8 +1,8 @@
-import type { Meta, StoryObj } from "@storybook/vue3-vite"
-import { BookUser, Check, Circle, CreditCard, Dot, Truck } from "@lucide/vue"
-import { ref } from "vue"
-import StorybookWrapperSimple from "@/components/utility/StorybookWrapperSimple.vue"
-import { Button } from "../../Button/"
+import type { Meta, StoryObj } from "@storybook/vue3-vite";
+import { BookUser, Check, Circle, CreditCard, Dot, Truck } from "@lucide/vue";
+import { ref } from "vue";
+import StorybookWrapperSimple from "@registry/utility/StorybookWrapperSimple.vue";
+import { Button } from "@registry/components/Button";
 
 import {
   Stepper,
@@ -12,7 +12,7 @@ import {
   StepperSeparator,
   StepperTitle,
   StepperTrigger,
-} from ".."
+} from "..";
 
 const checkoutSteps = [
   {
@@ -38,7 +38,7 @@ const checkoutSteps = [
     title: "Checkout",
     description: "Confirm your order",
   },
-]
+];
 
 const onboardingSteps = [
   {
@@ -56,7 +56,7 @@ const onboardingSteps = [
     title: "Invite your team",
     description: "Start collaborating with your team",
   },
-]
+];
 
 const stepperParts = {
   BookUser,
@@ -73,11 +73,10 @@ const stepperParts = {
   StepperTitle,
   StepperTrigger,
   Truck,
-}
+};
 
 const meta = {
   title: "Components/Stepper",
-  tags: ["autodocs"],
   component: Stepper,
   parameters: {
     layout: "centered",
@@ -85,21 +84,20 @@ const meta = {
   decorators: [
     () => ({
       components: { StorybookWrapperSimple },
-      template:
-        "<StorybookWrapperSimple class='w-full max-w-3xl px-4'><story /></StorybookWrapperSimple>",
+      template: /* html */ `<StorybookWrapperSimple class='w-full max-w-3xl px-4'><story /></StorybookWrapperSimple>`,
     }),
   ],
-} satisfies Meta<typeof Stepper>
+} satisfies Meta<typeof Stepper>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 /** Checkout flow with icons in indicators. */
 export const Default: Story = {
   render: () => ({
     components: stepperParts,
     setup: () => ({ steps: checkoutSteps }),
-    template: `
+    template: /* html */ `
       <Stepper class="flex w-full items-start gap-2">
         <StepperItem
           v-for="item in steps"
@@ -125,18 +123,18 @@ export const Default: Story = {
       </Stepper>
     `,
   }),
-}
+};
 
 /** Horizontal steps with button triggers and progress nav. */
 export const Horizontal: Story = {
   render: () => ({
     components: stepperParts,
     setup() {
-      const stepIndex = ref(1)
-      const steps = onboardingSteps
-      return { stepIndex, steps }
+      const stepIndex = ref(1);
+      const steps = onboardingSteps;
+      return { stepIndex, steps };
     },
-    template: `
+    template: /* html */ `
       <div class="grid w-full gap-6">
         <Stepper v-model="stepIndex" class="flex w-full items-start gap-2">
           <StepperItem
@@ -202,14 +200,14 @@ export const Horizontal: Story = {
       </div>
     `,
   }),
-}
+};
 
 /** Stacked vertical orientation. */
 export const Vertical: Story = {
   render: () => ({
     components: stepperParts,
     setup() {
-      const stepIndex = ref(1)
+      const stepIndex = ref(1);
       const steps = onboardingSteps.map((step) => ({
         ...step,
         description:
@@ -218,10 +216,10 @@ export const Vertical: Story = {
             : step.step === 2
               ? "A few details about your company."
               : "Start collaborating with your team.",
-      }))
-      return { stepIndex, steps }
+      }));
+      return { stepIndex, steps };
     },
-    template: `
+    template: /* html */ `
       <div class="grid w-full max-w-md gap-6">
         <Stepper
           v-model="stepIndex"
@@ -288,4 +286,4 @@ export const Vertical: Story = {
       </div>
     `,
   }),
-}
+};

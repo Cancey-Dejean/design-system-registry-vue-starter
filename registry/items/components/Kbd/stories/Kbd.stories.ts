@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import { SearchIcon } from "@lucide/vue";
-import StorybookWrapperSimple from "@/components/utility/StorybookWrapperSimple.vue";
+import StorybookWrapperSimple from "@registry/utility/StorybookWrapperSimple.vue";
 import { Button } from "@registry/components/Button";
 import { InputGroupAddon, InputGroup, InputGroupInput } from "@registry/components/InputGroup";
 import { Kbd, KbdGroup } from "@registry/components/Kbd";
@@ -17,7 +17,6 @@ const kbdParts = {
 
 const meta = {
   title: "Components/Kbd",
-  tags: ["autodocs"],
   component: Kbd,
   parameters: {
     layout: "centered",

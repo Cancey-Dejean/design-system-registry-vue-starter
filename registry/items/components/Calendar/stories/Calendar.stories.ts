@@ -8,7 +8,6 @@ import { Calendar, CALENDAR_LAYOUTS } from "../";
 
 const meta = {
   title: "Components/Calendar",
-  tags: ["autodocs"],
   component: Calendar,
   parameters: {
     layout: "centered",

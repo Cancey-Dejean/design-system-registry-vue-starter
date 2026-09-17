@@ -8,7 +8,6 @@ import { DatePicker } from "@registry/components/DatePicker";
 
 const meta = {
   title: "Components/Date Picker",
-  tags: ["autodocs"],
   component: DatePicker,
   parameters: {
     layout: "centered",

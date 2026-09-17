@@ -11,7 +11,7 @@ const bubbleParts = {
 
 const meta = {
   title: "Components/Bubble",
-  tags: ["autodocs"],
+
   component: Bubble,
   parameters: {
     layout: "centered",

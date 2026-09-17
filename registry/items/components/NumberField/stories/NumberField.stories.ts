@@ -21,7 +21,6 @@ const numberFieldParts = {
 
 const meta = {
   title: "Components/Number Field",
-  tags: ["autodocs"],
   component: NumberField,
   parameters: {
     layout: "centered",

@@ -4,7 +4,6 @@ import StorybookWrapper from "@registry/utility/StorybookWrapper.vue";
 
 const meta = {
   title: "Components/Aspect Ratio",
-  tags: ["autodocs"],
   component: AspectRatio,
   parameters: {
     layout: "fullscreen",

@@ -4,7 +4,6 @@ import { ICON_SIZES, IconGallery, Icon, ICONS } from "@registry/components/Icons
 
 const meta = {
   title: "Components/Icon",
-  tags: ["autodocs"],
   component: Icon,
   parameters: {
     layout: "centered",

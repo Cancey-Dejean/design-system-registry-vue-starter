@@ -1,11 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import StorybookWrapperSimple from "@registry/utility/StorybookWrapperSimple.vue";
-import { Label } from "../../Label";
-import { Textarea } from "../";
+import { Label } from "@registry/components/Label";
+import { Textarea } from "@registry/components/Textarea";
 
 const meta = {
   title: "Components/Textarea",
-  tags: ["autodocs"],
   component: Textarea,
   parameters: {
     layout: "centered",
@@ -13,8 +12,9 @@ const meta = {
   decorators: [
     () => ({
       components: { StorybookWrapperSimple },
-      template:
-        "<StorybookWrapperSimple class='w-full max-w-sm px-4'><story /></StorybookWrapperSimple>",
+      template: /* html */ `
+        <StorybookWrapperSimple class='w-full max-w-sm px-4'><story /></StorybookWrapperSimple>
+      `,
     }),
   ],
 } satisfies Meta<typeof Textarea>;
@@ -26,7 +26,9 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: () => ({
     components: { Textarea },
-    template: `<Textarea class="w-full" placeholder="Type your message here." />`,
+    template: /* html */ `
+      <Textarea class="w-full" placeholder="Type your message here." />
+    `,
   }),
 };
 
@@ -34,7 +36,9 @@ export const Default: Story = {
 export const Disabled: Story = {
   render: () => ({
     components: { Textarea },
-    template: `<Textarea class="w-full" disabled placeholder="Type your message here." />`,
+    template: /* html */ `
+      <Textarea class="w-full" disabled placeholder="Type your message here." />
+    `,
   }),
 };
 
@@ -42,7 +46,7 @@ export const Disabled: Story = {
 export const WithLabel: Story = {
   render: () => ({
     components: { Textarea, Label },
-    template: `
+    template: /* html */ `
       <div class="grid w-full max-w-sm gap-1.5">
         <Label for="message">Your message</Label>
         <Textarea id="message" placeholder="Type your message here." />

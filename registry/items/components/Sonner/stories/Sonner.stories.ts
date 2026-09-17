@@ -1,13 +1,12 @@
-import type { Meta, StoryObj } from "@storybook/vue3-vite"
-import "vue-sonner/style.css"
-import { toast } from "vue-sonner"
-import StorybookWrapperSimple from "@/components/utility/StorybookWrapperSimple.vue"
-import { Button } from "../../Button"
-import { Toaster } from ".."
+import type { Meta, StoryObj } from "@storybook/vue3-vite";
+import "vue-sonner/style.css";
+import { toast } from "vue-sonner";
+import StorybookWrapperSimple from "@registry/utility/StorybookWrapperSimple.vue";
+import { Button } from "@registry/components/Button";
+import { Toaster } from "@registry/components/Sonner";
 
 const meta = {
   title: "Components/Sonner",
-  tags: ["autodocs"],
   component: Toaster,
   parameters: {
     layout: "centered",
@@ -15,20 +14,20 @@ const meta = {
   decorators: [
     () => ({
       components: { StorybookWrapperSimple },
-      template: "<StorybookWrapperSimple><story /></StorybookWrapperSimple>",
+      template: /* html */ `<StorybookWrapperSimple><story /></StorybookWrapperSimple>`,
     }),
   ],
-} satisfies Meta<typeof Toaster>
+} satisfies Meta<typeof Toaster>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 /** Toast with description and undo action. */
 export const Default: Story = {
   render: () => ({
     components: { Button, Toaster },
     setup: () => ({ toast }),
-    template: `
+    template: /* html */ `
       <Toaster />
       <Button
         variant="outline"
@@ -47,7 +46,7 @@ export const Default: Story = {
       </Button>
     `,
   }),
-}
+};
 
 /** Toast variants: default, success, info, warning, error, promise. */
 export const Types: Story = {
@@ -58,20 +57,19 @@ export const Types: Story = {
         toast.promise(
           () =>
             new Promise<{ name: string }>((resolve) => {
-              setTimeout(() => resolve({ name: "Event" }), 2000)
+              setTimeout(() => resolve({ name: "Event" }), 2000);
             }),
           {
             loading: "Loading...",
-            success: (data: { name: string }) =>
-              `${data.name} has been created`,
+            success: (data: { name: string }) => `${data.name} has been created`,
             error: "Error",
           },
-        )
+        );
       }
 
-      return { toast, showPromise }
+      return { toast, showPromise };
     },
-    template: `
+    template: /* html */ `
       <Toaster />
       <div class="flex flex-wrap gap-2">
         <Button variant="outline" @click="() => toast('Event has been created')">
@@ -101,18 +99,18 @@ export const Types: Story = {
       </div>
     `,
   }),
-}
+};
 
 /** Simple one-line toast. */
 export const Simple: Story = {
   render: () => ({
     components: { Button, Toaster },
     setup: () => ({ toast }),
-    template: `
+    template: /* html */ `
       <Toaster />
       <Button variant="outline" @click="() => toast('My first toast')">
         Give me a toast
       </Button>
     `,
   }),
-}
+};

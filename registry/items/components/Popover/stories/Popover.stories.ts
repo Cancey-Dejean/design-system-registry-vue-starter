@@ -12,7 +12,6 @@ const popoverParts = {
 
 const meta = {
   title: "Components/Popover",
-  tags: ["autodocs"],
   component: Popover,
   parameters: {
     layout: "centered",

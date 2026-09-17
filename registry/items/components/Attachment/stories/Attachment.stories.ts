@@ -65,7 +65,6 @@ const attachmentParts = {
 
 const meta = {
   title: "Components/Attachment",
-  tags: ["autodocs"],
   component: Attachment,
   parameters: {
     layout: "fullscreen",

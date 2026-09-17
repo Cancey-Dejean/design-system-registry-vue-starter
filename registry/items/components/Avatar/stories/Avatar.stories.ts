@@ -10,7 +10,6 @@ const avatarParts = {
 
 const meta = {
   title: "Components/Avatar",
-  tags: ["autodocs"],
   component: Avatar,
   parameters: {
     layout: "centered",

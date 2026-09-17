@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
-import StorybookWrapperSimple from "@/components/utility/StorybookWrapperSimple.vue";
+import StorybookWrapperSimple from "@registry/utility/StorybookWrapperSimple.vue";
 import {
   NativeSelect,
   NativeSelectOptGroup,
@@ -14,7 +14,6 @@ const nativeSelectParts = {
 
 const meta = {
   title: "Components/Native Select",
-  tags: ["autodocs"],
   component: NativeSelect,
   parameters: {
     layout: "centered",

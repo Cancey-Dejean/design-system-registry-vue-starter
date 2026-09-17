@@ -30,7 +30,6 @@ const itemParts = {
 
 const meta = {
   title: "Components/Item",
-  tags: ["autodocs"],
   component: Item,
   parameters: {
     layout: "padded",

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import { CopyIcon, RefreshCcwIcon, ThumbsDownIcon, ThumbsUpIcon } from "@lucide/vue";
-import StorybookWrapperSimple from "@/components/utility/StorybookWrapperSimple.vue";
+import StorybookWrapperSimple from "@registry/utility/StorybookWrapperSimple.vue";
 import { Button } from "@registry/components/Button";
 import { Marker, MarkerContent } from "@registry/components/Marker";
 import {
@@ -39,7 +39,6 @@ const messageParts = {
 
 const meta = {
   title: "Components/Message",
-  tags: ["autodocs"],
   component: Message,
   parameters: {
     layout: "padded",

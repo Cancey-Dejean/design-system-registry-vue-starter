@@ -4,7 +4,6 @@ import { LinkText, LINK_TONES, LINK_UNDERLINES, LINK_SIZES } from "@registry/com
 
 const meta = {
   title: "Components/Link Text",
-  tags: ["autodocs"],
   component: LinkText,
   parameters: {
     layout: "centered",

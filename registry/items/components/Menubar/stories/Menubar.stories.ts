@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import { ref } from "vue";
-import StorybookWrapperSimple from "@/components/utility/StorybookWrapperSimple.vue";
+import StorybookWrapperSimple from "@registry/utility/StorybookWrapperSimple.vue";
 
 import {
   Menubar,
@@ -36,7 +36,6 @@ const menubarParts = {
 
 const meta = {
   title: "Components/Menubar",
-  tags: ["autodocs"],
   component: Menubar,
   parameters: {
     layout: "centered",

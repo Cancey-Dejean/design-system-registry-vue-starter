@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import { ChevronLeftIcon, ChevronRightIcon } from "@lucide/vue";
-import StorybookWrapperSimple from "@/components/utility/StorybookWrapperSimple.vue";
+import StorybookWrapperSimple from "@registry/utility/StorybookWrapperSimple.vue";
 import {
   Pagination,
   PaginationContent,
@@ -27,7 +27,6 @@ const paginationParts = {
 
 const meta = {
   title: "Components/Pagination",
-  tags: ["autodocs"],
   component: Pagination,
   parameters: {
     layout: "centered",

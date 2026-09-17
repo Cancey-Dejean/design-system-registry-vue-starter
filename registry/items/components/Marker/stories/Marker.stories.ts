@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import { FileTextIcon, GitBranchIcon, SearchIcon } from "@lucide/vue";
-import StorybookWrapperSimple from "@/components/utility/StorybookWrapperSimple.vue";
+import StorybookWrapperSimple from "@registry/utility/StorybookWrapperSimple.vue";
 import { Spinner } from "@registry/components/Spinner";
 import { Marker, MarkerContent, MarkerIcon } from "@registry/components/Marker";
 
@@ -16,7 +16,6 @@ const markerParts = {
 
 const meta = {
   title: "Components/Marker",
-  tags: ["autodocs"],
   component: Marker,
   parameters: {
     layout: "padded",

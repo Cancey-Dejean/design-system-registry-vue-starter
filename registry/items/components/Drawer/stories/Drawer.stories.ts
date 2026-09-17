@@ -30,7 +30,6 @@ const drawerParts = {
 
 const meta = {
   title: "Components/Drawer",
-  tags: ["autodocs"],
   component: Drawer,
   parameters: {
     layout: "centered",

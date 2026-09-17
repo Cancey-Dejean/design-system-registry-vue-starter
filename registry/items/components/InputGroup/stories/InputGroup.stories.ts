@@ -1,6 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
-import { Mail, SendHorizontal } from "@lucide/vue";
+import { InfoIcon, Mail, SendHorizontal } from "@lucide/vue";
 import { Button } from "@registry/components/Button/index.ts";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@registry/components/Tooltip";
 import StorybookWrapperSimple from "@registry/utility/StorybookWrapperSimple.vue";
 import {
   InputGroup,
@@ -12,7 +18,6 @@ import {
 
 const meta = {
   title: "Components/InputGroup",
-  tags: ["autodocs"],
   component: InputGroup,
   parameters: {
     layout: "centered",
@@ -31,7 +36,18 @@ type Story = StoryObj<typeof meta>;
 /** A leading icon addon focuses the input when clicked. */
 export const Default: Story = {
   render: () => ({
-    components: { InputGroup, InputGroupAddon, InputGroupInput, InputGroupText, InputGroupButton },
+    components: {
+      InputGroup,
+      InputGroupAddon,
+      InputGroupInput,
+      InputGroupText,
+      InputGroupButton,
+      Tooltip,
+      TooltipContent,
+      TooltipProvider,
+      TooltipTrigger,
+      InfoIcon,
+    },
     template: /* html */ `
     <InputGroup>
       <InputGroupInput placeholder="example.com" class="!pl-1" />

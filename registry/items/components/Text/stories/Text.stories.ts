@@ -1,10 +1,15 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
-import { Text, TEXT_SIZES, TEXT_ALIGNMENTS, TEXT_WEIGHTS, TEXT_TONES } from "../";
+import {
+  Text,
+  TEXT_SIZES,
+  TEXT_ALIGNMENTS,
+  TEXT_WEIGHTS,
+  TEXT_TONES,
+} from "@registry/components/Text";
 import StorybookWrapper from "@registry/utility/StorybookWrapper.vue";
 
 const meta = {
   title: "Components/Text",
-  tags: ["autodocs"],
   component: Text,
   decorators: [
     () => ({

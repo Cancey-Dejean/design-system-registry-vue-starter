@@ -1,10 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
-import StorybookWrapperSimple from "@/components/utility/StorybookWrapperSimple.vue";
+import StorybookWrapperSimple from "@registry/utility/StorybookWrapperSimple.vue";
 import { Shimmer } from "@registry/components/Shimmer";
 
 const meta = {
   title: "Components/Shimmer",
-  tags: ["autodocs"],
   component: Shimmer,
   parameters: {
     layout: "centered",

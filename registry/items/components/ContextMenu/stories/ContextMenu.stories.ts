@@ -39,7 +39,6 @@ const contextMenuParts = {
 
 const meta = {
   title: "Components/Context Menu",
-  tags: ["autodocs"],
   component: ContextMenu,
   parameters: {
     layout: "centered",

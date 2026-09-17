@@ -10,7 +10,6 @@ import StorybookWrapper from "@registry/utility/StorybookWrapper.vue";
 
 const meta = {
   title: "Components/Accordion",
-  tags: ["autodocs"],
   component: Accordion,
   parameters: {
     layout: "fullscreen",

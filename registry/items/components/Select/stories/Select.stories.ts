@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import { ref } from "vue";
-import StorybookWrapperSimple from "@/components/utility/StorybookWrapperSimple.vue";
+import StorybookWrapperSimple from "@registry/utility/StorybookWrapperSimple.vue";
 import {
   Select,
   SelectContent,
@@ -23,7 +23,6 @@ const selectParts = {
 
 const meta = {
   title: "Components/Select",
-  tags: ["autodocs"],
   component: Select,
   parameters: {
     layout: "centered",

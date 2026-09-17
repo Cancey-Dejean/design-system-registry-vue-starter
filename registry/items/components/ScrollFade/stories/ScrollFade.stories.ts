@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
-import StorybookWrapperSimple from "@/components/utility/StorybookWrapperSimple.vue";
+import StorybookWrapperSimple from "@registry/utility/StorybookWrapperSimple.vue";
 import { ScrollFade } from "../";
 
 const items = Array.from({ length: 12 }, (_, index) => `Item ${index + 1}`);
@@ -21,7 +21,6 @@ const shortItems = Array.from({ length: 3 }, (_, index) => `Item ${index + 1}`);
 
 const meta = {
   title: "Components/Scroll Fade",
-  tags: ["autodocs"],
   component: ScrollFade,
   parameters: {
     layout: "centered",

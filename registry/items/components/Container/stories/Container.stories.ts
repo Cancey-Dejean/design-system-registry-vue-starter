@@ -5,7 +5,6 @@ import StorybookWrapper from "@registry/utility/StorybookWrapper.vue";
 
 const meta = {
   title: "Components/Container",
-  tags: ["autodocs"],
   component: Container,
   parameters: {
     layout: "fullscreen",

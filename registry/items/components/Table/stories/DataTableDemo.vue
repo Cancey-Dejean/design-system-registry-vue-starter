@@ -15,10 +15,10 @@ import {
   useVueTable,
 } from "@tanstack/vue-table";
 import { h, ref } from "vue";
-import { Button } from "../../Button";
-import { Checkbox } from "../../Checkbox";
+import { Button } from "@registry/components/Button";
+import { Checkbox } from "@registry/components/Checkbox";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../";
-import { valueUpdater } from "../";
+import { valueUpdater } from "@registry/components/Table";
 
 export interface Payment {
   id: string;

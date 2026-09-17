@@ -61,7 +61,6 @@ const comboboxParts = {
 
 const meta = {
   title: "Components/Combobox",
-  tags: ["autodocs"],
   component: Combobox,
   parameters: {
     layout: "centered",

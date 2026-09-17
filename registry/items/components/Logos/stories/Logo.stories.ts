@@ -4,7 +4,6 @@ import { LOGO_SIZES, LogoGallery, Logo, LOGOS } from "@registry/components/Logos
 
 const meta = {
   title: "Components/Logo",
-  tags: ["autodocs"],
   component: Logo,
   parameters: {
     layout: "centered",

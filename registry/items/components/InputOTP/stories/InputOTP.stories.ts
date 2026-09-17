@@ -18,7 +18,6 @@ const otpParts = {
 
 const meta = {
   title: "Components/Input OTP",
-  tags: ["autodocs"],
   component: InputOTP,
   parameters: {
     layout: "centered",

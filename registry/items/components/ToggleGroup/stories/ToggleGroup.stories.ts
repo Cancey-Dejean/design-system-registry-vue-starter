@@ -1,8 +1,8 @@
-import type { Meta, StoryObj } from "@storybook/vue3-vite"
-import { Bold, Italic, Underline } from "@lucide/vue"
-import { ref } from "vue"
-import StorybookWrapperSimple from "@/components/utility/StorybookWrapperSimple.vue"
-import { ToggleGroup, ToggleGroupItem } from ".."
+import type { Meta, StoryObj } from "@storybook/vue3-vite";
+import { Bold, Italic, Underline } from "@lucide/vue";
+import { ref } from "vue";
+import StorybookWrapperSimple from "@registry/utility/StorybookWrapperSimple.vue";
+import { ToggleGroup, ToggleGroupItem } from "@registry/components/ToggleGroup";
 
 const parts = {
   ToggleGroup,
@@ -10,11 +10,10 @@ const parts = {
   Bold,
   Italic,
   Underline,
-}
+};
 
 const meta = {
   title: "Components/Toggle Group",
-  tags: ["autodocs"],
   component: ToggleGroup,
   parameters: {
     layout: "centered",
@@ -22,7 +21,9 @@ const meta = {
   decorators: [
     () => ({
       components: { StorybookWrapperSimple },
-      template: "<StorybookWrapperSimple><story /></StorybookWrapperSimple>",
+      template: /* html */ `
+        <StorybookWrapperSimple><story /></StorybookWrapperSimple>
+      `,
     }),
   ],
   argTypes: {
@@ -46,10 +47,10 @@ const meta = {
     size: "default",
     disabled: false,
   },
-} satisfies Meta<typeof ToggleGroup>
+} satisfies Meta<typeof ToggleGroup>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 /** Multiple formatting toggles. */
 export const Default: Story = {
@@ -59,7 +60,7 @@ export const Default: Story = {
   render: (args) => ({
     components: parts,
     setup: () => ({ args }),
-    template: `
+    template: /* html */ `
       <ToggleGroup v-bind="args">
         <ToggleGroupItem value="bold" aria-label="Toggle bold">
           <Bold class="h-4 w-4" />
@@ -73,7 +74,7 @@ export const Default: Story = {
       </ToggleGroup>
     `,
   }),
-}
+};
 
 /** Outline connected items. */
 export const Outline: Story = {
@@ -84,7 +85,7 @@ export const Outline: Story = {
   render: (args) => ({
     components: parts,
     setup: () => ({ args }),
-    template: `
+    template: /* html */ `
       <ToggleGroup v-bind="args">
         <ToggleGroupItem value="bold" aria-label="Toggle bold">
           <Bold class="h-4 w-4" />
@@ -98,7 +99,7 @@ export const Outline: Story = {
       </ToggleGroup>
     `,
   }),
-}
+};
 
 /** Single selection only. */
 export const Single: Story = {
@@ -109,7 +110,7 @@ export const Single: Story = {
   render: (args) => ({
     components: parts,
     setup: () => ({ args }),
-    template: `
+    template: /* html */ `
       <ToggleGroup v-bind="args">
         <ToggleGroupItem value="left" aria-label="Align left">
           Left
@@ -123,13 +124,13 @@ export const Single: Story = {
       </ToggleGroup>
     `,
   }),
-}
+};
 
 /** Small and large size comparison. */
 export const Sizes: Story = {
   render: () => ({
     components: parts,
-    template: `
+    template: /* html */ `
       <div class="flex flex-col items-center gap-4">
         <ToggleGroup type="multiple" size="sm" variant="outline">
           <ToggleGroupItem value="bold" aria-label="Toggle bold">
@@ -167,7 +168,7 @@ export const Sizes: Story = {
       </div>
     `,
   }),
-}
+};
 
 /** Disabled group. */
 export const Disabled: Story = {
@@ -179,7 +180,7 @@ export const Disabled: Story = {
   render: (args) => ({
     components: parts,
     setup: () => ({ args }),
-    template: `
+    template: /* html */ `
       <ToggleGroup v-bind="args">
         <ToggleGroupItem value="bold" aria-label="Toggle bold">
           <Bold class="h-4 w-4" />
@@ -193,17 +194,17 @@ export const Disabled: Story = {
       </ToggleGroup>
     `,
   }),
-}
+};
 
 /** Controlled multiple selection with v-model. */
 export const Controlled: Story = {
   render: () => ({
     components: parts,
     setup() {
-      const formats = ref(["bold"])
-      return { formats }
+      const formats = ref(["bold"]);
+      return { formats };
     },
-    template: `
+    template: /* html */ `
       <div class="flex flex-col items-center gap-3">
         <ToggleGroup v-model="formats" type="multiple" variant="outline">
           <ToggleGroupItem value="bold" aria-label="Toggle bold">
@@ -225,4 +226,4 @@ export const Controlled: Story = {
       </div>
     `,
   }),
-}
+};

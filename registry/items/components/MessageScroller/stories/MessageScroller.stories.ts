@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import { computed, ref } from "vue";
-import StorybookWrapperSimple from "@/components/utility/StorybookWrapperSimple.vue";
+import StorybookWrapperSimple from "@registry/utility/StorybookWrapperSimple.vue";
 import { Button } from "@registry/components/Button";
 import { Message, MessageContent } from "@registry/components/Message";
 import {
@@ -111,7 +111,6 @@ const scriptedMessages: ChatMessage[] = [
 
 const meta = {
   title: "Components/Message Scroller",
-  tags: ["autodocs"],
   component: MessageScroller,
   parameters: {
     layout: "padded",

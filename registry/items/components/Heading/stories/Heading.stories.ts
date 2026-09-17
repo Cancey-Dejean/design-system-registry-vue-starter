@@ -10,7 +10,6 @@ import {
 
 const meta = {
   title: "Components/Heading",
-  tags: ["autodocs"],
   component: Heading,
   parameters: {
     layout: "centered",

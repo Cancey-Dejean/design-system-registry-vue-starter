@@ -26,7 +26,6 @@ const carouselParts = {
 
 const meta = {
   title: "Components/Carousel",
-  tags: ["autodocs"],
   component: Carousel,
   parameters: {
     layout: "centered",

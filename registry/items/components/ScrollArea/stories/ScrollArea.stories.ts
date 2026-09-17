@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
-import StorybookWrapperSimple from "@/components/utility/StorybookWrapperSimple.vue";
+import StorybookWrapperSimple from "@registry/utility/StorybookWrapperSimple.vue";
 import { Separator } from "@registry/components/Separator";
 import { ScrollArea, ScrollBar } from "@registry/components/ScrollArea";
 
@@ -28,7 +28,6 @@ const scrollParts = {
 
 const meta = {
   title: "Components/ScrollArea",
-  tags: ["autodocs"],
   component: ScrollArea,
   parameters: {
     layout: "centered",

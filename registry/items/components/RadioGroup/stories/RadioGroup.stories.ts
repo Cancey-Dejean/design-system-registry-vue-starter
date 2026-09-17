@@ -12,7 +12,6 @@ const radioParts = {
 
 const meta = {
   title: "Components/Radio Group",
-  tags: ["autodocs"],
   component: RadioGroup,
   parameters: {
     layout: "centered",

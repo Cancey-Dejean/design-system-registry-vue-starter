@@ -70,7 +70,6 @@ const tableParts = {
 
 const meta = {
   title: "Components/Table",
-  tags: ["autodocs"],
   component: Table,
   parameters: {
     layout: "padded",

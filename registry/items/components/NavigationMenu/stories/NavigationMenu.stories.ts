@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
-import StorybookWrapperSimple from "@/components/utility/StorybookWrapperSimple.vue";
+import StorybookWrapperSimple from "@registry/utility/StorybookWrapperSimple.vue";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -58,7 +58,6 @@ const navigationMenuParts = {
 
 const meta = {
   title: "Components/Navigation Menu",
-  tags: ["autodocs"],
   component: NavigationMenu,
   parameters: {
     layout: "centered",
