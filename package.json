@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build",
-    "dev": "concurrently -n nuxt,storybook -c blue,magenta \"nuxt dev\" \"storybook dev -p 6006\"",
+    "dev": "concurrently -n nuxt,storybook -c blue,magenta \"nuxt dev --no-fork\" \"storybook dev -p 6006\"",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
