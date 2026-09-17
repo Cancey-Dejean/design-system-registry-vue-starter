@@ -3,7 +3,7 @@ import type { HTMLAttributes } from "vue";
 
 import { PanelLeftIcon } from "@lucide/vue";
 import { cn } from "@/lib/utils";
-import { Button } from "@registry/components/button/index.ts";
+import { Button } from "@registry/components/Button/index.ts";
 import { useSidebar } from "./utils";
 
 const props = defineProps<{
