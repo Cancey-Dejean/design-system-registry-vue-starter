@@ -8,10 +8,7 @@ import {
   VisXYContainer,
 } from "@unovis/vue";
 import StorybookWrapperSimple from "@registry/utility/StorybookWrapperSimple.vue";
-import type { ChartConfig } from "../Chart.types";
-import ChartContainer from "../ChartContainer.vue";
-import ChartLegendContent from "../ChartLegendContent.vue";
-import ChartTooltipContent from "../ChartTooltipContent.vue";
+import { ChartContainer, ChartLegendContent, ChartTooltipContent, type ChartConfig } from "../";
 import { componentToString } from "../utils";
 
 const ChartCrosshair = VisCrosshair;
@@ -62,7 +59,7 @@ const meta = {
     () => ({
       components: { StorybookWrapperSimple },
       template:
-        "<StorybookWrapperSimple class='w-full max-w-lg px-4'><story /></StorybookWrapperSimple>",
+        /* html */ `<StorybookWrapperSimple class='w-full max-w-lg px-4'><story /></StorybookWrapperSimple>`,
     }),
   ],
   args: {
@@ -97,8 +94,8 @@ export const Default: Story = {
         emptyTick: (_d: number) => "",
       };
     },
-    template: `
-      <ChartContainer :config="chartConfig" class="min-h-[200px] w-full">
+    template: /* html */ `
+      <ChartContainer :config="chartConfig" class="min-h-50 w-full">
         <VisXYContainer :data="chartData">
           <VisGroupedBar
             :x="x"
@@ -164,8 +161,8 @@ export const Line: Story = {
         emptyTick: (_d: number) => "",
       };
     },
-    template: `
-      <ChartContainer :config="chartConfig" class="min-h-[200px] w-full">
+    template: /* html */ `
+      <ChartContainer :config="chartConfig" class="min-h-50 w-full">
         <VisXYContainer :data="chartData">
           <VisLine :x="x" :y="y" :color="color" />
           <VisAxis
@@ -211,8 +208,8 @@ export const BarsOnly: Story = {
         colors: [chartConfig.desktop.color, chartConfig.mobile.color],
       };
     },
-    template: `
-      <ChartContainer :config="chartConfig" class="min-h-[200px] w-full">
+    template: /* html */ `
+      <ChartContainer :config="chartConfig" class="min-h-50 w-full">
         <VisXYContainer :data="chartData">
           <VisGroupedBar
             :x="x"
