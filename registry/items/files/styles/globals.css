@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@import "shadcn-vue/tailwind.css";
+/* @import "shadcn-vue/tailwind.css"; */
 @import "@fontsource-variable/geist";
 @import "@fontsource-variable/geist-mono";
 @plugin "@tailwindcss/typography";
@@ -10,7 +10,7 @@
 
 /* Registry components live outside app/ (the Nuxt srcDir Tailwind scans by default) — this
    project's docs shell imports them directly instead of duplicating them under app/components/ui,
-   so their class usage needs to be added to Tailwind's content scan explicitly. */
+   so their class usage needs to be added to Tailwind's content scan explicitly. // TODO: remove this in consuming projects */
 @source "../../components";
 @source "../../blocks";
 
