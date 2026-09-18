@@ -8,6 +8,7 @@ dependencies:
   - "@fontsource-variable/geist"
   - "@fontsource-variable/geist-mono"
   - "@tailwindcss/typography"
+  - "cn"
 files:
   - path: globals.css
     type: registry:file
