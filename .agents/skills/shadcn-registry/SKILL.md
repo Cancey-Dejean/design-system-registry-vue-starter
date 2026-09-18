@@ -118,6 +118,7 @@ Consumers do not need Bun. Homepage comes from `app/lib/registry/config.ts`:
 ```sh
 npx shadcn-vue@latest add https://<homepage>/r/button.json
 pnpm dlx shadcn-vue@latest add https://<homepage>/r/button.json
+bun x --bun shadcn-vue@latest add https://<homepage>/r/button.json
 ```
 
 ## Verification

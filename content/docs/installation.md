@@ -29,7 +29,7 @@ Add a specific item by its name from the [catalog](/components). Swap `sidebar` 
 ::docs-install-command{item-name="sidebar" class="not-prose"}
 ::
 
-On Bun, use `bun x --bun` (space after `bun`). `bunx --bun` fails when adding a registry URL such as `styles.json`.
+On Bun, use `bun x --bun` (space after `bun`). `bunx --bun` fails when adding a registry URL such as `styles.json` or `button.json`.
 
 ## Find the exact command
 

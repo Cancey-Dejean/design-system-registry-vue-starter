@@ -2,14 +2,14 @@
 name: shadcn-vue
 description: Manages shadcn-vue components and projects — adding, searching, fixing, debugging, styling, and composing UI. Provides project context, component docs, and usage examples. Applies when working with shadcn-vue, component registries, presets, --preset codes, or any project with a components.json file. Also triggers for "shadcn-vue init", "create an app with --preset", or "switch to --preset".
 user-invocable: false
-allowed-tools: Bash(npx shadcn-vue@latest *), Bash(pnpm dlx shadcn-vue@latest *), Bash(bunx --bun shadcn-vue@latest *)
+allowed-tools: Bash(npx shadcn-vue@latest *), Bash(pnpm dlx shadcn-vue@latest *), Bash(bun x --bun shadcn-vue@latest *)
 ---
 
 # shadcn-vue
 
 A framework for building ui, components and design systems. Components are added as source code to the user's project via the CLI.
 
-> **IMPORTANT:** Run all CLI commands using the project's package runner: `npx shadcn-vue@latest`, `pnpm dlx shadcn-vue@latest`, or `bunx --bun shadcn-vue@latest` — based on the project's `packageManager`. Examples below use `npx shadcn-vue@latest` but substitute the correct runner for the project.
+> **IMPORTANT:** Run all CLI commands using the project's package runner: `npx shadcn-vue@latest`, `pnpm dlx shadcn-vue@latest`, or `bun x --bun shadcn-vue@latest` — based on the project's `packageManager`. Examples below use `npx shadcn-vue@latest` but substitute the correct runner for the project.
 
 ## Current Project Context
 
