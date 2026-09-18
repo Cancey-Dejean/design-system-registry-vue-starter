@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { ImgHTMLAttributes } from "vue";
-import { cn } from "@/lib/utils";
+import { cn } from "cn";
 
 const props = withDefaults(
   defineProps<{

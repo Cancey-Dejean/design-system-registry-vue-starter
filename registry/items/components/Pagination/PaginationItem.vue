@@ -3,9 +3,8 @@ import type { PaginationListItemProps } from "reka-ui";
 import type { HTMLAttributes } from "vue";
 import { reactiveOmit } from "@vueuse/core";
 import { PaginationListItem } from "reka-ui";
-import { cn } from "@/lib/utils";
+import { cn } from "cn";
 import { buttonVariants, type ButtonSize } from "../Button";
-
 
 const props = withDefaults(
   defineProps<

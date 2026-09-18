@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Component } from "vue";
 import { computed } from "vue";
-import { cn } from "@/lib/utils";
+import { cn } from "cn";
 import { ICONS } from "../icons";
 import type { IconProps } from "../";
 import { iconVariants } from "../";

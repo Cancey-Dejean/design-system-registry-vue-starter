@@ -4,7 +4,7 @@ import type { HTMLAttributes } from "vue";
 import { DateFormatter, getLocalTimeZone, today } from "@internationalized/date";
 import { CalendarIcon } from "@lucide/vue";
 import { computed } from "vue";
-import { cn } from "@/lib/utils";
+import { cn } from "cn";
 import Button from "../Button/Button.vue";
 import Calendar from "../Calendar/Calendar.vue";
 import Popover from "../Popover/Popover.vue";

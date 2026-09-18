@@ -3,8 +3,8 @@ import type { ScrollAreaRootProps } from "reka-ui";
 import type { HTMLAttributes } from "vue";
 import { reactiveOmit } from "@vueuse/core";
 import { ScrollAreaCorner, ScrollAreaRoot, ScrollAreaViewport } from "reka-ui";
-import { cn } from "@/lib/utils";
-import {ScrollBar} from "./";
+import { cn } from "cn";
+import { ScrollBar } from "./";
 
 const props = defineProps<ScrollAreaRootProps & { class?: HTMLAttributes["class"] }>();
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { LinkSpreadProps } from ".";
-import { cn } from "@/lib/utils";
+import { cn } from "cn";
 
 const props = withDefaults(defineProps<LinkSpreadProps>(), {
   external: false,

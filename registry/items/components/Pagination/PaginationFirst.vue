@@ -4,9 +4,8 @@ import type { HTMLAttributes } from "vue";
 import { ChevronLeftIcon } from "@lucide/vue";
 import { reactiveOmit } from "@vueuse/core";
 import { PaginationFirst, useForwardProps } from "reka-ui";
-import { cn } from "@/lib/utils";
+import { cn } from "cn";
 import { buttonVariants, type ButtonSize } from "../Button";
-
 
 const props = withDefaults(
   defineProps<

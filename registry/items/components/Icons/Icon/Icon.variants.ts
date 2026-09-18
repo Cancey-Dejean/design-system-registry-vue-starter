@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "cn";
 import { cva } from "class-variance-authority";
 
 const iconBase = cn("");

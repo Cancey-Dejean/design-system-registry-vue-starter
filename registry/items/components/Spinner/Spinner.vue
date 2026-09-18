@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { SpinnerProps } from "./Spinner.types";
 import { Loader2Icon } from "@lucide/vue";
-import { cn } from "@/lib/utils";
+import { cn } from "cn";
 
 const props = defineProps<SpinnerProps>();
 </script>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from "vue";
 import { reactiveOmit } from "@vueuse/core";
-import { cn } from "@/lib/utils";
+import { cn } from "cn";
 import { TableRow, TableCell } from "./";
 
 const props = withDefaults(

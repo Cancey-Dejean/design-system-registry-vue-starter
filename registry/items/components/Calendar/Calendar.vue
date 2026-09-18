@@ -7,7 +7,7 @@ import { createReusableTemplate, reactiveOmit, useVModel } from "@vueuse/core";
 import { CalendarRoot, useDateFormatter, useForwardPropsEmits } from "reka-ui";
 import { createYear, createYearRange, toDate } from "reka-ui/date";
 import { computed, toRaw } from "vue";
-import { cn } from "@/lib/utils";
+import { cn } from "cn";
 import { NativeSelect, NativeSelectOption } from "../NativeSelect";
 
 import {

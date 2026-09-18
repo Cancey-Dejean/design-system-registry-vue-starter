@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Component } from "vue";
 import { computed } from "vue";
-import { cn } from "@/lib/utils";
+import { cn } from "cn";
 import { LOGOS } from "../logos";
 import type { LogoProps } from "./Logo.types";
 import { logoVariants } from "./Logo.variants";

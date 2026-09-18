@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { cn } from "@/lib/utils";
+import { cn } from "cn";
 import { containerVariants, type ContainerProps } from "./";
 
 const props = withDefaults(defineProps<ContainerProps>(), {

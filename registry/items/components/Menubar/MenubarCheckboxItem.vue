@@ -4,7 +4,7 @@ import type { HTMLAttributes } from "vue";
 import { Check } from "@lucide/vue";
 import { reactiveOmit } from "@vueuse/core";
 import { MenubarCheckboxItem, MenubarItemIndicator, useForwardPropsEmits } from "reka-ui";
-import { cn } from "@/lib/utils";
+import { cn } from "cn";
 
 const props = defineProps<MenubarCheckboxItemProps & { class?: HTMLAttributes["class"] }>();
 const emits = defineEmits<MenubarCheckboxItemEmits>();

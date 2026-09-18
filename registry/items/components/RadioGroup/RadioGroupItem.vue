@@ -4,7 +4,7 @@ import type { HTMLAttributes } from "vue";
 import { CircleIcon } from "@lucide/vue";
 import { reactiveOmit } from "@vueuse/core";
 import { RadioGroupIndicator, RadioGroupItem, useForwardProps } from "reka-ui";
-import { cn } from "@/lib/utils";
+import { cn } from "cn";
 
 const props = defineProps<RadioGroupItemProps & { class?: HTMLAttributes["class"] }>();
 

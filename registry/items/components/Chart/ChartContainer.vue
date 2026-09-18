@@ -2,7 +2,7 @@
 import type { HTMLAttributes } from "vue";
 import { useId } from "reka-ui";
 import { computed, toRefs } from "vue";
-import { cn } from "@/lib/utils";
+import { cn } from "cn";
 import { provideChartContext, ChartStyle, type ChartConfig } from "./";
 </script>
 

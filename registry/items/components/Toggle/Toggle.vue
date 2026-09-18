@@ -2,7 +2,7 @@
 import type { ToggleEmits } from "reka-ui";
 import { reactiveOmit } from "@vueuse/core";
 import { Toggle, useForwardPropsEmits } from "reka-ui";
-import { cn } from "@/lib/utils";
+import { cn } from "cn";
 import type { ToggleProps } from "./Toggle.types";
 import { toggleVariants } from "./";
 

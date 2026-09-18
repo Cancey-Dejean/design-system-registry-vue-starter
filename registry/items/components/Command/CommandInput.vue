@@ -5,7 +5,7 @@ import type { HTMLAttributes } from "vue";
 import { SearchIcon } from "@lucide/vue";
 import { reactiveOmit } from "@vueuse/core";
 import { ListboxFilter, useForwardProps } from "reka-ui";
-import { cn } from "@/lib/utils";
+import { cn } from "cn";
 import { InputGroup, InputGroupAddon } from "#registry-ui/InputGroup";
 import { useCommand } from ".";
 

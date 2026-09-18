@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { SidebarProps } from ".";
-import { cn } from "@/lib/utils";
+import { cn } from "cn";
 import { Sheet, SheetContent } from "@registry/components/Sheet/index.ts";
 import SheetDescription from "@registry/components/Sheet/SheetDescription.vue";
 import SheetHeader from "@registry/components/Sheet/SheetHeader.vue";

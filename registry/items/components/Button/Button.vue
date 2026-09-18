@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Primitive } from "reka-ui";
-import { cn } from "@/lib/utils";
+import { cn } from "cn";
 import { type ButtonProps, buttonVariants } from ".";
 
 const props = withDefaults(defineProps<ButtonProps>(), {

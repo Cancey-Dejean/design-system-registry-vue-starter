@@ -2,7 +2,7 @@
 import type { HTMLAttributes } from "vue";
 import type { PrimitiveProps } from "reka-ui";
 import { Primitive } from "reka-ui";
-import { cn } from "@/lib/utils";
+import { cn } from "cn";
 
 const props = withDefaults(
   defineProps<

@@ -5,7 +5,7 @@ import type { ToggleVariants } from "../Toggle";
 import { reactiveOmit } from "@vueuse/core";
 import { ToggleGroupRoot, useForwardPropsEmits } from "reka-ui";
 import { provide } from "vue";
-import { cn } from "@/lib/utils";
+import { cn } from "cn";
 
 const props = withDefaults(
   defineProps<

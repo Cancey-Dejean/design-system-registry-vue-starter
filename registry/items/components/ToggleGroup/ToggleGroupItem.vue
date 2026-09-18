@@ -4,7 +4,7 @@ import type { HTMLAttributes } from "vue";
 import { reactiveOmit } from "@vueuse/core";
 import { ToggleGroupItem, useForwardProps } from "reka-ui";
 import { inject } from "vue";
-import { cn } from "@/lib/utils";
+import { cn } from "cn";
 import { toggleVariants, type ToggleVariants } from "../Toggle";
 
 type ToggleGroupContext = ToggleVariants & {
