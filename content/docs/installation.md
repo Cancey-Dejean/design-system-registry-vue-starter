@@ -29,6 +29,8 @@ Add a specific item by its name from the [catalog](/components). Swap `sidebar` 
 ::docs-install-command{item-name="sidebar" class="not-prose"}
 ::
 
+On Bun, use `bun x --bun` (space after `bun`). `bunx --bun` fails when adding a registry URL such as `styles.json`.
+
 ## Find the exact command
 
 Every item page has a copy-ready command with a tab for each package manager. Browse [components](/components), [blocks](/blocks), and [utilities](/utilities), open an item such as [sidebar](/components/sidebar), and copy its exact install command from the **Installation** section.

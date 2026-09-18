@@ -20,7 +20,7 @@ export function getInstallCommand(itemName: string, packageManager: PackageManag
 
   switch (packageManager) {
     case "bun":
-      return `bunx --bun shadcn-vue@latest add ${registryItemUrl}`;
+      return `bun x --bun shadcn-vue@latest add ${registryItemUrl}`;
     case "pnpm":
       return `pnpm dlx shadcn-vue@latest add ${registryItemUrl}`;
     case "yarn":
