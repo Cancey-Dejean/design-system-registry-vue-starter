@@ -5,6 +5,7 @@ title: Button
 description: A polymorphic button with variants, sizes, icons, and a CTA group helper.
 dependencies:
   - class-variance-authority
+  - reka-ui
 files:
   - path: Button.types.ts
     type: registry:ui
