@@ -5,6 +5,7 @@ title: Styles
 description: The design system's Tailwind CSS v4 entry point and semantic color/theme tokens for light and dark mode.
 dependencies:
   - tw-animate-css
+  - shadcn-vue
   - "@fontsource-variable/geist"
   - "@fontsource-variable/geist-mono"
   - "@tailwindcss/typography"
