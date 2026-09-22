@@ -17,7 +17,17 @@ export default defineConfig({
   },
   fmt: {},
   lint: {
-    jsPlugins: [{ name: "vite-plus", specifier: "vite-plus/oxlint-plugin" }],
+    jsPlugins: [
+      { name: "vite-plus", specifier: "vite-plus/oxlint-plugin" },
+      "@shadcn/lint",
+    ],
+    // components.json `ui` is the consumer install alias (`@/components/ui`).
+    // This repo imports published components through the other prefixes.
+    settings: {
+      shadcn: {
+        ui: ["#registry-ui", "@registry/components", "@/components/ui"],
+      },
+    },
     rules: { "vite-plus/prefer-vite-plus-imports": "error" },
     options: { typeAware: true, typeCheck: true },
   },
