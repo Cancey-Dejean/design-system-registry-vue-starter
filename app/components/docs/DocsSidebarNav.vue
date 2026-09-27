@@ -42,7 +42,7 @@ function itemKey(item: SiteNavigationItem): string {
 
 <template>
   <SidebarGroup>
-    <SidebarMenu>
+    <SidebarMenu class="gap-1">
       <Collapsible
         v-for="section in sections"
         :key="section.id"
