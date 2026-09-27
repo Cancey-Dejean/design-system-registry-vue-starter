@@ -47,7 +47,7 @@ function itemKey(item: SiteNavigationItem): string {
         v-for="section in sections"
         :key="section.id"
         as-child
-        :default-open="isSectionActive(section) || hasActiveItem(section)"
+        :default-open="hasActiveItem(section)"
         class="group/collapsible"
       >
         <SidebarMenuItem>
