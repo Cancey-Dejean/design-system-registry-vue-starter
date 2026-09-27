@@ -81,7 +81,7 @@ onMounted(updateActive);
         <a :href="`#${link.id}`" :class="linkClass(link.id)" @click="onLinkClick(link.id)">{{
           link.text
         }}</a>
-        <ul v-if="link.children?.length">
+        <ul v-if="link.children?.length" class="ml-3">
           <li v-for="child in link.children" :key="child.id">
             <a :href="`#${child.id}`" :class="linkClass(child.id)" @click="onLinkClick(child.id)">{{
               child.text
