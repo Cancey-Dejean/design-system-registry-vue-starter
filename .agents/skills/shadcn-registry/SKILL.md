@@ -2,13 +2,14 @@
 name: shadcn-registry
 description: >-
   Use when adding, adapting, or publishing installable shadcn-vue registry
-  items in this Nuxt registry; or when editing _registry.md, _preview.vue,
-  registry/items/**, install targets, or localRegistryDependencies.
+  items in this repo's design-system-ui registry (@design-system-ui); or when
+  editing _registry.md, _preview.vue, registry/items/**, install targets, or
+  localRegistryDependencies.
 ---
 
 # Shadcn Registry (Vue)
 
-This is a Nuxt 4 + shadcn-vue registry. Published source lives in `registry/items/**`. The docs shell is `app/` + `content/docs/`. There is no `src/components/ui` copy — the docs app imports registry UI through `#registry-ui`.
+This is the design-system-ui registry (`@design-system-ui`) for Nuxt 4 and shadcn-vue. Docs live at https://vuedocs.canceydejean.dev. It is a Nuxt 4 + shadcn-vue registry. Published source lives in `registry/items/**`. The docs shell is `app/` + `content/docs/`. There is no `src/components/ui` copy — the docs app imports registry UI through `#registry-ui`.
 
 ## Workflow
 
@@ -116,9 +117,9 @@ Put `VariantProps` aliases in `<Component>.types.ts` when that file exists. Re-e
 Consumers do not need Bun. Homepage comes from `app/lib/registry/config.ts`:
 
 ```sh
-npx shadcn-vue@latest add https://<homepage>/r/button.json
-pnpm dlx shadcn-vue@latest add https://<homepage>/r/button.json
-bun x --bun shadcn-vue@latest add https://<homepage>/r/button.json
+npx shadcn-vue@latest add https://vuedocs.canceydejean.dev/r/button.json
+pnpm dlx shadcn-vue@latest add https://vuedocs.canceydejean.dev/r/button.json
+bun x --bun shadcn-vue@latest add https://vuedocs.canceydejean.dev/r/button.json
 ```
 
 ## Verification
