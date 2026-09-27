@@ -30,7 +30,7 @@ defineProps<{
     </article>
     <aside
       v-if="page.toc?.links.length"
-      class="sticky top-16 hidden max-h-[calc(100vh-5rem)] w-56 shrink-0 overflow-y-auto py-6 xl:block"
+      class="scroll-fade scrollbar-none sticky top-16 hidden max-h-[calc(100vh-5rem)] w-56 shrink-0 overflow-y-auto py-6 xl:block"
     >
       <DocsTableOfContents :links="page.toc.links" />
     </aside>
