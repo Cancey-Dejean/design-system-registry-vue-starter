@@ -65,6 +65,9 @@ files:
   - path: LogoSet/PlayStore.vue
     type: registry:ui
     target: "@ui/Logos/LogoSet/PlayStore.vue"
+  - path: LogoSet/Storybook.vue
+    type: registry:ui
+    target: "@ui/Logos/LogoSet/Storybook.vue"
   - path: LogoSet/ThreePortals.vue
     type: registry:ui
     target: "@ui/Logos/LogoSet/ThreePortals.vue"

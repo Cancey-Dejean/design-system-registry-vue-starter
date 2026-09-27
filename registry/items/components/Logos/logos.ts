@@ -12,6 +12,7 @@ import LogoText from "./LogoSet/LogoText.vue";
 import MainLogo from "./LogoSet/MainLogo.vue";
 import Nuxt from "./LogoSet/Nuxt.vue";
 import PlayStore from "./LogoSet/PlayStore.vue";
+import Storybook from "./LogoSet/Storybook.vue";
 import ThreePortals from "./LogoSet/ThreePortals.vue";
 import VoxelLabs from "./LogoSet/VoxelLabs.vue";
 import Vue from "./LogoSet/Vue.vue";
@@ -28,6 +29,7 @@ export const LOGOS = {
   "voxel-labs": VoxelLabs,
   "apple-store": AppleStore,
   "google-play": PlayStore,
+  storybook: Storybook,
   instagram: Instagram,
   "x-logo": X,
   facebook: Facebook,

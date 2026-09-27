@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { Blocks } from "@lucide/vue";
 import { Button } from "@registry/components/Button";
 import Heading from "@registry/components/Heading/Heading.vue";
+import { Logo } from "@registry/components/Logos";
 import { registryConfig } from "~/lib/registry/config";
 </script>
 
@@ -23,12 +23,12 @@ import { registryConfig } from "~/lib/registry/config";
           variant="outline"
           size="lg"
           as="a"
-          :href="registryConfig.repositoryUrl"
+          :href="registryConfig.storybookUrl"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Sto
-          GitHub
+          <Logo logo="storybook" />
+          Storybook
         </Button>
       </div>
     </div>
