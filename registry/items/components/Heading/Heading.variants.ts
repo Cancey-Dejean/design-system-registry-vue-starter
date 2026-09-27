@@ -1,7 +1,7 @@
 import { cn } from "cn";
 import { cva } from "class-variance-authority";
 
-const headingBase = cn("racking-tight racking-tight tracking-tight");
+const headingBase = cn("leading-relaxed");
 
 const headingConfig = {
   variants: {
@@ -46,7 +46,7 @@ const headingConfig = {
   },
 } as const;
 
-export const headingCva = cva(headingBase, {
+export const headingCva = cva("", {
   ...headingConfig,
   compoundVariants: [...headingConfig.compoundVariants],
 });
@@ -68,4 +68,7 @@ export const HEADING_TONES = Object.keys(
   headingConfig.variants.tone,
 ) as (keyof typeof headingConfig.variants.tone)[];
 
-export const headingVariants = headingCva;
+// cn() treats text-* sizes as line-height conflicts and keeps the later class, so
+// leading must be merged after the size variants — not as the CVA base.
+export const headingVariants = (props?: Parameters<typeof headingCva>[0]) =>
+  cn(headingCva(props), headingBase);
