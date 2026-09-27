@@ -35,6 +35,10 @@ function hasActiveItem(section: SiteNavigationSection): boolean {
   return section.items.some(isItemActive);
 }
 
+function sectionEntryPath(section: SiteNavigationSection): string {
+  return section.items[0]?.routePath ?? section.basePath;
+}
+
 function itemKey(item: SiteNavigationItem): string {
   return `${item.kind}:${item.kind === "docs" ? item.slug : item.name}`;
 }
@@ -45,14 +49,21 @@ function itemKey(item: SiteNavigationItem): string {
     <SidebarMenu class="gap-1">
       <Collapsible
         v-for="section in sections"
-        :key="section.id"
+        :key="`${section.id}:${hasActiveItem(section) ? 'open' : 'closed'}`"
         as-child
         :default-open="hasActiveItem(section)"
         class="group/collapsible"
       >
         <SidebarMenuItem>
           <SidebarMenuButton as-child :is-active="isSectionActive(section)">
-            <NuxtLink :to="section.basePath" class="font-medium">{{ section.title }}</NuxtLink>
+            <NuxtLink
+              :to="sectionEntryPath(section)"
+              active-class=""
+              exact-active-class=""
+              class="font-medium"
+            >
+              {{ section.title }}
+            </NuxtLink>
           </SidebarMenuButton>
           <template v-if="section.items.length">
             <CollapsibleTrigger as-child>
