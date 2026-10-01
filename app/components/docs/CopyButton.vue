@@ -3,7 +3,7 @@ import { Check, Copy } from "@lucide/vue";
 import type { ButtonVariants } from "@registry/components/Button";
 import { Button } from "@registry/components/Button";
 import { useClipboard } from "~/composables/useClipboard";
-import { cn } from "~/lib/utils";
+import { cn } from "@registry/lib/utils";
 
 const props = withDefaults(
   defineProps<{

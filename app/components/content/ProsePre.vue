@@ -4,7 +4,7 @@
 // same rounded/bordered chrome, copy button, and line-number gutter as CodeBlock.vue — the
 // module already runs Shiki server-side and hands the highlighted <code> through the default
 // slot; this component only supplies the outer <pre> and its chrome.
-import { cn } from "~/lib/utils";
+import { cn } from "@registry/lib/utils";
 import CopyButton from "~/components/docs/CopyButton.vue";
 
 const props = defineProps<{

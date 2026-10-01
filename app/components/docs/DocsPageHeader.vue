@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { cn } from "~/lib/utils";
+import { cn } from "@registry/lib/utils.ts";
 import { getCanonicalDocsUrl, getCanonicalRegistryItemUrl } from "~/lib/site-config";
 import DocsPageActions from "./DocsPageActions.vue";
 import DocsPageNav from "./DocsPageNav.vue";

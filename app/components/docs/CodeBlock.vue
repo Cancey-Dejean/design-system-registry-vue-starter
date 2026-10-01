@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { cn } from "~/lib/utils";
+import { cn } from "@registry/lib/utils.ts";
 import { useHighlightedCode } from "~/composables/useHighlightedCode";
 import CopyButton from "./CopyButton.vue";
 

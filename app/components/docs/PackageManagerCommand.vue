@@ -10,7 +10,7 @@ import {
   DropdownMenuTrigger,
 } from "@registry/components/DropdownMenu/index.ts";
 import { isPackageManager, packageManagers } from "~/lib/package-managers";
-import { cn } from "~/lib/utils";
+import { cn } from "@registry/lib/utils.ts";
 import CopyButton from "./CopyButton.vue";
 import PackageManagerLogo from "./PackageManagerLogo.vue";
 

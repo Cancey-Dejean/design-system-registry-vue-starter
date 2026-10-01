@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { TocLink } from "@nuxt/content";
 import { useEventListener } from "@vueuse/core";
-import { cn } from "~/lib/utils";
+import { cn } from "@registry/lib/utils";
 
 const props = defineProps<{
   links: readonly TocLink[];

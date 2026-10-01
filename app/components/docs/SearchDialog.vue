@@ -13,7 +13,7 @@ import {
 import { useMagicKeys } from "@vueuse/core";
 import type { HTMLAttributes } from "vue";
 import type { SiteNavigationItem, SiteNavigationSectionId } from "~/lib/navigation";
-import { cn } from "~/lib/utils";
+import { cn } from "@registry/lib/utils";
 
 const props = defineProps<{
   class?: HTMLAttributes["class"];

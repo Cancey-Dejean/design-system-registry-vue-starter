@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { SiteNavigationItem, SiteNavigationSection } from "~/lib/navigation";
-import { cn } from "~/lib/utils";
+import { cn } from "@registry/lib/utils";
 
 const props = defineProps<{
   sections: readonly SiteNavigationSection[];

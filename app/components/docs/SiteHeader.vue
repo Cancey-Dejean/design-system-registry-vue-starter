@@ -4,7 +4,7 @@ import { Button } from "@registry/components/Button/index.ts";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@registry/components/Sheet/index.ts";
 import type { SiteNavigationSection } from "~/lib/navigation";
 import { registryConfig } from "~/lib/registry/config";
-import { cn } from "~/lib/utils";
+import { cn } from "@registry/lib/utils.ts";
 import DocsSidebar from "./DocsSidebar.vue";
 import HeaderActions from "./HeaderActions.vue";
 import SearchDialog from "./SearchDialog.vue";
