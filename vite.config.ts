@@ -1,6 +1,9 @@
 import { defineConfig } from "vite-plus";
 
 export default defineConfig({
+  test: {
+    projects: ["./vitest.unit.config.ts", "./vitest.storybook.config.ts"],
+  },
   run: {
     tasks: {
       "registry:new": {
@@ -17,10 +20,7 @@ export default defineConfig({
   },
   fmt: {},
   lint: {
-    jsPlugins: [
-      { name: "vite-plus", specifier: "vite-plus/oxlint-plugin" },
-      "@shadcn/lint",
-    ],
+    jsPlugins: [{ name: "vite-plus", specifier: "vite-plus/oxlint-plugin" }, "@shadcn/lint"],
     // components.json `ui` is the consumer install alias (`@/components/ui`).
     // This repo imports published components through the other prefixes.
     settings: {

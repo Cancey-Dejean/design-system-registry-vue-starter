@@ -1,12 +1,20 @@
 import { readFileSync } from "node:fs";
 
-import { describe, expect, test } from "vite-plus/test";
+import { fc, test } from "@fast-check/vitest";
+import { describe, expect } from "vite-plus/test";
 
-import { cn, themeTextSizes } from "./utils";
+import { cn, themeTextSizes } from "../utils";
+
+const textColors = [
+  "text-foreground",
+  "text-muted-foreground",
+  "text-primary",
+  "text-destructive",
+] as const;
 
 describe("cn", () => {
   test("registers every theme font size", () => {
-    const theme = readFileSync(new URL("../files/styles/theme.css", import.meta.url), "utf8");
+    const theme = readFileSync(new URL("../../files/styles/theme.css", import.meta.url), "utf8");
     const themeSizes = [...theme.matchAll(/--text-([a-z0-9-]+):/g)]
       .map((match) => match[1])
       .filter((name) => name && !name.includes("--"));
@@ -35,5 +43,19 @@ describe("cn", () => {
     expect(
       cn("text-60 font-semibold tracking-tight text-foreground sm:text-72", "leading-none"),
     ).toBe("text-60 font-semibold tracking-tight text-foreground sm:text-72 leading-none");
+  });
+
+  test.prop({
+    size: fc.constantFrom(...themeTextSizes),
+    color: fc.constantFrom(...textColors),
+  })("keeps a theme size next to a text color", ({ size, color }) => {
+    expect(cn(`text-${size}`, color)).toBe(`text-${size} ${color}`);
+  });
+
+  test.prop({
+    earlier: fc.constantFrom(...themeTextSizes),
+    later: fc.constantFrom(...themeTextSizes),
+  })("keeps the later theme size", ({ earlier, later }) => {
+    expect(cn(`text-${earlier}`, `text-${later}`)).toBe(`text-${later}`);
   });
 });
