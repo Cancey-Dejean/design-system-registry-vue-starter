@@ -15,16 +15,16 @@ describe("cn", () => {
   });
 
   test("keeps a custom size next to a text color", () => {
-    expect(cn("font-code text-label text-muted-foreground", "bg-muted text-foreground")).toBe(
-      "font-code text-label bg-muted text-foreground",
+    expect(cn("font-code text-16 text-muted-foreground", "bg-muted text-foreground")).toBe(
+      "font-code text-16 bg-muted text-foreground",
     );
     expect(cn("text-14 text-foreground")).toBe("text-14 text-foreground");
   });
 
   test("resolves size against size", () => {
-    expect(cn("text-sm", "text-label")).toBe("text-label");
-    expect(cn("text-label", "text-display-xl")).toBe("text-display-xl");
-    expect(cn("text-meta", "text-[13px]")).toBe("text-[13px]");
+    expect(cn("text-sm", "text-14")).toBe("text-14");
+    expect(cn("text-14", "text-120")).toBe("text-120");
+    expect(cn("text-16", "text-[13px]")).toBe("text-[13px]");
   });
 
   test("resolves color against color", () => {

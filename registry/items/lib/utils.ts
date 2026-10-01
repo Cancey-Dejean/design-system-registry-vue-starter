@@ -3,7 +3,7 @@ import { createCn } from "cn/config";
 /**
  * `--text-*` font-size names from `registry/items/files/styles/theme.css`.
  * The `cn` package only knows Tailwind's t-shirt sizes (`text-sm`). Any other
- * `text-*` class is treated as a text color, so `text-14` or `text-label`
+ * `text-*` class is treated as a text color, so `text-14` or `text-60`
  * disappears when a color such as `text-foreground` is merged in.
  */
 export const themeTextSizes = [
@@ -21,13 +21,6 @@ export const themeTextSizes = [
   "72",
   "96",
   "120",
-  "label",
-  "meta",
-  "body",
-  "heading",
-  "title",
-  "display",
-  "display-xl",
 ] as const;
 
 export const cn = createCn({
