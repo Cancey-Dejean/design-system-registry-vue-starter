@@ -8,7 +8,7 @@
         "@fontsource-variable/geist": "^5.3.0",
         "@fontsource-variable/geist-mono": "^5.3.0",
         "@internationalized/date": "^3.12.4",
-        "@lucide/vue": "^1.46.0",
+        "@lucide/vue": "^1.48.0",
         "@nuxt/a11y": "1.0.0-alpha.1",
         "@nuxt/content": "^3.16.0",
         "@nuxt/fonts": "0.14.0",
@@ -366,7 +366,7 @@
 
     "@kwsites/promise-deferred": ["@kwsites/promise-deferred@1.1.1", "", {}, "sha512-GaHYm+c0O9MjZRu0ongGBRbinu8gVAMd2UZjji6jVmqKtZluZnptXGWhz1E8j8D2HJ3f/yMxKAUC0b+57wncIw=="],
 
-    "@lucide/vue": ["@lucide/vue@1.46.0", "", { "peerDependencies": { "vue": ">=3.0.1" } }, "sha512-xp4mUamXKM/jYCve8TOcEcuikidFh3Jn9gs0THCeEKn/fAdeU0mKhPqk0fmIwn42fI4CwGLRWrLneLA69h8Nqw=="],
+    "@lucide/vue": ["@lucide/vue@1.48.0", "", { "peerDependencies": { "vue": ">=3.0.1" } }, "sha512-3/Nwx/RsqQ4ZrrSML1GNsSWCSDyLnBgoF/eEr1q9G6iZymn3+WKtzIj7Dbc/Nxrt9WOPuGrJ58S+CBiamK+36w=="],
 
     "@mapbox/jsonlint-lines-primitives": ["@mapbox/jsonlint-lines-primitives@2.0.3", "", {}, "sha512-0SElaV0uMxEnxzBhhX9WTuPyUeMsAN/SS0i16tjuba4/mio63MG9khjC1a0JAiPGXAwvwm4UfHJURCN7nyudQg=="],
 

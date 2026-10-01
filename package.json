@@ -16,7 +16,7 @@
     "@fontsource-variable/geist": "^5.3.0",
     "@fontsource-variable/geist-mono": "^5.3.0",
     "@internationalized/date": "^3.12.4",
-    "@lucide/vue": "^1.46.0",
+    "@lucide/vue": "^1.48.0",
     "@nuxt/a11y": "1.0.0-alpha.1",
     "@nuxt/content": "^3.16.0",
     "@nuxt/fonts": "0.14.0",
