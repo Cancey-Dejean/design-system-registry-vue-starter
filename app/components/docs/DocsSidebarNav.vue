@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { SiteNavigationItem, SiteNavigationSection } from "~/lib/navigation";
+import { flowsPage } from "~/lib/registry/flows";
 import { ChevronRight } from "@lucide/vue";
 import {
   Collapsible,
@@ -84,6 +85,13 @@ function itemKey(item: SiteNavigationItem): string {
           </template>
         </SidebarMenuItem>
       </Collapsible>
+      <SidebarMenuItem>
+        <SidebarMenuButton as-child :is-active="route.path === flowsPage.path">
+          <NuxtLink :to="flowsPage.path" active-class="" exact-active-class="" class="font-medium">
+            {{ flowsPage.title }}
+          </NuxtLink>
+        </SidebarMenuButton>
+      </SidebarMenuItem>
     </SidebarMenu>
   </SidebarGroup>
 </template>
