@@ -29,7 +29,7 @@ export default defineNuxtModule({
             "",
           ].join("\n"),
       },
-      { nitro: true, nuxt: false },
+      { nitro: true, nuxt: true },
     );
   },
 });

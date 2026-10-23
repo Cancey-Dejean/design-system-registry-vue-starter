@@ -32,7 +32,7 @@ const flowLayoutOptions = [
     <Tooltip v-for="option in flowLayoutOptions" :key="option.id">
       <TooltipTrigger as-child>
         <label
-          class="grid size-7 cursor-pointer place-items-center rounded-md border border-transparent text-muted-foreground transition-colors hover:bg-muted hover:text-foreground has-checked:border-violet-500/50 has-checked:bg-violet-500/10 has-checked:text-violet-600 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-violet-500 dark:has-checked:text-violet-400"
+          class="grid size-7 cursor-pointer place-items-center rounded-md border border-transparent text-muted-foreground transition-colors hover:bg-muted hover:text-foreground has-checked:border-emerald-500/50 has-checked:bg-emerald-500/10 has-checked:text-emerald-700 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-emerald-500 dark:has-checked:text-emerald-400"
         >
           <input
             v-model="layout"

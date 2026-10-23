@@ -40,7 +40,10 @@ const viewOwnsHeader = computed(() => layout.value !== "map");
 </script>
 
 <template>
-  <div :class="cn('flex flex-col gap-6', !viewOwnsHeader && 'pb-6')">
+  <div
+    :class="cn('flex flex-col gap-6', !viewOwnsHeader && 'pb-6')"
+    style="--primary: #42b883; --primary-foreground: #102a22"
+  >
     <FlowsHeader
       v-if="!selected || !viewOwnsHeader"
       v-model:layout="layout"

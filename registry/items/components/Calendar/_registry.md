@@ -4,6 +4,7 @@ type: registry:ui
 title: Calendar
 description: A date field component that allows users to enter and edit dates, and navigate by month and year.
 dependencies:
+  - "@internationalized/date"
   - reka-ui
   - "@vueuse/core"
   - "@lucide/vue"

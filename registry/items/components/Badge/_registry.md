@@ -4,6 +4,7 @@ type: registry:ui
 title: Badge
 description: Displays a badge or a component that looks like a badge.
 dependencies:
+  - "@vueuse/core"
   - class-variance-authority
   - reka-ui
 files:

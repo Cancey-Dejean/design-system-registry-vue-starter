@@ -7,6 +7,8 @@ import type { Component } from "vue";
 const previewModules = import.meta.glob<{ default: Component }>([
   "../../../registry/items/components/*/_preview.vue",
   "../../../registry/items/blocks/*/_preview.vue",
+  "../../../registry/items/lib/*/_preview.vue",
+  "../../../registry/items/hooks/*/_preview.vue",
 ]);
 
 // Item folders are PascalCase on disk with no word separator (e.g. AlertDialog/, Hero/) while the
@@ -18,7 +20,12 @@ function normalizeSegment(segment: string): string {
 
 function toPreviewKey(name: string): string | undefined {
   const normalizedName = normalizeSegment(name);
-  const suffixes = [`/components/${normalizedName}/_preview.vue`, `/blocks/${normalizedName}/_preview.vue`];
+  const suffixes = [
+    `/components/${normalizedName}/_preview.vue`,
+    `/blocks/${normalizedName}/_preview.vue`,
+    `/lib/${normalizedName}/_preview.vue`,
+    `/hooks/${normalizedName}/_preview.vue`,
+  ];
   return Object.keys(previewModules).find((path) => {
     const normalizedPath = path
       .split("/")

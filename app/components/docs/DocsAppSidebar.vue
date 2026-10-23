@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { SidebarProps } from "@registry/components/Sidebar/index.ts";
 import {
+  useSidebar,
   Sidebar,
   SidebarContent,
   SidebarHeader,
@@ -14,6 +15,7 @@ import DocsSidebarNav from "./DocsSidebarNav.vue";
 import SearchDialog from "./SearchDialog.vue";
 
 const props = defineProps<SidebarProps>();
+const { setOpenMobile } = useSidebar();
 
 const { data: sections } = useSiteNavigation();
 </script>
@@ -24,7 +26,7 @@ const { data: sections } = useSiteNavigation();
       <SidebarMenu>
         <SidebarMenuItem>
           <SidebarMenuButton size="lg" as-child>
-            <NuxtLink to="/">
+            <NuxtLink to="/" @click="setOpenMobile(false)">
               <span class="font-mono text-sm font-semibold tracking-tighter">{{
                 registryConfig.name
               }}</span>

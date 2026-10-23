@@ -4,6 +4,7 @@ type: registry:ui
 title: Checkbox
 description: A control that allows the user to toggle between checked and not checked.
 dependencies:
+  - "@vueuse/core"
   - reka-ui
   - "@lucide/vue"
 files:

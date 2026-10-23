@@ -4,6 +4,7 @@ type: registry:ui
 title: Breadcrumb
 description: Displays the path to the current resource using a hierarchy of links.
 dependencies:
+  - reka-ui
   - "@lucide/vue"
 files:
   - path: Breadcrumb.vue

@@ -10,17 +10,17 @@ Start with [styles](/docs/styles) so your project has the design system CSS foun
 
 ## Configure the registry
 
-Your project must already be set up with [shadcn-vue](https://www.shadcn-vue.com/docs/installation). Then add this registry to `components.json` so the CLI can resolve `@design-system-ui-vue/*` items:
+Your project must already be set up with [shadcn-vue](https://www.shadcn-vue.com/docs/installation). Then add this registry to `components.json` so the CLI can resolve `@design-system-ui/*` items:
 
 ```json
 {
   "registries": {
-    "@design-system-ui-vue": "https://design-system-registry-vue.vercel.app/r/{name}.json"
+    "@design-system-ui": "https://vuedocs.canceydejean.dev/r/{name}.json"
   }
 }
 ```
 
-Update the URL to your deployed `homepage` from `registry/config.ts`. Do this once per project. Without it, installs fail with `Unknown registry "@design-system-ui-vue"`.
+Update the URL to your deployed `homepage` from `app/lib/registry/config.ts`. Do this once per project. Without it, installs fail with `Unknown registry "@design-system-ui"`.
 
 ## Install an item
 

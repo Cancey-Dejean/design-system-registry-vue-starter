@@ -4,6 +4,9 @@ import type { H3Event } from "h3";
 
 export interface DocsCatalogPage {
   slug: string;
+  routePath: string;
+  sourceFile: string;
+  audience?: "maintainers";
   title: string;
   description: string;
   order: number;
@@ -21,11 +24,12 @@ interface DocsCollectionRow {
   description: string;
   order: number;
   path: string;
+  audience?: "maintainers";
   body?: unknown;
 }
 
 function slugFromPath(path: string): string {
-  return path.replace(/^\/+/, "");
+  return path.replace(/^\/+/, "") || "index";
 }
 
 async function readDocsMarkdown(slug: string): Promise<string> {
@@ -46,6 +50,9 @@ async function toDocsCatalogPage(row: DocsCollectionRow): Promise<DocsCatalogPag
 
   return {
     slug,
+    sourceFile: `${slug}.${(await useStorage("assets:docs").hasItem(`${slug}.md`)) ? "md" : "mdx"}`,
+    routePath: slug === "index" ? "/docs" : `/docs/${slug}`,
+    ...(row.audience ? { audience: row.audience } : {}),
     title: row.title,
     description: row.description,
     order: row.order,
@@ -68,7 +75,7 @@ export async function getDocsPage(
   slug: string,
 ): Promise<DocsCatalogPage | undefined> {
   const row = (await queryCollection(event, "docs")
-    .where("path", "=", `/${slug}`)
+    .where("path", "=", slug === "index" ? "/" : `/${slug}`)
     .first()) as unknown as DocsCollectionRow | null;
 
   if (!row) {

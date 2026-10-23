@@ -4,6 +4,7 @@ type: registry:ui
 title: Drawer
 description: A panel that slides in from an edge of the screen, built on Vaul.
 dependencies:
+  - "@vueuse/core"
   - vaul-vue
   - reka-ui
 files:

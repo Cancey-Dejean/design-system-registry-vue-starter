@@ -37,7 +37,7 @@ async function getLlmsSections(event: H3Event): Promise<LlmsSection[]> {
     title: "Docs",
     documents: docsPages.map((page) => ({
       title: page.title,
-      url: getCanonicalSiteUrl(getDocsMarkdownPath(`/docs/${page.slug}`)),
+      url: getCanonicalSiteUrl(getDocsMarkdownPath(page.routePath)),
       description: page.description || "Documentation page.",
       renderMarkdown: async () => page.markdown,
     })),

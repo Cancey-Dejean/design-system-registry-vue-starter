@@ -4,6 +4,7 @@ type: registry:ui
 title: Button Group
 description: Groups related buttons together with consistent styling, orientation, and separators.
 dependencies:
+  - "@vueuse/core"
   - reka-ui
   - class-variance-authority
 localRegistryDependencies:

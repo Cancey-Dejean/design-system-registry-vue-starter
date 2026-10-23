@@ -28,6 +28,8 @@ export default defineContentConfig({
         type: registryItemType,
         title: z.string().optional(),
         description: z.string(),
+        categories: z.array(z.string()).optional(),
+        keywords: z.array(z.string()).optional(),
         dependencies: z.array(z.string()).optional(),
         localRegistryDependencies: z.array(z.string()).optional(),
         files: z
@@ -51,6 +53,7 @@ export default defineContentConfig({
         title: z.string(),
         description: z.string(),
         order: z.number(),
+        audience: z.enum(["maintainers"]).optional(),
       }),
     }),
   },

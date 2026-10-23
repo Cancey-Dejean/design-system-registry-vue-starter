@@ -4,8 +4,11 @@ type: registry:ui
 title: Dialog
 description: A window overlaid on either the primary window or another dialog window.
 dependencies:
+  - "@vueuse/core"
   - reka-ui
   - "@lucide/vue"
+localRegistryDependencies:
+  - button
 files:
   - path: Dialog.vue
     type: registry:ui

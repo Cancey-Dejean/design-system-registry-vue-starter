@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import DocsLayout from "~/components/docs/DocsLayout.vue";
+import RegistryGallery from "~/components/docs/RegistryGallery.vue";
 import RegistryItemList from "~/components/docs/RegistryItemList.vue";
 import { getRegistrySection, isRegistrySectionId } from "~/lib/registry/sections";
 
@@ -30,6 +31,10 @@ const catalog = computed(() => ({
 
 <template>
   <DocsLayout>
-    <RegistryItemList :catalog="catalog" />
+    <RegistryGallery
+      v-if="sectionId === 'components' || sectionId === 'blocks'"
+      :catalog="catalog"
+    />
+    <RegistryItemList v-else :catalog="catalog" />
   </DocsLayout>
 </template>

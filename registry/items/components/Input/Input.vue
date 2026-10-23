@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import type { HTMLAttributes } from "vue";
+import type { HTMLAttributes, InputHTMLAttributes } from "vue";
 import { useVModel } from "@vueuse/core";
 import { cn } from "cn";
 
 const props = defineProps<{
+  type?: InputHTMLAttributes["type"];
+  placeholder?: string;
   defaultValue?: string | number;
   modelValue?: string | number;
   class?: HTMLAttributes["class"];
@@ -22,6 +24,8 @@ const modelValue = useVModel(props, "modelValue", emits, {
 <template>
   <input
     v-model="modelValue"
+    :type="props.type"
+    :placeholder="props.placeholder"
     data-slot="input"
     :class="
       cn(

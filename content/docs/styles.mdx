@@ -1,7 +1,7 @@
 ---
 title: Styles
 description: Install the design system CSS foundation with the shadcn-vue CLI.
-order: 2
+order: 3
 ---
 
 Before components look correct, add the design system style files. This installs `globals.css` and its theme files into `src/styles/`.
@@ -15,12 +15,12 @@ Add the Design System UI Vue registry to `components.json` (once per project):
 ```json
 {
   "registries": {
-    "@design-system-ui-vue": "https://design-system-registry-vue.vercel.app/r/{name}.json"
+    "@design-system-ui": "https://vuedocs.canceydejean.dev/r/{name}.json"
   }
 }
 ```
 
-Without this, the CLI returns `Unknown registry "@design-system-ui-vue"`. See [Installation](/docs/installation) for the full setup flow.
+Without this, the CLI returns `Unknown registry "@design-system-ui"`. See [Installation](/docs/installation) for the full setup flow.
 
 ## Install
 

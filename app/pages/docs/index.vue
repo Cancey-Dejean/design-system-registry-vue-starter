@@ -1,13 +1,24 @@
 <script setup lang="ts">
-// No dedicated docs landing content is authored yet (Phase 1 only has installation/theming) —
-// redirect to the first sorted page instead of rendering an empty shell.
-const { data: pages } = await useFetch("/api/docs-pages");
+import AuthoredDocsPage from "~/components/docs/AuthoredDocsPage.vue";
+import DocsLayout from "~/components/docs/DocsLayout.vue";
 
-if (pages.value && pages.value.length > 0) {
-  await navigateTo(`/docs/${pages.value[0]!.slug}`, { replace: true });
+const { data: page } = await useFetch("/api/docs-pages/index");
+if (!page.value) {
+  throw createError({ statusCode: 404, statusMessage: "Docs page not found." });
 }
+useHead({ title: computed(() => page.value?.title) });
 </script>
 
 <template>
-  <div />
+  <DocsLayout v-if="page">
+    <AuthoredDocsPage
+      :page="{
+        title: page.title,
+        description: page.description,
+        routePath: page.routePath,
+        body: page.body,
+        toc: page.toc,
+      }"
+    />
+  </DocsLayout>
 </template>

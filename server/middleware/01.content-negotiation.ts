@@ -133,11 +133,7 @@ async function getMarkdownNegotiationResponse(
   const segments = getPathSegments(path);
 
   if (segments[0] === "docs") {
-    const slug = segments[1];
-
-    if (!slug) {
-      return getDocsCatalogMarkdownResponse(event);
-    }
+    const slug = segments[1] ?? "index";
 
     const page = await getDocsPage(event, slug);
     if (!page) {
@@ -162,15 +158,6 @@ async function getMarkdownNegotiationResponse(
   }
 
   return undefined;
-}
-
-async function getDocsCatalogMarkdownResponse(
-  event: Parameters<typeof getDocsPages>[0],
-): Promise<Response> {
-  const pages = await getDocsPages(event);
-  const list = pages.map((page) => `- [${page.title}](/docs/${page.slug}): ${page.description}`);
-
-  return new Response(`# Docs\n\n${list.join("\n")}\n`);
 }
 
 export default defineEventHandler(async (event) => {

@@ -81,6 +81,7 @@ export default defineNuxtConfig({
     ],
   },
   modules: [
+    "./modules/registry-storybook",
     "@nuxt/a11y",
     "@nuxt/fonts",
     "@nuxt/image",

@@ -11,7 +11,7 @@ interface Props extends PrimitiveProps {
 
 const props = withDefaults(defineProps<Props>(), {
   variant: "ghost",
-  size: "icon-xs",
+  size: "icon-sm",
 });
 </script>
 

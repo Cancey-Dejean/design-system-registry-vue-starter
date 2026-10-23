@@ -5,6 +5,9 @@ import DocsLayout from "~/components/docs/DocsLayout.vue";
 
 const route = useRoute();
 const slug = computed(() => route.params.slug as string);
+if (slug.value === "index") {
+  await navigateTo("/docs", { redirectCode: 301, replace: true });
+}
 
 const { data: page, pending } = await useFetch(() => `/api/docs-pages/${slug.value}`, {
   key: () => `docs-page-${slug.value}`,
@@ -24,7 +27,7 @@ useHead({ title: computed(() => page.value?.title) });
       :page="{
         title: page.title,
         description: page.description,
-        routePath: `/docs/${page.slug}`,
+        routePath: page.routePath,
         body: page.body,
         toc: page.toc,
       }"

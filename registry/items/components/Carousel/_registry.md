@@ -4,6 +4,7 @@ type: registry:ui
 title: Carousel
 description: A carousel of slides with previous/next controls and keyboard navigation.
 dependencies:
+  - embla-carousel-vue
   - "@vueuse/core"
   - "@lucide/vue"
 localRegistryDependencies:

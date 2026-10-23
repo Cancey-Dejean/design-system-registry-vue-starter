@@ -1,3 +1,4 @@
+import type { RegistryItemType } from "./registry/item-types";
 import type { RegistrySectionId } from "./registry/sections";
 
 export interface DocsNavigationItem {
@@ -5,11 +6,13 @@ export interface DocsNavigationItem {
   title: string;
   description: string;
   slug: string;
+  audience?: "maintainers";
   routePath: string;
 }
 
 export interface RegistryNavigationItem {
   kind: "registry";
+  type?: RegistryItemType;
   title: string;
   name: string;
   description: string;
@@ -31,32 +34,22 @@ export type SiteNavigationSectionId = SiteNavigationSection["id"];
 export type SitePagerPage = {
   title: string;
   routePath: string;
+  sectionId: SiteNavigationSectionId;
 };
-
-const docsIndexPath = "/docs";
 
 function normalizeRoutePath(path: string): string {
   return path.length > 1 && path.endsWith("/") ? path.slice(0, -1) : path;
 }
 
-/** Flatten sidebar sections into the pager order, skipping the /docs redirect. */
-export function flattenSitePagerPages(
-  sections: readonly SiteNavigationSection[],
-): SitePagerPage[] {
-  return sections.flatMap((section) => {
-    const landing =
-      section.basePath === docsIndexPath
-        ? []
-        : [{ title: section.title, routePath: section.basePath }];
-
-    return [
-      ...landing,
-      ...section.items.map((item) => ({
-        title: item.title,
-        routePath: item.routePath,
-      })),
-    ];
-  });
+/** Keep section identity so the pager cannot cross catalog boundaries. */
+export function flattenSitePagerPages(sections: readonly SiteNavigationSection[]): SitePagerPage[] {
+  return sections.flatMap((section) =>
+    section.items.map((item) => ({
+      title: item.title,
+      routePath: item.routePath,
+      sectionId: section.id,
+    })),
+  );
 }
 
 export function getSitePagerNeighbors(
@@ -70,10 +63,12 @@ export function getSitePagerNeighbors(
     return { previous: null, next: null };
   }
 
-  const count = pages.length;
+  const current = pages[index]!;
+  const previous = pages[index - 1];
+  const next = pages[index + 1];
 
   return {
-    previous: pages[(index - 1 + count) % count]!,
-    next: pages[(index + 1) % count]!,
+    previous: previous?.sectionId === current.sectionId ? previous : null,
+    next: next?.sectionId === current.sectionId ? next : null,
   };
 }

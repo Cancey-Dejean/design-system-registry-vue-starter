@@ -4,6 +4,7 @@ type: registry:ui
 title: Label
 description: Renders an accessible label associated with controls.
 dependencies:
+  - "@vueuse/core"
   - reka-ui
 files:
   - path: Label.vue

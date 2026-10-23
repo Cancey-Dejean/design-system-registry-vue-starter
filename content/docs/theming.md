@@ -1,7 +1,7 @@
 ---
 title: Theming
 description: Customize the docs shell and published components with your own design tokens.
-order: 3
+order: 5
 ---
 
 The docs app uses the local shadcn-vue configuration in `components.json` and the global theme in

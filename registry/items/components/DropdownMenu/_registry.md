@@ -4,6 +4,7 @@ type: registry:ui
 title: Dropdown Menu
 description: Displays a menu of actions or options triggered by a button.
 dependencies:
+  - "@vueuse/core"
   - reka-ui
   - "@lucide/vue"
 files:

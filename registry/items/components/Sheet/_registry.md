@@ -4,8 +4,11 @@ type: registry:ui
 title: Sheet
 description: Extends the Dialog component to display content that complements the main content of the screen.
 dependencies:
+  - "@vueuse/core"
   - reka-ui
   - "@lucide/vue"
+localRegistryDependencies:
+  - button
 files:
   - path: Sheet.vue
     type: registry:ui

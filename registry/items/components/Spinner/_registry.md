@@ -6,19 +6,22 @@ description: A loading indicator that spins an icon with accessible status seman
 dependencies:
   - "@lucide/vue"
 files:
+  - path: index.ts
+    type: registry:ui
+    target: "components/ui/Spinner/index.ts"
   - path: Spinner.vue
     type: registry:ui
-    target: "@ui/Spinner/Spinner.vue"
+    target: "components/ui/Spinner/Spinner.vue"
   - path: Spinner.types.ts
     type: registry:ui
-    target: "@ui/Spinner/Spinner.types.ts"
+    target: "components/ui/Spinner/Spinner.types.ts"
 ---
 
 Use the spinner to show that a section or action is loading. Pass `class` to change size or color.
 
 ```vue
 <script setup lang="ts">
-import Spinner from "@ui/Spinner";
+import { Spinner } from "@/components/ui/Spinner";
 </script>
 
 <template>

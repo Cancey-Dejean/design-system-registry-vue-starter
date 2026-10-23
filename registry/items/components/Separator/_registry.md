@@ -4,6 +4,7 @@ type: registry:ui
 title: Separator
 description: Visually or semantically separates content.
 dependencies:
+  - "@vueuse/core"
   - reka-ui
 files:
   - path: Separator.vue

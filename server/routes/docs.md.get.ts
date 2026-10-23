@@ -1,19 +1,11 @@
-import { formatMarkdownLinkListPage, markdownResponseHeaders } from "~/lib/content/markdown";
-import { getCanonicalDocsUrl } from "~/lib/site-config";
+import { markdownResponseHeaders } from "~/lib/content/markdown";
 
 export default defineEventHandler(async (event) => {
-  const pages = await getDocsPages(event);
-
-  const markdown = formatMarkdownLinkListPage({
-    title: "Docs",
-    description: "Guides for installing and using Design System UI.",
-    emptyMessage: "No docs pages published yet.",
-    items: pages.map((page) => ({
-      title: page.title,
-      href: getCanonicalDocsUrl(`/docs/${page.slug}`),
-      description: page.description,
-    })),
+  const page = await getDocsPage(event, "index");
+  if (!page) {
+    throw createError({ statusCode: 404, statusMessage: "Docs page not found." });
+  }
+  return new Response(`# ${page.title}\n\n${page.description}\n\n${page.markdown}\n`, {
+    headers: markdownResponseHeaders,
   });
-
-  return new Response(markdown, { headers: markdownResponseHeaders });
 });

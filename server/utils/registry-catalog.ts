@@ -1,5 +1,10 @@
 import { queryCollection } from "@nuxt/content/server";
 import type { H3Event } from "h3";
+import {
+  createPublishedAliasMap,
+  rewriteInternalAliasesForPublishing,
+  type PublishedAliasMap,
+} from "~/lib/registry/publish-aliases";
 import { getRegistryTypeFolder, type RegistryItemType } from "~/lib/registry/item-types";
 
 export interface RegistryCatalogFile {
@@ -14,6 +19,8 @@ export interface RegistryCatalogItem {
   type: RegistryItemType;
   title: string;
   description: string;
+  categories?: string[];
+  keywords?: string[];
   dependencies?: string[];
   localRegistryDependencies?: string[];
   files: RegistryCatalogFile[];
@@ -41,6 +48,8 @@ interface RegistryItemCollectionRow {
   type: RegistryItemType;
   title?: string;
   description: string;
+  categories?: string[];
+  keywords?: string[];
   dependencies?: string[];
   localRegistryDependencies?: string[];
   files?: Array<{ path: string; type: RegistryItemType; target?: string }>;
@@ -48,17 +57,6 @@ interface RegistryItemCollectionRow {
 }
 
 const frontmatterPattern = /^---\r?\n[\s\S]*?\r?\n---\r?\n?/;
-
-/**
- * `#registry-ui` is a dev-only alias (nuxt.config.ts) that lets this project's docs shell import
- * components straight from registry/items/components/** — the single source of truth — instead
- * of duplicating them under app/components/ui. It doesn't exist in a consumer project, so
- * published file content must be rewritten to the alias a real shadcn-vue install actually
- * resolves (matching this project's own components.json `ui` alias and each item's `target`).
- */
-function rewriteInternalAliasesForPublishing(content: string): string {
-  return content.replace(/#registry-ui\//g, "@/components/ui/");
-}
 
 // Component folders are a mix of PascalCase (on disk, no word separator, e.g. "AlertDialog") and
 // kebab-case (in each item's `name` frontmatter, e.g. "alert-dialog" — which is what
@@ -106,12 +104,16 @@ async function readUsageMarkdown(type: RegistryItemType, name: string): Promise<
   return raw.replace(frontmatterPattern, "").trim();
 }
 
-async function readPreviewCode(type: RegistryItemType, name: string): Promise<string | undefined> {
+async function readPreviewCode(
+  type: RegistryItemType,
+  name: string,
+  aliases: PublishedAliasMap,
+): Promise<string | undefined> {
   const folder = getRegistryTypeFolder(type);
 
   try {
     const raw = await readRegistryAsset(`${folder}/${name}/_preview.vue`);
-    return rewriteInternalAliasesForPublishing(raw);
+    return rewriteInternalAliasesForPublishing(raw, aliases, "_preview.vue");
   } catch {
     // Not every item has a _preview.vue (see preview-map.ts's hasPreview) — no demo to show.
     return undefined;
@@ -120,17 +122,21 @@ async function readPreviewCode(type: RegistryItemType, name: string): Promise<st
 
 async function resolveRegistryCatalogItem(
   item: RegistryItemCollectionRow,
+  aliases: PublishedAliasMap,
 ): Promise<RegistryCatalogItem> {
   const folder = getRegistryTypeFolder(item.type);
   const [files, usageMarkdown, previewCode] = await Promise.all([
     Promise.all(
       (item.files ?? []).map(async (file) => {
         const rawContent = await readRegistryAsset(`${folder}/${item.name}/${file.path}`);
-        return { ...file, content: rewriteInternalAliasesForPublishing(rawContent) };
+        return {
+          ...file,
+          content: rewriteInternalAliasesForPublishing(rawContent, aliases, file.path),
+        };
       }),
     ),
     readUsageMarkdown(item.type, item.name),
-    readPreviewCode(item.type, item.name),
+    readPreviewCode(item.type, item.name, aliases),
   ]);
 
   return {
@@ -138,6 +144,8 @@ async function resolveRegistryCatalogItem(
     type: item.type,
     title: item.title ?? toDefaultTitle(item.name),
     description: item.description,
+    categories: item.categories,
+    keywords: item.keywords,
     dependencies: item.dependencies,
     localRegistryDependencies: item.localRegistryDependencies,
     files,
@@ -154,7 +162,10 @@ export async function getRegistryItems(event: H3Event): Promise<RegistryCatalogI
     "registryItems",
   ).all()) as unknown as RegistryItemCollectionRow[];
 
-  const results = await Promise.allSettled(items.map((item) => resolveRegistryCatalogItem(item)));
+  const aliases = createPublishedAliasMap(items);
+  const results = await Promise.allSettled(
+    items.map((item) => resolveRegistryCatalogItem(item, aliases)),
+  );
   const resolved: RegistryCatalogItem[] = [];
 
   results.forEach((result, index) => {
@@ -177,13 +188,15 @@ export async function getRegistryItem(
   event: H3Event,
   name: string,
 ): Promise<RegistryCatalogItem | undefined> {
-  const item = (await queryCollection(event, "registryItems")
-    .where("name", "=", name)
-    .first()) as unknown as RegistryItemCollectionRow | null;
+  const items = (await queryCollection(
+    event,
+    "registryItems",
+  ).all()) as unknown as RegistryItemCollectionRow[];
+  const item = items.find((candidate) => candidate.name === name);
 
   if (!item) {
     return undefined;
   }
 
-  return resolveRegistryCatalogItem(item);
+  return resolveRegistryCatalogItem(item, createPublishedAliasMap(items));
 }

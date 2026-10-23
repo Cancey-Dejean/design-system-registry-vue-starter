@@ -39,7 +39,7 @@ const activeItem = computed(() =>
 <template>
   <SidebarProvider>
     <DocsAppSidebar />
-    <SidebarInset>
+    <SidebarInset class="min-w-0">
       <header
         class="sticky top-0 z-10 flex h-16 shrink-0 items-center gap-2 border-b bg-background"
       >
@@ -70,7 +70,7 @@ const activeItem = computed(() =>
           <HeaderActions class="ml-auto" />
         </div>
       </header>
-      <div class="flex flex-1 flex-col gap-4 pl-6 pr-4 pt-6">
+      <div class="flex min-w-0 flex-1 flex-col gap-4 pl-6 pr-4 pt-6">
         <slot />
       </div>
       <template v-if="showFooter" #footer>

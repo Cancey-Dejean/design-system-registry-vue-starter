@@ -4,6 +4,7 @@ type: registry:ui
 title: Command
 description: Command menu for search and quick actions.
 dependencies:
+  - "@vueuse/core"
   - reka-ui
   - "@lucide/vue"
 localRegistryDependencies:

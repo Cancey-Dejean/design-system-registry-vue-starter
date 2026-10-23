@@ -4,7 +4,8 @@ type: registry:ui
 title: Table
 description: A responsive table component for displaying tabular data.
 dependencies:
-  - "@tanstack/vue-table"
+  - "@vueuse/core"
+  - "@tanstack/vue-table@^8.21.3"
 files:
   - path: Table.vue
     type: registry:ui

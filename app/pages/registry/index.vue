@@ -20,6 +20,7 @@ const catalog = computed(() => ({
   basePath: "/registry",
   items: (items.value ?? []).map((item) => ({
     kind: "registry" as const,
+    type: item.type,
     title: item.title,
     name: item.name,
     description: item.description,

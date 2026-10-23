@@ -26,7 +26,8 @@ export async function getSiteNavigationSections(event: H3Event): Promise<SiteNav
               title: page.title,
               description: page.description,
               slug: page.slug,
-              routePath: `/docs/${page.slug}`,
+              routePath: page.routePath,
+              ...(page.audience ? { audience: page.audience } : {}),
             }),
           ),
         }
@@ -40,6 +41,7 @@ export async function getSiteNavigationSections(event: H3Event): Promise<SiteNav
       items: section.items.map(
         (item): RegistryNavigationItem => ({
           kind: "registry",
+          type: item.type,
           title: item.title,
           name: item.name,
           description: item.description,

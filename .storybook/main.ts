@@ -12,8 +12,10 @@ const config: StorybookConfig = {
     "@storybook/addon-docs",
     "@storybook/addon-links",
     "@storybook/addon-themes",
+    "@storybook/addon-vitest",
+    "@storybook/addon-mcp",
   ],
-  framework: "@storybook/vue3-vite",
+  framework: { name: "@storybook/vue3-vite", options: { docgen: "vue-component-meta" } },
   async viteFinal(config) {
     // Storybook loads vite.config.ts, which is Vite+-only (no Vue plugin, no Nuxt aliases).
     // @storybook/vue3-vite doesn't inject @vitejs/plugin-vue, so add it here along with the
