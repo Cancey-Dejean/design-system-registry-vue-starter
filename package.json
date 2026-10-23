@@ -80,7 +80,7 @@
     "playwright": "^1.63.0",
     "storybook": "10.6.0",
     "tailwindcss": "^4.3.3",
-    "typescript": "^5.7.0",
+    "typescript": "^7.0.2",
     "vite": "npm:@voidzero-dev/vite-plus-core@0.2.5",
     "vite-plus": "0.2.5",
     "vue-component-meta": "^3.3.12",
