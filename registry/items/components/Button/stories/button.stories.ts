@@ -1,12 +1,19 @@
 import Spinner from "@registry/components/Spinner/Spinner.vue";
 import type { Meta, StoryObj } from "@storybook/vue3";
 import { cn } from "cn";
+import { computed } from "vue";
 import { BUTTON_SIZES, BUTTON_VARIANTS, Button, type ButtonProps } from "..";
 
-const meta: Meta<typeof Button> = {
+/** Story args: Button props plus the default-slot label. */
+type ButtonStoryArgs = ButtonProps & {
+  default?: string;
+};
+
+const meta: Meta<ButtonStoryArgs> = {
   title: "Components/Button",
   component: Button,
   argTypes: {
+    default: { control: "text", description: "Default slot content" },
     variant: { control: "select", options: BUTTON_VARIANTS },
     size: {
       control: "select",
@@ -24,14 +31,28 @@ const meta: Meta<typeof Button> = {
     variant: "primary",
     size: "md",
   },
+  // Docgen doesn't detect Button's default slot (it passes through reka-ui's Primitive),
+  // so Storybook won't map the `default` arg to the slot on its own. Render it explicitly.
+  render: (args) => ({
+    components: { Button },
+    setup() {
+      // computed keeps Controls panel edits reactive (plain destructuring would not)
+      const props = computed(() => {
+        const { default: _label, ...rest } = args;
+        return rest;
+      });
+      const label = computed(() => args.default);
+      return { props, label };
+    },
+    template: /* html */ '<Button v-bind="props">{{ label }}</Button>',
+  }),
 };
 
 export default meta;
-type Story = StoryObj<typeof Button>;
+type Story = StoryObj<ButtonStoryArgs>;
 
 /** `loading` is a story-only control: Button has no such prop, the story composes Spinner instead. */
-type LoadingStoryArgs = ButtonProps & {
-  default?: string;
+type LoadingStoryArgs = ButtonStoryArgs & {
   loading?: boolean;
 };
 
@@ -61,6 +82,7 @@ export const Icon: Story = {
   args: {
     icon: true,
     size: "icon-md",
+    default: "+",
   },
   argTypes: {
     size: {
@@ -73,13 +95,6 @@ export const Icon: Story = {
       },
     },
   },
-  render: (args) => ({
-    components: { Button },
-    setup() {
-      return { args };
-    },
-    template: /* html */ '<Button v-bind="args">+</Button>',
-  }),
 };
 
 export const Loading: StoryObj<LoadingStoryArgs> = {
