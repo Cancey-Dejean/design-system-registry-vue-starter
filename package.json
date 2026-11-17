@@ -25,7 +25,7 @@
     "@nuxtjs/color-mode": "^4.1.0",
     "@orama/orama": "^3.1.18",
     "@tailwindcss/typography": "^0.5.20",
-    "@tanstack/vue-table": "^8.21.3",
+    "@tanstack/vue-table": "^9.3.1",
     "@unovis/ts": "^1.7.1",
     "@unovis/vue": "^1.7.1",
     "@vee-validate/zod": "^4.15.1",
